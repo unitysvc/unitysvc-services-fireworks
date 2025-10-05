@@ -1,0 +1,119 @@
+{
+  "description": "Kimi K2 is a state-of-the-art mixture-of-experts (MoE) language model with 32 billion activated parameters and 1 trillion total parameters. Trained with the Muon optimizer, Kimi K2 achieves exceptional performance across frontier knowledge, reasoning, and coding tasks while being meticulously optimized for agentic capabilities.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 131072,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{%- if tools -%}\n  <|im_system|>tool_declare<|im_middle|>{{ tools | tojson }}<|im_end|>\n{%- endif -%}\n{%- for message in messages -%}\n  {%- if loop.first and messages[0]['role'] != 'system' -%}\n    <|im_system|>system<|im_middle|>You are a helpful assistant<|im_end|>\n  {%- endif -%}\n  {%- if message['role'] == 'system' -%}\n    <|im_system|>system<|im_middle|>\n  {%- elif message['role'] == 'user' -%}\n    <|im_user|>user<|im_middle|>\n  {%- elif message['role'] == 'assistant' -%}\n    <|im_assistant|>assistant<|im_middle|>\n  {%- elif message['role'] == 'tool' -%}\n    <|im_system|>tool<|im_middle|>\n  {%- endif -%}\n  {%- if message['role'] == 'assistant' and message.get('tool_calls') -%}\n    {%- if message['content'] -%}{{ message['content'] }}{%- endif -%}\n    <|tool_calls_section_begin|>\n    {%- for tool_call in message['tool_calls'] -%}\n      {%- set func_name = tool_call['function']['name'] -%}\n      {%- set formatted_id = 'functions.' + func_name + ':' + loop.index0|string -%}\n      <|tool_call_begin|>{{ formatted_id }}<|tool_call_argument_begin|>{{ tool_call['function']['arguments'] | tojson}}<|tool_call_end|>\n    {%- endfor -%}\n    <|tool_calls_section_end|>\n  {%- elif message['role'] == 'tool' -%}\n    ## Return of {{ message.tool_call_id }}\\n{{ message['content'] }}\n  {%- elif message['content'] is string -%}\n    {{ message['content'] }}\n  {%- elif message['content'] is not none -%}\n    {% for content in message['content'] -%}\n      {% if content['type'] == 'image' or 'image' in content or 'image_url' in content -%}\n        <|media_start|>image<|media_content|><|media_pad|><|media_end|>\n      {% else -%}\n        {{ content['text'] }}\n      {%- endif -%}\n    {%- endfor -%}\n  {%- endif -%}\n  <|im_end|>\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n  <|im_assistant|>assistant<|im_middle|>\n{%- endif -%}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8_MM",
+    "defaultSamplingParams": {},
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/gwc7ford",
+        "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-zfd4nc0k",
+        "public": true,
+        "state": "DEPLOYED"
+      },
+      {
+        "default": false,
+        "deployment": "accounts/fireworks/deployments/a4zi9g1w",
+        "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-hmd8p1fz",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "deepseek_v3",
+    "moe": true,
+    "parameterCount": "1026408232448",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": true,
+    "worldSize": 1
+  },
+  "display_name": "Kimi K2 Instruct",
+  "name": "kimi-k2-instruct",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2025-07-11T18:38:16.094851Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 0.6,
+      "output": 2.5
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

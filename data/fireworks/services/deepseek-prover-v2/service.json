@@ -1,0 +1,99 @@
+{
+  "description": "DeepSeek-Prover-V2, an open-source large language model designed for formal theorem proving in Lean 4, with initialization data collected through a recursive theorem proving pipeline powered by DeepSeek-V3.",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 163840,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% set ns = namespace(is_first=false, is_tool=false, is_output_first=true, system_prompt='', is_first_sp=true, is_last_user=false) %}{%- for message in messages %}{%- if message['role'] == 'system' %}{%- if ns.is_first_sp %}{% set ns.system_prompt = ns.system_prompt + message['content'] %}{% set ns.is_first_sp = false %}{%- else %}{% set ns.system_prompt = ns.system_prompt + '\n\n' + message['content'] %}{%- endif %}{%- endif %}{%- endfor %}{{ bos_token }}{{ ns.system_prompt }}{%- for message in messages %}{%- if message['role'] == 'user' %}{%- set ns.is_tool = false -%}{%- set ns.is_first = false -%}{%- set ns.is_last_user = true -%}{{'<\uff5cUser\uff5c>' + message['content'] + '<\uff5cAssistant\uff5c>'}}{%- endif %}{%- if message['role'] == 'assistant' and message['tool_calls'] is defined and message['tool_calls'] is not none %}{%- set ns.is_last_user = false -%}{%- if ns.is_tool %}{{'<\uff5ctool\u2581outputs\u2581end\uff5c>'}}{%- endif %}{%- set ns.is_first = false %}{%- set ns.is_tool = false -%}{%- set ns.is_output_first = true %}{%- for tool in message['tool_calls'] %}{%- if not ns.is_first %}{%- if message['content'] is none %}{{'<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\n' + '```json' + '\n' + tool['function']['arguments'] + '\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- else %}{{message['content'] + '<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\n' + '```json' + '\n' + tool['function']['arguments'] + '\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- endif %}{%- set ns.is_first = true -%}{%- else %}{{'\n' + '<\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\n' + '```json' + '\n' + tool['function']['arguments'] + '\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- endif %}{%- endfor %}{{'<\uff5ctool\u2581calls\u2581end\uff5c><\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- endif %}{%- if message['role'] == 'assistant' and (message['tool_calls'] is not defined or message['tool_calls'] is none)%}{%- set ns.is_last_user = false -%}{%- if ns.is_tool %}{{'<\uff5ctool\u2581outputs\u2581end\uff5c>' + message['content'] + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- set ns.is_tool = false -%}{%- else %}{% set content = message['content'] %}{{content + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- endif %}{%- endif %}{%- if message['role'] == 'tool' %}{%- set ns.is_last_user = false -%}{%- set ns.is_tool = true -%}{%- if ns.is_output_first %}{{'<\uff5ctool\u2581outputs\u2581begin\uff5c><\uff5ctool\u2581output\u2581begin\uff5c>' + message['content'] + '<\uff5ctool\u2581output\u2581end\uff5c>'}}{%- set ns.is_output_first = false %}{%- else %}{{'\n<\uff5ctool\u2581output\u2581begin\uff5c>' + message['content'] + '<\uff5ctool\u2581output\u2581end\uff5c>'}}{%- endif %}{%- endif %}{%- endfor -%}{% if ns.is_tool %}{{'<\uff5ctool\u2581outputs\u2581end\uff5c>'}}{% endif %}{% if add_generation_prompt and not ns.is_last_user and not ns.is_tool %}{{'<\uff5cAssistant\uff5c>'}}{% endif %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8_MM",
+    "defaultSamplingParams": {},
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "deepseek_v3",
+    "moe": true,
+    "parameterCount": "671067257432",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": true,
+    "worldSize": 1
+  },
+  "display_name": "DeepSeek Prover V2",
+  "name": "deepseek-prover-v2",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2025-05-01T03:26:45.587294Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 1.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

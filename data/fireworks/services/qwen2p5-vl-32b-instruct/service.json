@@ -1,0 +1,118 @@
+{
+  "description": "Qwen2.5-VL is a multimodal large language model series developed by Qwen team, Alibaba Cloud, available in 3B, 7B, 32B, and 72B sizes",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 128000,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{% set image_count = namespace(value=0) %}{% set video_count = namespace(value=0) %}{% for message in messages %}{% if loop.first and message['role'] != 'system' %}<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n{% endif %}<|im_start|>{{ message['role'] }}\n{% if message['content'] is string %}{{ message['content'] }}<|im_end|>\n{% else %}{% for content in message['content'] %}{% if content['type'] == 'image' or 'image' in content or 'image_url' in content %}{% set image_count.value = image_count.value + 1 %}{% if add_vision_id %}Picture {{ image_count.value }}: {% endif %}<|vision_start|><|image_pad|><|vision_end|>{% elif content['type'] == 'video' or 'video' in content %}{% set video_count.value = video_count.value + 1 %}{% if add_vision_id %}Video {{ video_count.value }}: {% endif %}<|vision_start|><|video_pad|><|vision_end|>{% elif 'text' in content %}{{ content['text'] }}{% endif %}{% endfor %}<|im_end|>\n{% endif %}{% endfor %}{% if add_generation_prompt %}<|im_start|>assistant\n{% endif %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "BF16",
+    "defaultSamplingParams": {
+      "temperature": 1e-06,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/356bcf7c",
+        "name": "accounts/fireworks/deployedModels/qwen2p5-vl-32b-instruct-f3643f19",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "qwen2_5_vl",
+    "moe": false,
+    "parameterCount": "33452718336",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8_MM",
+      "FP8",
+      "FP8_AR",
+      "FP8_MM_KV_ATTN",
+      "FP8_KV",
+      "FP8_MM_V2",
+      "FP8_V2",
+      "FP8_MM_KV_ATTN_V2"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": true,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Qwen2.5-VL 32B Instruct",
+  "name": "qwen2p5-vl-32b-instruct",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2025-03-31T03:45:39.123033Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.9
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

@@ -1,0 +1,100 @@
+{
+  "description": "The Mistral-7B-v0.1 Large Language Model (LLM) is a pretrained generative text model with 7 billion parameters utilizing Grouped-query attention (GQA) for faster inference and Sliding window attention (SWA) to handle longer sequences at a lower cost.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "NATIVE",
+    "cluster": "",
+    "contextLength": 32768,
+    "conversationConfig": {
+      "style": "",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "https://github.com/mistralai/mistral-src",
+    "huggingFaceUrl": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "mistral",
+    "moe": false,
+    "parameterCount": "7000000000",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": true,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Mistral 7B",
+  "name": "mistral-7b",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2023-10-06T17:04:57.028445Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

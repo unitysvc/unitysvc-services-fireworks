@@ -1,0 +1,101 @@
+{
+  "description": "CodeGemma is a collection of lightweight open code models built on top of Gemma. CodeGemma models are text-to-text and text-to-code decoder-only models and are available as a 7 billion pretrained variant that specializes in code completion and code generation tasks, a 7 billion parameter instruction-tuned variant for code chat and instruction following and a 2 billion parameter pretrained variant for fast code completion.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 8192,
+    "conversationConfig": {
+      "style": "",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "BF16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/google/codegemma-2b",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "gemma",
+    "moe": false,
+    "parameterCount": "3030460416",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": true,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "CodeGemma 2B",
+  "name": "codegemma-2b",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-06-19T23:20:47.969349Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.1
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

@@ -1,0 +1,101 @@
+{
+  "description": "Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants. Gemma models are well-suited for a variety of text generation tasks, including question answering, summarization, and reasoning.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 8192,
+    "conversationConfig": {
+      "style": "",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "BF16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/google/gemma-7b",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "gemma",
+    "moe": false,
+    "parameterCount": "9324112896",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Gemma 7B",
+  "name": "gemma-7b",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-03-01T21:56:10.588013Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

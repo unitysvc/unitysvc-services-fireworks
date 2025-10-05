@@ -1,0 +1,94 @@
+{
+  "description": "The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models in 8B, 70B and 405B sizes. The Llama 3.1 instruction tuned text only models (8B, 70B, 405B) are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks. 405B model is the most capable from the Llama 3.1 family.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "NATIVE",
+    "cluster": "",
+    "contextLength": 0,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "accounts/fireworks/models/full-llama-v3p1-8b-instruct-8b-fp8-amd",
+    "defaultDraftTokenCount": 3,
+    "defaultPrecision": "FP16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "",
+    "moe": false,
+    "parameterCount": "1000",
+    "peftDetails": null,
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Llama 3.1 405B Instruct Long",
+  "name": "llama-v3p1-405b-instruct-long",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-08-14T23:44:25.794805Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.1
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

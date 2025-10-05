@@ -1,0 +1,110 @@
+{
+  "description": "Zephyr is a series of language models that are trained to act as helpful assistants. Zephyr-7B-\u03b2 is the second model in the series, and is a fine-tuned version of mistralai/Mistral-7B-v0.1 that was trained on on a mix of publicly available, synthetic datasets using Direct Preference Optimization (DPO).",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 32768,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{% for message in messages %}\n{% if message['role'] == 'user' %}\n{{ '<|user|>\n' + message['content'] + eos_token }}\n{% elif message['role'] == 'system' %}\n{{ '<|system|>\n' + message['content'] + eos_token }}\n{% elif message['role'] == 'assistant' %}\n{{ '<|assistant|>\n'  + message['content'] + eos_token }}\n{% endif %}\n{% if loop.last and add_generation_prompt %}\n{{ '<|assistant|>' }}\n{% endif %}\n{% endfor %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "BF16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "https://github.com/huggingface/alignment-handbook",
+    "huggingFaceUrl": "https://huggingface.co/HuggingFaceH4/zephyr-7b-beta",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "mistral",
+    "moe": false,
+    "parameterCount": "7241732096",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8_MM",
+      "FP8",
+      "FP8_AR",
+      "FP8_MM_KV_ATTN",
+      "FP8_KV",
+      "FP8_MM_V2",
+      "FP8_V2",
+      "FP8_MM_KV_ATTN_V2"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Zephyr 7B Beta",
+  "name": "zephyr-7b-beta",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2023-11-01T23:55:13.752655Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

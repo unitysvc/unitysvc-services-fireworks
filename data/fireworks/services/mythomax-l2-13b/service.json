@@ -1,0 +1,109 @@
+{
+  "description": "An improved, potentially even perfected variant of MythoMix, a MythoLogic-L2 and Huginn merge using a highly experimental tensor type merge technique. Proficient at both storytelling and roleplaying due to its unique nature.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 4096,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP16",
+    "defaultSamplingParams": {
+      "temperature": 0.9,
+      "top_k": 50,
+      "top_p": 0.6
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/Gryphe/MythoMax-L2-13b",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "llama",
+    "moe": false,
+    "parameterCount": "13015864320",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "INTERNAL",
+      "message": "Internal error occurred, please contact the Fireworks AI team at https://discord.gg/fireworks-ai"
+    },
+    "supportedPrecisions": [
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8_MM",
+      "FP8",
+      "FP8_AR",
+      "FP8_MM_KV_ATTN",
+      "FP8_KV",
+      "FP8_MM_V2",
+      "FP8_V2",
+      "FP8_MM_KV_ATTN_V2"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "MythoMax L2 13B",
+  "name": "mythomax-l2-13b",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-02-13T21:43:52.765973Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

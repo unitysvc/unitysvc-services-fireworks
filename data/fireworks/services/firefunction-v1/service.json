@@ -1,0 +1,107 @@
+{
+  "description": "Fireworks' open-source function calling model.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
+    "cluster": "",
+    "contextLength": 32768,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/fireworks-ai/firefunction-v1",
+    "importedFrom": "",
+    "kind": "HF_TEFT_ADDON",
+    "modelType": "",
+    "moe": false,
+    "parameterCount": "0",
+    "peftDetails": {
+      "baseModel": "accounts/fireworks/models/mixtral-8x7b-instruct-hf",
+      "baseModelType": "mixtral",
+      "mergeAddonModelName": "",
+      "r": 8,
+      "targetModules": [
+        "o_proj",
+        "gate",
+        "w1",
+        "w3",
+        "k_proj",
+        "w2",
+        "v_proj",
+        "q_proj"
+      ]
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": false,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 0
+  },
+  "display_name": "FireFunction V1",
+  "name": "firefunction-v1",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-02-17T00:49:26.868123Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.5
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

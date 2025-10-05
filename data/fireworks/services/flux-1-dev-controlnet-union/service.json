@@ -1,0 +1,94 @@
+{
+  "description": "Unified ControlNet for FLUX.1-dev model jointly released by researchers from InstantX Team and Shakker Labs.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
+    "cluster": "",
+    "contextLength": 0,
+    "conversationConfig": null,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+    "importedFrom": "",
+    "kind": "FLUMINA_ADDON",
+    "modelType": "",
+    "moe": false,
+    "parameterCount": "0",
+    "peftDetails": {
+      "baseModel": "accounts/fireworks/models/flux-1-dev",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": false,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 0
+  },
+  "display_name": "FLUX.1 [dev] ControlNet",
+  "name": "flux-1-dev-controlnet-union",
+  "schema": "service_v1",
+  "service_type": "image_generation",
+  "time_created": "2024-10-02T17:42:08.114780Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per Step",
+    "price_data": {
+      "price": 0.001
+    },
+    "reference": null,
+    "unit": "step"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

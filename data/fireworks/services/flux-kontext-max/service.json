@@ -1,0 +1,102 @@
+{
+  "description": "FLUX Kontext Max is Black Forest Labs' new premium model that brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
+    "cluster": "",
+    "contextLength": 0,
+    "conversationConfig": {
+      "style": "",
+      "system": "",
+      "template": ""
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {},
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/xj3mymll",
+        "name": "accounts/fireworks/deployedModels/flux-kontext-max-wezz3k0s",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "",
+    "importedFrom": "",
+    "kind": "FLUMINA_BASE_MODEL",
+    "modelType": "",
+    "moe": false,
+    "parameterCount": "0",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": true,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Flux Kontext Max",
+  "name": "flux-kontext-max",
+  "schema": "service_v1",
+  "service_type": "image_generation",
+  "time_created": "2025-06-23T21:36:51.809742Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per Image",
+    "price_data": {
+      "price": 0.08
+    },
+    "reference": null,
+    "unit": "image"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

@@ -1,0 +1,100 @@
+{
+  "description": "The Mistral-7B-Instruct-v0.1 Large Language Model (LLM) is a instruct fine-tuned version of the Mistral-7B-v0.1 generative text model using a variety of publicly available conversation datasets.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "NATIVE",
+    "cluster": "",
+    "contextLength": 32768,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{%- set _mode = mode | default('generate', true) -%}\n{%- set message_roles = ['SYSTEM', 'USER', 'ASSISTANT'] -%}\n{%- set ns = namespace(system_prompt='', system_prompt_handled=false, last_assistant_index_for_eos=-1, messages=messages) -%}\n{%- for message in ns.messages -%}\n    {%- if not message.get('role') -%}\n        {{ raise_exception('Key [role] is missing. Original input: ' +  message|tojson) }}\n    {%- endif -%}\n    {%- if message['role'] | upper not in message_roles -%}\n        {{ raise_exception('Invalid role ' + message['role']|tojson + '. Only ' + message_roles|tojson + ' are supported.') }}\n    {%- endif -%}\n    {%- if not message.get('content') -%}\n        {{ raise_exception('Key [content] is missing. Original input: ' +  message|tojson) }}\n    {%- endif -%}\n    {%- if loop.last and message['role'] | upper == 'ASSISTANT' -%}\n        {%- set ns.last_assistant_index_for_eos = loop.index0 -%}\n    {%- endif -%}\n{%- endfor -%}\n{%- if _mode == 'generate' -%}\n    {{ bos_token }}\n{%- endif -%}\n{%- for message in ns.messages -%}\n    {%- if message['role'] | upper == 'SYSTEM' and ns.system_prompt == '' -%}\n        {%- set ns.system_prompt = message['content'] -%}\n    {%- elif message['role'] | upper != 'SYSTEM' -%}\n        {%- if _mode == 'train' and (message['role'] | upper == 'USER') != ((loop.index0 - (1 if ns.system_prompt != '' else 0)) % 2 == 0) -%}\n            {{ raise_exception('Conversation roles must alternate user/assistant/user/assistant/...') }}\n        {%- endif -%}\n        {%- if message['role'] | upper == 'USER' and ns.system_prompt != '' and not ns.system_prompt_handled -%}\n            {{- '[INST] ' + ns.system_prompt + ' ' + message['content'] + ' [/INST]' }}\n            {%- set ns.system_prompt_handled = true -%}\n        {%- elif message['role'] | upper == 'USER' -%}\n            {{- '[INST] ' + message['content'] + ' [/INST]' }}\n        {%- elif message['role'] | upper == 'ASSISTANT' -%}\n            {%- if _mode == 'train' -%}\n                {{ unk_token + message['content'] + eos_token + unk_token }}\n            {%- else -%}\n                {{- message['content'] + (eos_token if loop.index0 != ns.last_assistant_index_for_eos else '') }}\n            {%- endif -%}\n        {%- else -%}\n            {{ raise_exception('Unexpected role found') }}\n        {%- endif -%}\n    {%- endif -%}\n{%- endfor -%}\n"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP16",
+    "defaultSamplingParams": {
+      "temperature": 1,
+      "top_k": 50,
+      "top_p": 1
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "https://github.com/mistralai/mistral-src",
+    "huggingFaceUrl": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "mistral",
+    "moe": false,
+    "parameterCount": "7000000000",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": true,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Mistal 7B Instruct V0.1",
+  "name": "mistral-7b-instruct-4k",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2023-09-27T22:32:35.931389Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

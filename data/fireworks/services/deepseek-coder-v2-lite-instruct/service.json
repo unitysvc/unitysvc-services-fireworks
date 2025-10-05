@@ -1,0 +1,103 @@
+{
+  "description": "DeepSeek Coder V2 Lite Instruct is a 16-billion-parameter open-source Mixture-of-Experts (MoE) code language model with 2.4 billion active parameters, developed by DeepSeek AI. Fine-tuned for instruction following, it achieves performance comparable to GPT4-Turbo on code-specific tasks. Pre-trained on an additional 6 trillion tokens, it enhances coding and mathematical reasoning capabilities, supports 338 programming languages, and extends context length from 16K to 128K while maintaining strong general language performance.",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 163840,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ 'User: ' + message['content'] + '\n\n' }}{% elif message['role'] == 'assistant' %}{{ 'Assistant: ' + message['content'] + eos_token }}{% elif message['role'] == 'system' %}{{ message['content'] + '\n\n' }}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ 'Assistant:' }}{% endif %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "BF16",
+    "defaultSamplingParams": {
+      "temperature": 0.3,
+      "top_k": 50,
+      "top_p": 0.95
+    },
+    "deployedModelRefs": [],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/DeepSeek/deepseek-coder-v2-lite-instruct",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "deepseek_v2",
+    "moe": true,
+    "parameterCount": "15706484224",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8_MM_V2"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": true,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "DeepSeek Coder V2 Lite Instruct",
+  "name": "deepseek-coder-v2-lite-instruct",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2024-07-04T18:20:06.208574Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.5
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}

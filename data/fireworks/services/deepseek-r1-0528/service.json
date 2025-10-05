@@ -1,0 +1,112 @@
+{
+  "description": "05/28 updated checkpoint of Deepseek R1. Its overall performance is now approaching that of leading models, such as O3 and Gemini 2.5 Pro. Compared to the previous version, the upgraded model shows significant improvements in handling complex reasoning tasks, and this version also offers a reduced hallucination rate, enhanced support for function calling, and better experience for vibe coding. Note that fine-tuning for this model is only available through contacting fireworks at https://fireworks.ai/company/contact-us.",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 163840,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{%- if not add_generation_prompt is defined %}\n    {%- set add_generation_prompt = false %}\n{%- endif %}\n{%- set ns = namespace(is_first=false, is_tool=false, is_output_first=true, system_prompt='', is_first_sp=true, is_last_user=false) %}\n{%- for message in messages %}\n    {%- if message['role'] == 'system' %}\n        {%- if ns.is_first_sp %}\n            {%- set ns.system_prompt = ns.system_prompt + message['content'] %}\n            {%- set ns.is_first_sp = false %}\n        {%- else %}\n            {%- set ns.system_prompt = ns.system_prompt + '\\n\\n' + message['content'] %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n\n{#- Adapted from https://github.com/sgl-project/sglang/blob/main/examples/chat_template/tool_chat_template_deepseekr1.jinja #}\n{%- if tools is defined and tools %}\n    {%- set tool_ns = namespace(text='You are a helpful assistant with tool calling capabilities. ' + 'When a tool call is needed, you MUST use the following format to issue the call:\\n' + '<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>function<\uff5ctool\u2581sep\uff5c>FUNCTION_NAME\\n' + '```json\\n{\"param1\": \"value1\", \"param2\": \"value2\"}\\n```<\uff5ctool\u2581call\u2581end\uff5c><\uff5ctool\u2581calls\u2581end\uff5c>\\n\\n' + 'Make sure the JSON is valid.' + '## Tools\\n\\n### Function\\n\\nYou have the following functions available:\\n\\n') %}\n    {%- for tool in tools %}\n        {%- set tool_ns.text = tool_ns.text + '\\n```json\\n' + (tool | tojson) + '\\n```\\n' %}\n    {%- endfor %}\n    {%- if ns.system_prompt|length != 0 %}\n        {%- set ns.system_prompt = ns.system_prompt + '\\n\\n' + tool_ns.text %}\n    {%- else %}\n        {%- set ns.system_prompt = tool_ns.text %}\n    {%- endif %}\n{%- endif %}\n{{- bos_token }}\n{{- ns.system_prompt }}\n{%- set last_index = (messages|length - 1) %}\n{%- for message in messages %}\n    {%- set content = message['content'] %}\n    {%- if message['role'] == 'user' %}\n        {%- set ns.is_tool = false -%}\n        {%- set ns.is_first = false -%}\n        {%- set ns.is_last_user = true -%}\n        {%- if loop.index0 == last_index %}\n            {{- '<\uff5cUser\uff5c>' + content }}\n        {%- else %}\n            {{- '<\uff5cUser\uff5c>' + content + '<\uff5cAssistant\uff5c>'}}\n        {%- endif %}\n    {%- endif %}\n    {%- if message['role'] == 'assistant' %}\n        {%- if content and '</think>' in content %}\n            {%- set content = (content.split('</think>')|last) %}\n        {%- endif %}\n    {%- endif %}\n    {%- if message['role'] == 'assistant' and message['tool_calls'] is defined and message['tool_calls'] is not none %}\n        {%- set ns.is_last_user = false -%}\n        {%- if ns.is_tool %}\n            {{- '<\uff5ctool\u2581outputs\u2581end\uff5c>'}}\n        {%- endif %}\n        {%- set ns.is_first = false %}\n        {%- set ns.is_tool = false -%}\n        {%- set ns.is_output_first = true %}\n        {%- for tool in message['tool_calls'] %}\n            {%- set arguments = tool['function']['arguments'] %}\n            {%- if arguments is not string %}\n                {%- set arguments = arguments|tojson %}\n            {%- endif %}\n            {%- if not ns.is_first %}\n                {%- if content is none %}\n                    {{- '<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\\n' + '```json' + '\\n' + arguments + '\\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}\n                {%- else %}\n                    {{- content + '<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\\n' + '```json' + '\\n' + arguments + '\\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}\n                {%- endif %}\n                {%- set ns.is_first = true -%}\n            {%- else %}\n                {{- '\\n' + '<\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\\n' + '```json' + '\\n' + arguments + '\\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>'}}\n            {%- endif %}\n        {%- endfor %}\n        {{- '<\uff5ctool\u2581calls\u2581end\uff5c><\uff5cend\u2581of\u2581sentence\uff5c>'}}\n    {%- endif %}\n    {%- if message['role'] == 'assistant' and (message['tool_calls'] is not defined or message['tool_calls'] is none) %}\n        {%- set ns.is_last_user = false -%}\n        {%- if ns.is_tool %}\n            {{- '<\uff5ctool\u2581outputs\u2581end\uff5c>' + content + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}\n            {%- set ns.is_tool = false -%}\n        {%- else %}\n            {{- content + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}\n        {%- endif %}\n    {%- endif %}\n    {%- if message['role'] == 'tool' %}\n        {%- set ns.is_last_user = false -%}\n        {%- set ns.is_tool = true -%}\n        {%- if ns.is_output_first %}\n            {{- '<\uff5ctool\u2581outputs\u2581begin\uff5c><\uff5ctool\u2581output\u2581begin\uff5c>' + content + '<\uff5ctool\u2581output\u2581end\uff5c>'}}\n            {%- set ns.is_output_first = false %}\n        {%- else %}\n            {{- '\\n<\uff5ctool\u2581output\u2581begin\uff5c>' + content + '<\uff5ctool\u2581output\u2581end\uff5c>'}}\n        {%- endif %}\n    {%- endif %}\n{%- endfor -%}\n{%- if ns.is_tool %}\n    {{- '<\uff5ctool\u2581outputs\u2581end\uff5c>'}}\n{%- endif %}\n{#- if add_generation_prompt and not ns.is_last_user and not ns.is_tool #}\n{%- if add_generation_prompt and not ns.is_tool %}\n    {{- '<\uff5cAssistant\uff5c>'}}\n{%- endif %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8_MM",
+    "defaultSamplingParams": {},
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/oiuzvpw1",
+        "name": "accounts/fireworks/deployedModels/deepseek-r1-0528-oxf9jwo4",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "deepseek_v3",
+    "moe": true,
+    "parameterCount": "671026419200",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": true,
+    "worldSize": 1
+  },
+  "display_name": "Deepseek R1 05/28",
+  "name": "deepseek-r1-0528",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2025-05-28T18:19:37.425817Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 3.0,
+      "output": 8.0
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}
