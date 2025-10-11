@@ -183,13 +183,13 @@ To enable automatic publishing when changes are merged to `main`, configure the 
 
 Click **New repository secret** and add the following:
 
-#### `UNITYSVC_BACKEND_URL`
+#### `UNITYSVC_BASE_URL`
 
 - **Description**: The UnitySVC backend API URL
 - **Example values**:
-  - Production: `https://api.unitysvc.com/api/v1`
-  - Staging: `https://staging.unitysvc.com/api/v1`
-  - Development: `https://main.devel.unitysvc.com/api/v1`
+  - Production: `https://api.unitysvc.com/v1`
+  - Staging: `https://staging.unitysvc.com/v1`
+  - Development: `https://main.devel.unitysvc.com/v1`
 
 #### `UNITYSVC_API_KEY`
 
@@ -234,7 +234,7 @@ unitysvc_services list offerings
 unitysvc_services list listings
 
 # Publish manually (optional)
-export UNITYSVC_BACKEND_URL="https://api.unitysvc.com/api/v1"
+export UNITYSVC_BASE_URL="https://api.unitysvc.com/v1"
 export UNITYSVC_API_KEY="your-api-key"
 unitysvc_services publish providers
 unitysvc_services publish sellers
