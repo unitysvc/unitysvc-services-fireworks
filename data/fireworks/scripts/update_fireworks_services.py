@@ -865,7 +865,7 @@ class FireworksModelExtractor:
                 "🔍 Dry-run mode enabled - will show what would be done without writing files"
             )
         if force:
-            print("💪 Force mode enabled - will overwrite existing service files")
+            print("💪 Force mode enabled - will overwrite all existing data files (service.json and listing-svcreseller.json)")
 
         if limit:
             print(f"🔢 Processing limit set to {limit} models")
@@ -963,15 +963,22 @@ class FireworksModelExtractor:
                     print(f"  📝 Writing service files to {data_dir}...")
                     self.write_service_files(service_config, data_dir)
 
-                if (data_dir / "listing-svcreseller.json").exists():
+                # Write listing file
+                listing_file = data_dir / "listing-svcreseller.json"
+                if listing_file.exists() and not force:
                     print(
-                        f"  ⚠️  Ignore existing listing-svcreseller.json. --force will not help. Please remove if you would like to re-generate listing-svcreseller.json file."
+                        "  ⏭️  Skipping existing listing-svcreseller.json (use --force to overwrite)"
+                    )
+                    print(
+                        "      💡 Manual customizations can be preserved in listing-svcreseller.override.json"
                     )
                 else:
                     if dry_run:
-                        print(f"  📝 [DRY-RUN] Would write listing files to {data_dir}")
+                        action = "overwrite" if listing_file.exists() else "write"
+                        print(f"  📝 [DRY-RUN] Would {action} listing files to {data_dir}")
                     else:
-                        print(f"  📝 Writing listing files to {data_dir}...")
+                        action = "Overwriting" if listing_file.exists() else "Writing"
+                        print(f"  📝 {action} listing files to {data_dir}...")
                         self.write_operation_files(operation_config, data_dir)
 
                 print(f"  ✅ Successfully processed {model_name}")
@@ -1008,7 +1015,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--force",
         action="store_true",
-        help="Force update existing service directories. Without this flag, existing directories will be skipped.",
+        help="Force overwrite all existing data files (service.json and listing-svcreseller.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
     )
     parser.add_argument(
         "--limit",
