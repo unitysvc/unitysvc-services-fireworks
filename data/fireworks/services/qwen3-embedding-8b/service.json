@@ -28,7 +28,7 @@
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
     "importedFrom": "",
-    "kind": "HF_BASE_MODEL",
+    "kind": "EMBEDDING_MODEL",
     "modelType": "qwen3",
     "moe": false,
     "parameterCount": "8188515328",
@@ -96,15 +96,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.2
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

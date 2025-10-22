@@ -54,13 +54,7 @@
     ],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
-      "FP8",
-      "FP8_AR",
-      "FP8_MM_KV_ATTN",
-      "FP8_KV",
-      "FP8_MM_V2",
-      "FP8_V2",
-      "FP8_MM_KV_ATTN_V2"
+      "FP8"
     ],
     "supportsFireattention": true,
     "supportsImageInput": true,
@@ -104,15 +98,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.9
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

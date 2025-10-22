@@ -19,4 +19,4 @@ FIREWORKS_API_BASE_URL = "https://api.fireworks.ai/v1"
 FIREWORKS_MODEL_BASE_URL = "https://fireworks.ai/models/fireworks"
 
 [services_populator]
-command = ['scripts/update_fireworks_services.py', '--force']
+command = ['scripts/update_services.py', '--force']

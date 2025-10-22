@@ -27,7 +27,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 13,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct",
@@ -104,15 +108,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 3.0
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

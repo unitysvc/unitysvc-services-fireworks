@@ -82,15 +82,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per Step",
-    "price_data": {
-      "price": 0.00035
-    },
-    "reference": null,
-    "unit": "step"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

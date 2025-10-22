@@ -1,7 +1,7 @@
 {
   "description": "Code Llama is a collection of pretrained and fine-tuned Large Language Models ranging in scale from 7 billion to 70 billion parameters, specializing in using both code and natural language prompts to generate code and natural language about code. This is the 70B Base version.",
   "details": {
-    "calibrated": false,
+    "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 4096,
@@ -96,15 +96,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.9
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

@@ -95,15 +95,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.2
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

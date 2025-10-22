@@ -16,9 +16,9 @@
     "defaultSamplingParams": {},
     "deployedModelRefs": [
       {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/gwc7ford",
-        "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-zfd4nc0k",
+        "default": false,
+        "deployment": "accounts/fireworks/deployments/huug6zb6",
+        "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-n6iijpar",
         "public": true,
         "state": "DEPLOYED"
       },
@@ -104,16 +104,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.6,
-      "output": 2.5
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

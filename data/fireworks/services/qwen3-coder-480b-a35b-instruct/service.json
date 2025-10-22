@@ -17,8 +17,8 @@
     "deployedModelRefs": [
       {
         "default": true,
-        "deployment": "accounts/fireworks/deployments/iuvr66no",
-        "name": "accounts/fireworks/deployedModels/qwen3-coder-480b-a35b-instruct-ow38oj6l",
+        "deployment": "accounts/fireworks/deployments/kx2r6z37",
+        "name": "accounts/fireworks/deployedModels/qwen3-coder-480b-a35b-instruct-yjvgbl1s",
         "public": true,
         "state": "DEPLOYED"
       }
@@ -88,16 +88,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.45,
-      "output": 1.8
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

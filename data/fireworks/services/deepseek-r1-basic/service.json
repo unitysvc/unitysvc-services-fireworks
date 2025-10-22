@@ -27,7 +27,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 12,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
@@ -101,16 +105,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.55,
-      "output": 2.19
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

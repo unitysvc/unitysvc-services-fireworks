@@ -88,15 +88,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per Image",
-    "price_data": {
-      "price": 0.08
-    },
-    "reference": null,
-    "unit": "image"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

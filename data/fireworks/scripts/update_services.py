@@ -633,7 +633,7 @@ class FireworksModelExtractor:
                         "title": "Python code example",
                         "description": "Example code to use the model",
                         "mime_type": "python",
-                        "category": "code_examples",
+                        "category": "code_example",
                         "file_path": "../../docs/code_example.py",
                         "is_active": True,
                         "is_public": True,
@@ -642,7 +642,7 @@ class FireworksModelExtractor:
                         "title": "Python function calling code example",
                         "description": "Example code to use the model",
                         "mime_type": "python",
-                        "category": "code_examples",
+                        "category": "code_example",
                         "file_path": "../../docs/code_example_1.py",
                         "is_active": True,
                         "is_public": True,
@@ -651,7 +651,7 @@ class FireworksModelExtractor:
                         "title": "JavaScript code example",
                         "description": "Example code to use the model",
                         "mime_type": "javascript",
-                        "category": "code_examples",
+                        "category": "code_example",
                         "file_path": "../../docs/code_example.js",
                         "is_active": True,
                         "is_public": True,
@@ -660,7 +660,7 @@ class FireworksModelExtractor:
                         "title": "cURL code example",
                         "description": "Example code to use the model",
                         "mime_type": "bash",
-                        "category": "code_examples",
+                        "category": "code_example",
                         "file_path": "../../docs/code_example.sh",
                         "is_active": True,
                         "is_public": True,
@@ -865,7 +865,9 @@ class FireworksModelExtractor:
                 "🔍 Dry-run mode enabled - will show what would be done without writing files"
             )
         if force:
-            print("💪 Force mode enabled - will overwrite all existing data files (service.json and listing-svcreseller.json)")
+            print(
+                "💪 Force mode enabled - will overwrite all existing data files (service.json and listing-svcreseller.json)"
+            )
 
         if limit:
             print(f"🔢 Processing limit set to {limit} models")
@@ -975,7 +977,9 @@ class FireworksModelExtractor:
                 else:
                     if dry_run:
                         action = "overwrite" if listing_file.exists() else "write"
-                        print(f"  📝 [DRY-RUN] Would {action} listing files to {data_dir}")
+                        print(
+                            f"  📝 [DRY-RUN] Would {action} listing files to {data_dir}"
+                        )
                     else:
                         action = "Overwriting" if listing_file.exists() else "Writing"
                         print(f"  📝 {action} listing files to {data_dir}...")

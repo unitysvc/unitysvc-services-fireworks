@@ -2,14 +2,14 @@
   "listing_status": "upstream_ready",
   "schema": "listing_v1",
   "seller_name": "svcreseller",
-  "time_created": "2025-09-22T01:58:38.531Z",
+  "time_created": "2025-10-22T16:54:54.976Z",
   "user_access_interfaces": [
     {
       "access_method": "http",
       "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
       "documents": [
         {
-          "category": "code_examples",
+          "category": "code_example",
           "description": "Example code to use the model",
           "file_path": "../../docs/code_example.py",
           "is_active": true,
@@ -18,7 +18,7 @@
           "title": "Python code example"
         },
         {
-          "category": "code_examples",
+          "category": "code_example",
           "description": "Example code to use the model",
           "file_path": "../../docs/code_example_1.py",
           "is_active": true,
@@ -27,7 +27,7 @@
           "title": "Python function calling code example"
         },
         {
-          "category": "code_examples",
+          "category": "code_example",
           "description": "Example code to use the model",
           "file_path": "../../docs/code_example.js",
           "is_active": true,
@@ -36,7 +36,7 @@
           "title": "JavaScript code example"
         },
         {
-          "category": "code_examples",
+          "category": "code_example",
           "description": "Example code to use the model",
           "file_path": "../../docs/code_example.sh",
           "is_active": true,
@@ -57,13 +57,5 @@
       "name": "Provider API"
     }
   ],
-  "user_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.2
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  }
+  "user_price": {}
 }

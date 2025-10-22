@@ -23,7 +23,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 13,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-4.5-Air",
@@ -95,16 +99,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.22,
-      "output": 0.88
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

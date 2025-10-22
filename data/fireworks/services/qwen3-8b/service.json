@@ -1,7 +1,7 @@
 {
   "description": "Latest Qwen3 state of the art model, FP8 version 8B Model",
   "details": {
-    "calibrated": false,
+    "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 40960,
@@ -40,7 +40,12 @@
       "FP8_MM",
       "FP8_MM_V2"
     ],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": true,
@@ -83,15 +88,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.2
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

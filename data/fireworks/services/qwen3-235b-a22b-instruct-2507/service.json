@@ -16,13 +16,6 @@
     "defaultSamplingParams": {},
     "deployedModelRefs": [
       {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/fqrfbczv",
-        "name": "accounts/fireworks/deployedModels/qwen3-235b-a22b-instruct-2507-sty3y1h5",
-        "public": true,
-        "state": "DEPLOYED"
-      },
-      {
         "default": false,
         "deployment": "accounts/fireworks/deployments/wqo0o92w",
         "name": "accounts/fireworks/deployedModels/qwen3-235b-a22b-instruct-2507-pwd12yf7",
@@ -98,16 +91,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.22,
-      "output": 0.88
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

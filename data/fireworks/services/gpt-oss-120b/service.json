@@ -28,6 +28,13 @@
         "name": "accounts/fireworks/deployedModels/gpt-oss-120b-b9su1jz3",
         "public": true,
         "state": "DEPLOYED"
+      },
+      {
+        "default": false,
+        "deployment": "accounts/fireworks/deployments/uf4hvo0h",
+        "name": "accounts/fireworks/deployedModels/gpt-oss-120b-rhoztwl7",
+        "public": true,
+        "state": "DEPLOYED"
       }
     ],
     "deprecationDate": null,
@@ -97,16 +104,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.15,
-      "output": 0.6
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

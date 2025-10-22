@@ -1,7 +1,7 @@
 {
   "description": "Qwen3 14B model developed by Qwen team, Alibaba Cloud,",
   "details": {
-    "calibrated": false,
+    "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 40960,
@@ -42,7 +42,12 @@
       "BF16",
       "FP16"
     ],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -85,15 +90,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.2
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

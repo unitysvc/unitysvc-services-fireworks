@@ -16,13 +16,6 @@
     "defaultSamplingParams": {},
     "deployedModelRefs": [
       {
-        "default": false,
-        "deployment": "accounts/fireworks/deployments/f5ojqawg",
-        "name": "accounts/fireworks/deployedModels/deepseek-v3p1-kpzimxal",
-        "public": true,
-        "state": "DEPLOYED"
-      },
-      {
         "default": true,
         "deployment": "accounts/fireworks/deployments/qjeezpms",
         "name": "accounts/fireworks/deployedModels/deepseek-v3p1-vmvkddt4",
@@ -111,16 +104,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.56,
-      "output": 1.68
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

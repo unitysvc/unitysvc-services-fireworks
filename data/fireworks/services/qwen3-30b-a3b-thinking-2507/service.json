@@ -1,7 +1,7 @@
 {
   "description": "Updated FP8 version of Qwen3-30B-A3B thinking mode, with better tool use, coding, instruction following, logical reasoning and text comprehension capabilities",
   "details": {
-    "calibrated": false,
+    "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 0,
@@ -12,7 +12,7 @@
     },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
     "deployedModelRefs": [
       {
@@ -23,7 +23,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 13,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507-FP8",
@@ -88,15 +92,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.9
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

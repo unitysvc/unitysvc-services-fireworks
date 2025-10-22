@@ -27,7 +27,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 10,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3",
@@ -35,7 +39,7 @@
     "kind": "HF_BASE_MODEL",
     "modelType": "deepseek_v3",
     "moe": true,
-    "parameterCount": "671067257432",
+    "parameterCount": "671026419200",
     "peftDetails": {
       "baseModel": "",
       "baseModelType": "",
@@ -50,10 +54,14 @@
     },
     "supportedPrecisions": [
       "FP8_MM",
-      "FP8_MM_V2"
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4"
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -97,15 +105,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.9
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

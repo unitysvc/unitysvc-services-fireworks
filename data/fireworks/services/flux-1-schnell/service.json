@@ -46,7 +46,7 @@
   "display_name": "FLUX.1 [schnell]",
   "name": "flux-1-schnell",
   "schema": "service_v1",
-  "service_type": "llm",
+  "service_type": "image_generation",
   "time_created": "2024-10-22T04:06:35.365683Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -74,15 +74,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": 0.1
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

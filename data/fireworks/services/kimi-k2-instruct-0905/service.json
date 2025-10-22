@@ -21,6 +21,13 @@
         "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-0905-ni2tu0tv",
         "public": true,
         "state": "DEPLOYED"
+      },
+      {
+        "default": false,
+        "deployment": "accounts/fireworks/deployments/k6qexq0p",
+        "name": "accounts/fireworks/deployedModels/kimi-k2-instruct-0905-lsrmuilb",
+        "public": true,
+        "state": "DEPLOYED"
       }
     ],
     "deprecationDate": null,
@@ -31,7 +38,7 @@
     "kind": "HF_BASE_MODEL",
     "modelType": "deepseek_v3",
     "moe": true,
-    "parameterCount": "1026470727640",
+    "parameterCount": "1026408232448",
     "peftDetails": {
       "baseModel": "",
       "baseModelType": "",
@@ -47,10 +54,13 @@
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
-      "FP4_BLOCKSCALED_MM"
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4"
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -94,16 +104,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.6,
-      "output": 2.5
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }

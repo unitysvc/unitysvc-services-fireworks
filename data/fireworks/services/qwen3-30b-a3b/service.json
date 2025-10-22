@@ -1,7 +1,7 @@
 {
   "description": "Latest Qwen3 state of the art model, 30B with 3B active parameter model",
   "details": {
-    "calibrated": false,
+    "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 131072,
@@ -23,7 +23,11 @@
         "state": "DEPLOYED"
       }
     ],
-    "deprecationDate": null,
+    "deprecationDate": {
+      "day": 13,
+      "month": 10,
+      "year": 2025
+    },
     "fineTuningJob": "",
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
@@ -48,7 +52,12 @@
       "FP8_MM",
       "FP8_MM_V2"
     ],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -91,16 +100,7 @@
       }
     ]
   },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": 0.15,
-      "output": 0.6
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
-  },
+  "upstream_price": {},
   "upstream_status": "ready",
   "version": ""
 }
