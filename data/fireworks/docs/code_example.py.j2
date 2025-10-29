@@ -1,0 +1,17 @@
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ.get("API_KEY"),
+    base_url=os.environ.get("API_ENDPOINT")
+)
+
+completion = client.chat.completions.create(
+    model="{{ offering.details.model_name }}",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Say this is a test"}
+    ]
+)
+
+print(completion.choices[0].message.content)
