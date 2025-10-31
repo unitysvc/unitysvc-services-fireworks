@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -60,7 +61,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 235B A22B Thinking 2507",
-  "name": "qwen3-235b-a22b-thinking-2507",
+  "name": "accounts/fireworks/models/qwen3-235b-a22b-thinking-2507",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-07-25T14:57:14.624557Z",
@@ -90,7 +91,16 @@
       }
     ]
   },
-  "upstream_price": {},
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 0.22,
+      "output": 0.88
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
   "upstream_status": "ready",
   "version": ""
 }

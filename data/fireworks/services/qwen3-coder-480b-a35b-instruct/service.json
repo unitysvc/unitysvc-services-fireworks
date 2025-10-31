@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -58,7 +59,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 Coder 480B A35B Instruct",
-  "name": "qwen3-coder-480b-a35b-instruct",
+  "name": "accounts/fireworks/models/qwen3-coder-480b-a35b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-07-22T19:04:50.990529Z",
@@ -88,7 +89,16 @@
       }
     ]
   },
-  "upstream_price": {},
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 0.45,
+      "output": 1.8
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
   "upstream_status": "ready",
   "version": ""
 }

@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -74,7 +75,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 Reranker 8B",
-  "name": "qwen3-reranker-8b",
+  "name": "accounts/fireworks/models/qwen3-reranker-8b",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-10-07T19:24:05.905021Z",

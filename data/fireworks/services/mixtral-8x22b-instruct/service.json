@@ -48,6 +48,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -78,7 +79,7 @@
     "worldSize": 8
   },
   "display_name": "Mixtral MoE 8x22B Instruct",
-  "name": "mixtral-8x22b-instruct",
+  "name": "accounts/fireworks/models/mixtral-8x22b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2024-04-17T17:38:28.592439Z",

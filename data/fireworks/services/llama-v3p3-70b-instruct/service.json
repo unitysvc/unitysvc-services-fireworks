@@ -44,6 +44,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": "Preparing"
@@ -74,7 +75,7 @@
     "worldSize": 1
   },
   "display_name": "Llama 3.3 70B Instruct",
-  "name": "llama-v3p3-70b-instruct",
+  "name": "accounts/fireworks/models/llama-v3p3-70b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2024-12-05T23:41:43.295895Z",
@@ -104,7 +105,16 @@
       }
     ]
   },
-  "upstream_price": {},
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 0.9,
+      "output": 0.9
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
   "upstream_status": "ready",
   "version": ""
 }

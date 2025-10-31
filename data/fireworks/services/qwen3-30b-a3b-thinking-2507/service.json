@@ -44,6 +44,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -62,7 +63,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 30B A3B Thinking 2507",
-  "name": "qwen3-30b-a3b-thinking-2507",
+  "name": "accounts/fireworks/models/qwen3-30b-a3b-thinking-2507",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-07-30T23:00:46.048233Z",

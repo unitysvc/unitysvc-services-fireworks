@@ -25,7 +25,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from urllib.parse import urljoin, urlparse
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 
 from bs4 import BeautifulSoup
 
@@ -122,87 +122,143 @@ class FireworksModelExtractor:
             print(f"❌ Error fetching models: {e}")
             return []
 
-    def extract_pricing_from_page(self, model_name: str) -> Optional[Dict]:
+    def extract_pricing_from_page(self, model_name: str, seller="") -> Optional[Dict]:
         """Extract pricing information from model's details page using BeautifulSoup"""
         # Remove accounts/fireworks/ prefix if present and convert to URL-friendly format
         clean_model_name = model_name.split("/")[-1]
 
         model_slug = clean_model_name.replace("/", "-").replace(":", "-").lower()
         pricing_url = f"{self.model_base_url}/{model_slug}"
+        if seller:
+            pricing_url = pricing_url.replace("models/fireworks", f"models/{seller}")
 
-        print(f"  📄 Fetching pricing from: {pricing_url}")
+        print(
+            f"  📄 Fetching pricing from: {pricing_url} (for {seller or "fireworks"} )"
+        )
         response = self.session.get(pricing_url, timeout=10)
 
         if response.status_code == 404:
-            raise requests.RequestException(
-                f"  ⚠️  Pricing page not found for {model_name}"
-            )
+            if seller:
+                raise requests.RequestException(
+                    f"  ⚠️  Pricing page not found for {model_name} from {pricing_url}"
+                )
+            else:
+                return self.extract_pricing_from_page(
+                    model_name=model_name, seller="deepseek-ai/"
+                )
 
         response.raise_for_status()
         soup = BeautifulSoup(response.content, "html.parser")
 
         pricing_info = {}
 
-        # Look for the specific HTML structure:
-        # <h3 class="text-md text-black">Pricing Per 1M Tokens</h3>
-        # <p class="ml-auto text-right font-medium text-display-xs sm:text-display-sm lg:text-display-md">$0.2</p>
-        # OR
-        # <h3 class="text-md text-black">Pricing Per Image</h3>
-        # <p class="ml-auto text-right font-medium text-display-xs sm:text-display-sm lg:text-display-md">$0.04</p>
+        # Look for the NEW HTML structure:
+        # <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 p-6 bg-white border border-[#E6EAF4]">
+        # <div class="flex flex-col"><h3 class="text-xl font-medium text-black mb-2">
+        # Available Serverless</h3><p class="text-sm text-gray-600">
+        # Run queries immediately, pay only for usage</p></div>
+        # <div class="flex flex-col items-end"><div class="text-right">
+        # <div class="text-display-sm font-medium text-black">
+        # $<!-- -->0.56<!-- --> / $<!-- -->1.68</div>
+        # <div class="text-sm text-gray-500 mt-1">
+        # Per <!-- -->1M<!-- --> Tokens (input/output)</div></div></div></div>
 
-        # Find h3 elements containing pricing patterns
-        pricing_patterns = [
-            r"Pricing Per 1M Tokens Input/Output",
-            r"Pricing Per 1M Tokens",
-            r"Pricing Per Image",
-            r"Pricing Per Step",
-        ]
+        # First, try to find "Available Serverless" header
+        serverless_header = soup.find(
+            "h3", string=re.compile(r"Available Serverless", re.IGNORECASE)
+        )
 
-        pricing_headers = []
-        for pattern in pricing_patterns:
-            headers = soup.find_all("h3", string=re.compile(pattern, re.IGNORECASE))
-            pricing_headers.extend(headers)
+        if serverless_header:
+            # Found the new structure, now extract pricing from the parent container
+            # Navigate up to the parent div container
+            parent_container = serverless_header.find_parent("div")
+            if parent_container:
+                parent_container = parent_container.find_parent("div")
 
-        for header in pricing_headers:
-            pricing_info["unit"] = header.get_text().strip()
-            # print(f"  🔍 Found pricing unit: {pricing_info['unit']}")
+            if parent_container:
+                # Get all text from this container
+                container_text = parent_container.get_text()
 
-            # Look for the next p element that contains a price (starts with $)
-            next_element = header.find_next_sibling()
+                # Try to extract pricing patterns from the container text
+                # Pattern 1: Input/Output pricing like "$0.56 / $1.68 Per 1M Tokens (input/output)"
+                input_output_match = re.search(
+                    r"\$\s*(\d+\.?\d*)\s*/\s*\$\s*(\d+\.?\d*)\s*Per\s*(\d+[MKmk]?)\s*Tokens\s*\(input/output\)",
+                    container_text,
+                    re.IGNORECASE,
+                )
+                if input_output_match:
+                    pricing_info["unit"] = "Pricing Per 1M Tokens Input/Output"
+                    pricing_info["price"] = (
+                        f"${input_output_match.group(1)} / ${input_output_match.group(2)}"
+                    )
+                    print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
 
-            # Search through next siblings to find the price
-            while next_element:
-                if next_element.name == "p":
-                    price_text = next_element.get_text().strip()
-                    # Check if this p element contains a price (starts with $ and contains numbers)
-                    if price_text.startswith("$") and re.search(r"\d", price_text):
-                        pricing_info["price"] = price_text
-                        # print(f"  💰 Found price: {pricing_info['price']}")
-                        break
-                next_element = next_element.find_next_sibling()
+                # Pattern 2: Simple token pricing like "$0.2 Per 1M Tokens"
+                if not pricing_info:
+                    token_match = re.search(
+                        r"\$\s*(\d+\.?\d*)\s*Per\s*(\d+[MKmk]?)\s*Tokens",
+                        container_text,
+                        re.IGNORECASE,
+                    )
+                    if token_match:
+                        pricing_info["unit"] = "Pricing Per 1M Tokens"
+                        pricing_info["price"] = f"${token_match.group(1)}"
+                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
 
-            # If we found both unit and price, we're done
-            if "unit" in pricing_info and "price" in pricing_info:
-                break
+                # Pattern 3: Image pricing like "$0.04 Per Image"
+                if not pricing_info:
+                    image_match = re.search(
+                        r"\$\s*(\d+\.?\d*)\s*Per\s*Image", container_text, re.IGNORECASE
+                    )
+                    if image_match:
+                        pricing_info["unit"] = "Pricing Per Image"
+                        pricing_info["price"] = f"${image_match.group(1)}"
+                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
 
-        # Fallback: if the specific structure wasn't found, look for pricing patterns in general text
+                # Pattern 4: Step pricing like "$0.04 Per Step"
+                if not pricing_info:
+                    step_match = re.search(
+                        r"\$\s*(\d+\.?\d*)\s*Per\s*Step", container_text, re.IGNORECASE
+                    )
+                    if step_match:
+                        pricing_info["unit"] = "Pricing Per Step"
+                        pricing_info["price"] = f"${step_match.group(1)}"
+                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
+
+        # FALLBACK: Try old structure with div elements (for backwards compatibility)
         if not pricing_info:
-            text_content = soup.get_text()
-            fallback_patterns = [
-                "Pricing Per 1M Tokens Input/Output",
-                "Pricing Per 1M Tokens",
-                "Pricing Per Image",
-                "Pricing Per Step",
+            pricing_patterns = [
+                r"Pricing Per 1M Tokens Input/Output",
+                r"Pricing Per 1M Tokens",
+                r"Pricing Per Image",
+                r"Pricing Per Step",
             ]
 
-            # Search for pricing patterns in text
-            for pattern in fallback_patterns:
-                matches = re.findall(pattern, text_content, re.IGNORECASE)
-                if matches:
-                    pricing_info["unit"] = pattern
-                    pricing_info["price"] = matches
-                    pricing_info["reference"] = pricing_url
-                    print(f"  🔍 Found pricing pattern in text: {matches}")
+            pricing_headers = []
+            for pattern in pricing_patterns:
+                headers = soup.find_all(
+                    "div", string=re.compile(pattern, re.IGNORECASE)
+                )
+                pricing_headers.extend(headers)
+
+            for header in pricing_headers:
+                pricing_info["unit"] = header.get_text().strip()
+
+                # Look for the next p element that contains a price (starts with $)
+                next_element = header.find_next_sibling()
+
+                # Search through next siblings to find the price
+                while next_element:
+                    if next_element.name == "p":
+                        price_text = next_element.get_text().strip()
+                        # Check if this p element contains a price (starts with $ and contains numbers)
+                        if price_text.startswith("$") and re.search(r"\d", price_text):
+                            pricing_info["price"] = price_text
+                            break
+                    next_element = next_element.find_next_sibling()
+
+                # If we found both unit and price, we're done
+                if "unit" in pricing_info and "price" in pricing_info:
                     break
 
         if pricing_info:
@@ -213,12 +269,10 @@ class FireworksModelExtractor:
             print(f"  ⚠️  No pricing data found")
             return None
 
-    def get_model_details(self, model_name: str) -> Optional[Dict]:
+    def get_model_details(self, model_name: str, prefix="") -> Optional[Dict]:
         """Get detailed model information from API endpoint"""
         # Try different API endpoints for model details
-        endpoint = (
-            f"{self.api_base_url}/accounts/fireworks/models/{model_name.split('/')[-1]}"
-        )
+        endpoint = f"{self.api_base_url}/{prefix}{model_name}"
 
         try:
             response = self.session.get(endpoint, timeout=10)
@@ -236,7 +290,9 @@ class FireworksModelExtractor:
                 response.raise_for_status()
 
         except requests.RequestException:
-            return None
+            if prefix:
+                return None
+            return self.get_model_details(model_name, prefix="deepseek-ai/")
 
         print(f"  ⚠️  No API details available")
         return None
@@ -469,7 +525,7 @@ class FireworksModelExtractor:
         #    "updateTime":"2025-07-03T06:49:11.639169Z",
         #    "useHfApplyChatTemplate":false
         # }
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         timestamp = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
         handled_model_fields = [
@@ -510,6 +566,7 @@ class FireworksModelExtractor:
             "kind",
             "peftDetails",  # a dictionary
             "rlTunable",
+            "snapshotType",
             "status",
             "supportedPrecisions",  # list
             "supportedPrecisionsWithCalibration",  # list
@@ -524,7 +581,7 @@ class FireworksModelExtractor:
         service_config = {
             "schema": "service_v1",
             "time_created": model_data.get("createTime", timestamp),
-            "name": model_name.split("/")[-1],
+            "name": model_name,
             # type of service to group services
             "service_type": service_type,
             # common display name for the service, allowing across provider linking
@@ -603,7 +660,7 @@ class FireworksModelExtractor:
     ) -> Dict:
         """Create a structured operation configuration for the model"""
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         timestamp = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
         operation_config = {
@@ -698,7 +755,7 @@ class FireworksModelExtractor:
             print(f"  ❌ Error writing {output_file}: {e}")
 
     def write_operation_files(self, operation_data, output_dir):
-        """Write listing-svcreseller.json file"""
+        """Write listing.json file"""
         base_path = Path(output_dir)
         base_path.mkdir(parents=True, exist_ok=True)
 
@@ -706,7 +763,7 @@ class FireworksModelExtractor:
         shared_path = base_path / ".." / ".." / "docs"
         shared_path.mkdir(parents=True, exist_ok=True)
 
-        output_file = base_path / "listing-svcreseller.json"
+        output_file = base_path / "listing.json"
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
@@ -866,11 +923,8 @@ class FireworksModelExtractor:
             )
         if force:
             print(
-                "💪 Force mode enabled - will overwrite all existing data files (service.json and listing-svcreseller.json)"
+                "💪 Force mode enabled - will overwrite all existing data files (service.json and listing.json)"
             )
-
-        if limit:
-            print(f"🔢 Processing limit set to {limit} models")
 
         if specific_models:
             print(f"🎯 Processing specific models: {', '.join(specific_models)}")
@@ -925,20 +979,21 @@ class FireworksModelExtractor:
             processed_count += 1
 
             try:
+                # Get API details
+                model_data |= self.get_model_details(model_name)
+                time.sleep(0.1)  # Rate limiting
+
+                if model_data.get("deployedModelRefs", []) == []:
+                    print(f"  ⚠️  Model {model_name} has no serverless deployment.")
+                    continue
+                print(model_data.get("deployedModelRefs", []))
+
                 # Get pricing data
                 try:
                     pricing_data = self.extract_pricing_from_page(model_name)
                     time.sleep(0.5)  # Rate limiting
                 except Exception as e:
-                    print(f"  ❌ Error parsing pricing page: {e}")
-                    continue
-
-                if pricing_data is None:
-                    print(f"  ⚠️  No pricing data available")
-
-                # Get API details
-                model_data |= self.get_model_details(model_name)
-                time.sleep(0.5)  # Rate limiting
+                    sys.exit(f"  ❌ Error parsing pricing page: {e}")
 
                 # Create service configuration
                 service_config = self.create_service_data_structure(
@@ -966,13 +1021,13 @@ class FireworksModelExtractor:
                     self.write_service_files(service_config, data_dir)
 
                 # Write listing file
-                listing_file = data_dir / "listing-svcreseller.json"
+                listing_file = data_dir / "listing.json"
                 if listing_file.exists() and not force:
                     print(
-                        "  ⏭️  Skipping existing listing-svcreseller.json (use --force to overwrite)"
+                        "  ⏭️  Skipping existing listing.json (use --force to overwrite)"
                     )
                     print(
-                        "      💡 Manual customizations can be preserved in listing-svcreseller.override.json"
+                        "      💡 Manual customizations can be preserved in listing.override.json"
                     )
                 else:
                     if dry_run:
@@ -1019,7 +1074,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--force",
         action="store_true",
-        help="Force overwrite all existing data files (service.json and listing-svcreseller.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
+        help="Force overwrite all existing data files (service.json and listing.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
     )
     parser.add_argument(
         "--limit",

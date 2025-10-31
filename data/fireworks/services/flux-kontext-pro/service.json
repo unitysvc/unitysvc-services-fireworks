@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -58,9 +59,9 @@
     "worldSize": 1
   },
   "display_name": "Flux Kontext Pro",
-  "name": "flux-kontext-pro",
+  "name": "accounts/fireworks/models/flux-kontext-pro",
   "schema": "service_v1",
-  "service_type": "image_generation",
+  "service_type": "llm",
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -88,7 +89,15 @@
       }
     ]
   },
-  "upstream_price": {},
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens",
+    "price_data": {
+      "price": 0.04
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
   "upstream_status": "ready",
   "version": ""
 }

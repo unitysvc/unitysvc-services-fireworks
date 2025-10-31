@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -66,7 +67,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 Embedding 8B",
-  "name": "qwen3-embedding-8b",
+  "name": "accounts/fireworks/models/qwen3-embedding-8b",
   "schema": "service_v1",
   "service_type": "embedding",
   "time_created": "2025-08-20T16:24:50.233084Z",

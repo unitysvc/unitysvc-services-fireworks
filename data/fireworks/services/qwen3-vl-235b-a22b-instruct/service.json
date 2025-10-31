@@ -40,6 +40,7 @@
       "targetModules": []
     },
     "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
     "status": {
       "code": "OK",
       "message": ""
@@ -58,7 +59,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 VL 235B A22B Instruct",
-  "name": "qwen3-vl-235b-a22b-instruct",
+  "name": "accounts/fireworks/models/qwen3-vl-235b-a22b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-09-24T20:28:09.336982Z",
@@ -88,7 +89,16 @@
       }
     ]
   },
-  "upstream_price": {},
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 1.2,
+      "output": 1.2
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
   "upstream_status": "ready",
   "version": ""
 }

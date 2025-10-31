@@ -1,0 +1,113 @@
+{
+  "description": "DeepSeek-V3.1-Terminus is an updated version of DeepSeek-V3.1 with enhanced language consistency, reduced mixed Chinese-English text, and optimized Code Agent and Search Agent performance.",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 163840,
+    "conversationConfig": {
+      "style": "jinja",
+      "system": "",
+      "template": "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% if not thinking is defined %}{% set thinking = false %}{% endif %}{% set ns = namespace(is_first=false, is_tool=false, system_prompt='', is_first_sp=true, is_last_user=false) %}{%- for message in messages %}{%- if message['role'] == 'system' %}{%- if ns.is_first_sp %}{% set ns.system_prompt = ns.system_prompt + message['content'] %}{% set ns.is_first_sp = false %}{%- else %}{% set ns.system_prompt = ns.system_prompt + '\n\n' + message['content'] %}{%- endif %}{%- endif %}{%- endfor %}{{ bos_token }}{{ ns.system_prompt }}{%- if tools is defined and tools and tools|length > 0 %}{{'\\n\\n'}}## Tools{{'\\n'}}You have access to the following tools:{%- for tool in tools %}{% set f = tool['function'] if tool['function'] is defined else tool %}{{'\\n\\n'}}### {{ f['name'] }}{{'\\n'}}Description: {{ f['description'] | default('') }}{{'\\n\\n'}}Parameters: {{ f['parameters'] | tojson }}{%- endfor %}{{'\\n\\n'}}IMPORTANT: ALWAYS adhere to this exact format for tool use:{{'\\n'}}<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>tool_call_name<\uff5ctool\u2581sep\uff5c>tool_call_arguments<\uff5ctool\u2581call\u2581end\uff5c>{% raw %}{additional_tool_calls}{% endraw %}<\uff5ctool\u2581calls\u2581end\uff5c>{{'\\n\\n'}}Where:{{'\\n'}}- `tool_call_name` must be an exact match to one of the available tools{{'\\n'}}- `tool_call_arguments` must be valid JSON that strictly follows the tool's Parameters Schema{{'\\n'}}- For multiple tool calls, chain them directly without separators or spaces{%- endif %}{%- for message in messages %}{%- if message['role'] == 'user' %}{%- set ns.is_tool = false -%}{%- set ns.is_first = false -%}{%- set ns.is_last_user = true -%}{{'<\uff5cUser\uff5c>' + message['content']}}{%- endif %}{%- if message['role'] == 'assistant' and message['tool_calls'] is defined and message['tool_calls'] is not none %}{%- if ns.is_last_user %}{{'<\uff5cAssistant\uff5c></think>'}}{%- endif %}{%- set ns.is_last_user = false -%}{%- set ns.is_first = false %}{%- set ns.is_tool = false -%}{%- for tool in message['tool_calls'] %}{%- if not ns.is_first %}{%- if message['content'] is none %}{{'<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>'+ tool['function']['name'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['arguments'] + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- else %}{{message['content'] + '<\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['function']['name'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['arguments'] + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- endif %}{%- set ns.is_first = true -%}{%- else %}{{'<\uff5ctool\u2581call\u2581begin\uff5c>'+ tool['function']['name'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['arguments'] + '<\uff5ctool\u2581call\u2581end\uff5c>'}}{%- endif %}{%- endfor %}{{'<\uff5ctool\u2581calls\u2581end\uff5c><\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- endif %}{%- if message['role'] == 'assistant' and (message['tool_calls'] is not defined or message['tool_calls'] is none) %}{%- if ns.is_last_user %}{{'<\uff5cAssistant\uff5c>'}}{%- if message['prefix'] is defined and message['prefix'] and thinking %}{{'<think>'}}  {%- else %}{{'</think>'}}{%- endif %}{%- endif %}{%- set ns.is_last_user = false -%}{%- if ns.is_tool %}{{message['content'] + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- set ns.is_tool = false -%}{%- else %}{%- set content = message['content'] -%}{%- if '</think>' in content %}{%- set content = content.split('</think>', 1)[1] -%}{%- endif %}{{content + '<\uff5cend\u2581of\u2581sentence\uff5c>'}}{%- endif %}{%- endif %}{%- if message['role'] == 'tool' %}{%- set ns.is_last_user = false -%}{%- set ns.is_tool = true -%}{{'<\uff5ctool\u2581output\u2581begin\uff5c>' + message['content'] + '<\uff5ctool\u2581output\u2581end\uff5c>'}}{%- endif %}{%- endfor -%}{%- if add_generation_prompt and ns.is_last_user and not ns.is_tool %}{{'<\uff5cAssistant\uff5c>'}}{%- if not thinking %}{{'</think>'}}{%- else %}{{'<think>'}}{%- endif %}{% endif %}"
+    },
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8_MM",
+    "defaultSamplingParams": {},
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/jmfn8ez4",
+        "name": "accounts/fireworks/deployedModels/deepseek-v3p1-terminus-x3lnj2pc",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1-Terminus",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "deepseek_v3",
+    "moe": true,
+    "parameterCount": "671026419200",
+    "peftDetails": {
+      "baseModel": "",
+      "baseModelType": "",
+      "mergeAddonModelName": "",
+      "r": 0,
+      "targetModules": []
+    },
+    "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
+    "status": {
+      "code": "OK",
+      "message": ""
+    },
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "DeepSeek V3.1 Terminus",
+  "name": "accounts/fireworks/models/deepseek-v3p1-terminus",
+  "schema": "service_v1",
+  "service_type": "llm",
+  "time_created": "2025-09-23T00:10:41.498599Z",
+  "upstream_access_interface": {
+    "access_method": "http",
+    "api_endpoint": "https://api.fireworks.ai/inference/v1",
+    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "name": "Fireworks API",
+    "rate_limits": [
+      {
+        "description": "Requests per minute",
+        "limit": 60,
+        "unit": "requests",
+        "window": "minute"
+      },
+      {
+        "description": "Input tokens per minute",
+        "limit": 60000,
+        "unit": "input_tokens",
+        "window": "minute"
+      },
+      {
+        "description": "Output tokens per minute",
+        "limit": 6000,
+        "unit": "output_tokens",
+        "window": "minute"
+      }
+    ]
+  },
+  "upstream_price": {
+    "currency": "USD",
+    "description": "Pricing Per 1M Tokens Input/Output",
+    "price_data": {
+      "input": 0.56,
+      "output": 1.68
+    },
+    "reference": null,
+    "unit": "one_million_tokens"
+  },
+  "upstream_status": "ready",
+  "version": ""
+}
