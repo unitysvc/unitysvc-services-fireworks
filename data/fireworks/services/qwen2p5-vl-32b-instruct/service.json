@@ -5,11 +5,6 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 128000,
-    "conversationConfig": {
-      "style": "jinja",
-      "system": "",
-      "template": "{% set image_count = namespace(value=0) %}{% set video_count = namespace(value=0) %}{% for message in messages %}{% if loop.first and message['role'] != 'system' %}<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n{% endif %}<|im_start|>{{ message['role'] }}\n{% if message['content'] is string %}{{ message['content'] }}<|im_end|>\n{% else %}{% for content in message['content'] %}{% if content['type'] == 'image' or 'image' in content or 'image_url' in content %}{% set image_count.value = image_count.value + 1 %}{% if add_vision_id %}Picture {{ image_count.value }}: {% endif %}<|vision_start|><|image_pad|><|vision_end|>{% elif content['type'] == 'video' or 'video' in content %}{% set video_count.value = video_count.value + 1 %}{% if add_vision_id %}Video {{ video_count.value }}: {% endif %}<|vision_start|><|video_pad|><|vision_end|>{% elif 'text' in content %}{{ content['text'] }}{% endif %}{% endfor %}<|im_end|>\n{% endif %}{% endfor %}{% if add_generation_prompt %}<|im_start|>assistant\n{% endif %}"
-    },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
@@ -18,15 +13,6 @@
       "top_k": 50,
       "top_p": 1
     },
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/356bcf7c",
-        "name": "accounts/fireworks/deployedModels/qwen2p5-vl-32b-instruct-f3643f19",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -34,21 +20,11 @@
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
     "modelType": "qwen2_5_vl",
+    "model_name": "accounts/fireworks/models/qwen2p5-vl-32b-instruct",
     "moe": false,
     "parameterCount": "33452718336",
-    "peftDetails": {
-      "baseModel": "",
-      "baseModelType": "",
-      "mergeAddonModelName": "",
-      "r": 0,
-      "targetModules": []
-    },
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "OK",
-      "message": ""
-    },
     "supportedPrecisions": [
       "BF16",
       "FP16"
@@ -69,7 +45,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen2.5-VL 32B Instruct",
-  "name": "accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+  "name": "qwen2p5-vl-32b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-03-31T03:45:39.123033Z",

@@ -5,24 +5,10 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 0,
-    "conversationConfig": {
-      "style": "",
-      "system": "",
-      "template": ""
-    },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/ihmv44eh",
-        "name": "accounts/fireworks/deployedModels/qwen3-vl-235b-a22b-thinking-l8agjz6u",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -30,21 +16,11 @@
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
     "modelType": "qwen3_vl_moe",
+    "model_name": "accounts/fireworks/models/qwen3-vl-235b-a22b-thinking",
     "moe": true,
     "parameterCount": "235107904512",
-    "peftDetails": {
-      "baseModel": "",
-      "baseModelType": "",
-      "mergeAddonModelName": "",
-      "r": 0,
-      "targetModules": []
-    },
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "OK",
-      "message": ""
-    },
     "supportedPrecisions": [],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
@@ -59,7 +35,7 @@
     "worldSize": 1
   },
   "display_name": "Qwen3 VL 235B A22B Thinking",
-  "name": "accounts/fireworks/models/qwen3-vl-235b-a22b-thinking",
+  "name": "qwen3-vl-235b-a22b-thinking",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-09-24T23:12:12.121869Z",

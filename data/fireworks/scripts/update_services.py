@@ -581,7 +581,7 @@ class FireworksModelExtractor:
         service_config = {
             "schema": "service_v1",
             "time_created": model_data.get("createTime", timestamp),
-            "name": model_name,
+            "name": model_name.split("/")[-1],
             # type of service to group services
             "service_type": service_type,
             # common display name for the service, allowing across provider linking
@@ -589,14 +589,20 @@ class FireworksModelExtractor:
             "version": "",
             "description": model_data.get("description", ""),
             "upstream_status": model_data.get("state").lower(),
-            "details": {},
+            "details": {"model_name": model_name},
             "upstream_access_interface": {},
             "upstream_price": {},
         }
         # top level details
         for field in top_level_model_fields:
             if field in model_data:
-                service_config["details"][field] = model_data[field]
+                if field not in (
+                    "conversationConfig",
+                    "deployedModelRefs",
+                    "peftDetails",
+                    "status",
+                ):
+                    service_config["details"][field] = model_data[field]
 
         for field in model_data.keys():
             if (
@@ -992,6 +998,9 @@ class FireworksModelExtractor:
                 try:
                     pricing_data = self.extract_pricing_from_page(model_name)
                     time.sleep(0.5)  # Rate limiting
+                    if not pricing_data:
+                        print(f"  ⚠️  No pricing data found for {model_name}")
+                        continue
                 except Exception as e:
                     sys.exit(f"  ❌ Error parsing pricing page: {e}")
 

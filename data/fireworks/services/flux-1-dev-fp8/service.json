@@ -5,7 +5,6 @@
     "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
     "cluster": "",
     "contextLength": 0,
-    "conversationConfig": null,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
@@ -14,15 +13,6 @@
       "top_k": 50,
       "top_p": 1
     },
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/fd7b206c",
-        "name": "accounts/fireworks/deployedModels/flux-1-dev-fp8-1fe2ee16",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -30,15 +20,11 @@
     "importedFrom": "",
     "kind": "FLUMINA_BASE_MODEL",
     "modelType": "",
+    "model_name": "accounts/fireworks/models/flux-1-dev-fp8",
     "moe": false,
     "parameterCount": "0",
-    "peftDetails": null,
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "OK",
-      "message": ""
-    },
     "supportedPrecisions": [],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": false,
@@ -53,7 +39,7 @@
     "worldSize": 1
   },
   "display_name": "FLUX.1 [dev] FP8",
-  "name": "accounts/fireworks/models/flux-1-dev-fp8",
+  "name": "flux-1-dev-fp8",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2024-10-21T17:48:09.099702Z",

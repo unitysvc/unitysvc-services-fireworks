@@ -5,24 +5,10 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 0,
-    "conversationConfig": {
-      "style": "",
-      "system": "",
-      "template": ""
-    },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/jt2334ts",
-        "name": "accounts/fireworks/deployedModels/minimax-m2-z2qzy46o",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -30,21 +16,11 @@
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
     "modelType": "minimax",
+    "model_name": "accounts/fireworks/models/minimax-m2",
     "moe": true,
     "parameterCount": "230000000000",
-    "peftDetails": {
-      "baseModel": "",
-      "baseModelType": "",
-      "mergeAddonModelName": "",
-      "r": 0,
-      "targetModules": []
-    },
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "OK",
-      "message": ""
-    },
     "supportedPrecisions": [],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": false,
@@ -59,7 +35,7 @@
     "worldSize": 1
   },
   "display_name": "MiniMax-M2",
-  "name": "accounts/fireworks/models/minimax-m2",
+  "name": "minimax-m2",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-10-27T06:54:32.360786Z",

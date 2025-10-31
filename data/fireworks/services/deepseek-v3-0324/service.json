@@ -5,11 +5,6 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 163840,
-    "conversationConfig": {
-      "style": "jinja",
-      "system": "",
-      "template": "{%- if not add_generation_prompt is defined %}\n  {%- set add_generation_prompt = false %}\n{%- endif %}\n{%- set ns = namespace(is_first=false, is_tool=false, is_output_first=true, system_prompt='', is_first_sp=true) %}\n{%- for message in messages %}\n  {%- if message['role'] == 'system' %}\n    {%- if ns.is_first_sp %}\n      {%- set ns.system_prompt = ns.system_prompt + message['content'] %}\n      {%- set ns.is_first_sp = false %}\n    {%- else %}\n      {%- set ns.system_prompt = ns.system_prompt + '\n\n' + message['content'] %}\n    {%- endif %}\n  {%- endif %}\n{%- endfor %}\n{%- if tools is defined and tools %}\n  {%- if ns.system_prompt %}\n    {%- set ns.system_prompt = ns.system_prompt + '\n\n' %}\n  {%- else %}\n    {%- set ns.system_prompt = 'You are a helpful Assistant.\n\n' %}\n  {%- endif %}\n  {%- set ns.system_prompt = ns.system_prompt + '## Tools\n\n### Function\n\nYou have the following functions available:\n' %}\n  {%- for tool in tools %}\n    {%- set ns.system_prompt = ns.system_prompt + '\n- `' + tool.function.name + '`:\n' + tool.function | tojson(indent=4) + '\n```\n'  %}\n  {%- endfor %}\n{%- endif %}\n{{- ns.system_prompt }}\n{%- for message in messages %}\n  {%- if message['role'] == 'user' %}\n    {%- set ns.is_tool = false -%}\n    {{- '<\uff5cUser\uff5c>' + message['content'] }}\n  {%- endif %}\n  {%- if message['role'] == 'assistant' and message['content'] is none %}\n    {%- set ns.is_tool = false -%}\n    {%- for tool in message['tool_calls'] %}\n      {%- if not ns.is_first %}\n        {{- '<\uff5cAssistant\uff5c><\uff5ctool\u2581calls\u2581begin\uff5c><\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\n' + '```json' + '\n' + tool['function']['arguments'] + '\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>' }}\n        {%- set ns.is_first = true -%}\n      {%- else %}\n        {{- '\n' + '<\uff5ctool\u2581call\u2581begin\uff5c>' + tool['type'] + '<\uff5ctool\u2581sep\uff5c>' + tool['function']['name'] + '\n' + '```json' + '\n' + tool['function']['arguments'] + '\n' + '```' + '<\uff5ctool\u2581call\u2581end\uff5c>' }}\n        {{- '<\uff5ctool\u2581calls\u2581end\uff5c><\uff5cend\u2581of\u2581sentence\uff5c>' }}\n      {%- endif %}\n    {%- endfor %}\n  {%- endif %}\n  {%- if message['role'] == 'assistant' and message['content'] is not none %}\n    {%- if ns.is_tool %}\n      {{- '<\uff5ctool\u2581outputs\u2581end\uff5c>' + message['content'] + '<\uff5cend\u2581of\u2581sentence\uff5c>' }}\n      {%- set ns.is_tool = false -%}\n    {%- else %}\n      {{- '<\uff5cAssistant\uff5c>' + message['content'] + '<\uff5cend\u2581of\u2581sentence\uff5c>' }}\n    {%- endif %}\n  {%- endif %}\n  {%- if message['role'] == 'tool' %}\n    {%- set ns.is_tool = true -%}\n    {%- if ns.is_output_first %}\n      {{- '<\uff5ctool\u2581outputs\u2581begin\uff5c><\uff5ctool\u2581output\u2581begin\uff5c>' + message['content'] + '<\uff5ctool\u2581output\u2581end\uff5c>' }}\n      {%- set ns.is_output_first = false %}\n    {%- else %}\n      {{- '\n<\uff5ctool\u2581output\u2581begin\uff5c>' + message['content'] + '<\uff5ctool\u2581output\u2581end\uff5c>' }}\n    {%- endif %}\n  {%- endif %}\n{%- endfor -%}\n{%- if ns.is_tool %}\n  {{- '<\uff5ctool\u2581outputs\u2581end\uff5c>' }}\n{%- endif %}\n{%- if add_generation_prompt and not ns.is_tool %}\n  {{- '<\uff5cAssistant\uff5c>' }}\n{%- endif %}"
-    },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "FP8_MM",
@@ -18,22 +13,6 @@
       "top_k": 50,
       "top_p": 1
     },
-    "deployedModelRefs": [
-      {
-        "default": false,
-        "deployment": "accounts/fireworks/deployments/b7lu478i",
-        "name": "accounts/fireworks/deployedModels/deepseek-v3-0324-pvilr8fa",
-        "public": true,
-        "state": "DEPLOYED"
-      },
-      {
-        "default": false,
-        "deployment": "accounts/fireworks/deployments/vh40oa5v",
-        "name": "accounts/fireworks/deployedModels/deepseek-v3-0324-ze3aq2ut",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -41,21 +20,11 @@
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
     "modelType": "deepseek_v3",
+    "model_name": "accounts/fireworks/models/deepseek-v3-0324",
     "moe": true,
     "parameterCount": "671067257432",
-    "peftDetails": {
-      "baseModel": "",
-      "baseModelType": "",
-      "mergeAddonModelName": "",
-      "r": 0,
-      "targetModules": []
-    },
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "OK",
-      "message": ""
-    },
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2"
@@ -75,7 +44,7 @@
     "worldSize": 1
   },
   "display_name": "Deepseek V3 03-24",
-  "name": "accounts/fireworks/models/deepseek-v3-0324",
+  "name": "deepseek-v3-0324",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2025-03-24T14:40:20.594012Z",

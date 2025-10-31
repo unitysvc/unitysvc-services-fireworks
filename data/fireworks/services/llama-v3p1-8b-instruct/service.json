@@ -5,11 +5,6 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 131072,
-    "conversationConfig": {
-      "style": "jinja",
-      "system": "",
-      "template": "{{- bos_token }}\n{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{% if loop.index0 == 0 %}{% set content = bos_token + content %}{% endif %}{{ content }}{% endfor %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}"
-    },
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
@@ -18,15 +13,6 @@
       "top_k": 50,
       "top_p": 0.9
     },
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/936bccef",
-        "name": "accounts/fireworks/deployedModels/llama-v3p1-8b-instruct-68281b2f",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -34,21 +20,11 @@
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
     "modelType": "llama",
+    "model_name": "accounts/fireworks/models/llama-v3p1-8b-instruct",
     "moe": false,
     "parameterCount": "8030261248",
-    "peftDetails": {
-      "baseModel": "",
-      "baseModelType": "",
-      "mergeAddonModelName": "",
-      "r": 0,
-      "targetModules": []
-    },
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "status": {
-      "code": "INTERNAL",
-      "message": "Internal error occurred, please contact the Fireworks AI team at https://discord.gg/fireworks-ai"
-    },
     "supportedPrecisions": [
       "BF16",
       "FP16"
@@ -75,7 +51,7 @@
     "worldSize": 1
   },
   "display_name": "Llama 3.1 8B Instruct",
-  "name": "accounts/fireworks/models/llama-v3p1-8b-instruct",
+  "name": "llama-v3p1-8b-instruct",
   "schema": "service_v1",
   "service_type": "llm",
   "time_created": "2024-07-23T00:00:08.369396Z",
