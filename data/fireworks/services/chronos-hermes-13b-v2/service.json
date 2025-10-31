@@ -1,6 +1,7 @@
 {
   "description": "(chronos-13b-v2 + Nous-Hermes-Llama2-13b) 75/25 merge. This offers the imaginative writing style of chronos while still retaining coherency and being capable. Outputs are long and utilize exceptional prose.",
   "details": {
+    "model_name": "chronos-hermes-13b-v2",
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",

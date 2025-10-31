@@ -14,15 +14,7 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/y77ya2va",
-        "name": "accounts/fireworks/deployedModels/qwen3-coder-30b-a3b-instruct-cywzkwoi",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
+    "deployedModelRefs": [],
     "deprecationDate": {
       "day": 13,
       "month": 10,

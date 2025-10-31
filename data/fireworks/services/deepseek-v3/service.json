@@ -18,15 +18,7 @@
       "top_k": 50,
       "top_p": 1
     },
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/e88zfv6b",
-        "name": "accounts/fireworks/deployedModels/deepseek-v3-pqtq3lj5",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
+    "deployedModelRefs": [],
     "deprecationDate": {
       "day": 10,
       "month": 10,

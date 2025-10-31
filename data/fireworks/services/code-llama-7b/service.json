@@ -1,7 +1,6 @@
 {
   "description": "Code Llama is a collection of pretrained and fine-tuned Large Language Models ranging in scale from 7 billion to 70 billion parameters, specializing in using both code and natural language prompts to generate code and natural language about code. This is the base 7B version.",
   "details": {
-    "model_name": "fireworks/code-llama-7b",
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",

@@ -14,7 +14,15 @@
     "defaultDraftTokenCount": 4,
     "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [],
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/ejz63yn7",
+        "name": "accounts/fireworks/deployedModels/qwen3-8b-glv60gyu",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",

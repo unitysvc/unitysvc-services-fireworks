@@ -14,7 +14,15 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [],
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/tkivypig",
+        "name": "accounts/fireworks/deployedModels/qwen3-vl-235b-a22b-instruct-wgx3l6oy",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -38,7 +46,7 @@
     },
     "supportedPrecisions": [],
     "supportedPrecisionsWithCalibration": [],
-    "supportsFireattention": false,
+    "supportsFireattention": true,
     "supportsImageInput": true,
     "supportsLora": false,
     "supportsMtp": false,

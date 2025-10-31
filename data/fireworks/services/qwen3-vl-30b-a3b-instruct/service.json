@@ -14,7 +14,15 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [],
+    "deployedModelRefs": [
+      {
+        "default": true,
+        "deployment": "accounts/fireworks/deployments/c9qeg7m5",
+        "name": "accounts/fireworks/deployedModels/qwen3-vl-30b-a3b-instruct-m0pq4qdf",
+        "public": true,
+        "state": "DEPLOYED"
+      }
+    ],
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
@@ -38,8 +46,8 @@
     },
     "supportedPrecisions": [],
     "supportedPrecisionsWithCalibration": [],
-    "supportsFireattention": false,
-    "supportsImageInput": false,
+    "supportsFireattention": true,
+    "supportsImageInput": true,
     "supportsLora": false,
     "supportsMtp": false,
     "supportsTools": false,

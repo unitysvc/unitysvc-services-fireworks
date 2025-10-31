@@ -18,15 +18,7 @@
       "top_k": 50,
       "top_p": 1
     },
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/inxlnshm",
-        "name": "accounts/fireworks/deployedModels/deepseek-r1-ny4v3doc",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
+    "deployedModelRefs": [],
     "deprecationDate": {
       "day": 10,
       "month": 10,

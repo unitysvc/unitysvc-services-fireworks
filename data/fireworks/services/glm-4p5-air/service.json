@@ -14,15 +14,7 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
     "defaultSamplingParams": {},
-    "deployedModelRefs": [
-      {
-        "default": true,
-        "deployment": "accounts/fireworks/deployments/oclnwduk",
-        "name": "accounts/fireworks/deployedModels/glm-4p5-air-zedh2dj7",
-        "public": true,
-        "state": "DEPLOYED"
-      }
-    ],
+    "deployedModelRefs": [],
     "deprecationDate": {
       "day": 13,
       "month": 10,

@@ -1,17 +1,20 @@
 from openai import OpenAI
 import os
 
-client = OpenAI(
-    api_key=os.environ.get("API_KEY"),
-    base_url=os.environ.get("API_ENDPOINT")
-)
+# Use environment variables or fallback
+#os.environ.get("API_ENDPOINT") or 
+#os.environ.get("API_KEY")
+base_url = os.environ.get("API_ENDPOINT")
+api_key = os.environ.get("API_KEY")
 
-completion = client.chat.completions.create(
-    model="{{ offering.details.model_name }}",
+client = OpenAI(api_key=api_key, base_url=base_url)
+
+response = client.chat.completions.create(
+    model="accounts/fireworks/deployedModels/deepseek-r1-0528-oxf9jwo4",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Say this is a test"}
     ]
 )
 
-print(completion.choices[0].message.content)
+print(response.choices[0].message.content)

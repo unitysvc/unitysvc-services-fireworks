@@ -1,6 +1,7 @@
 {
   "description": "05/28 updated checkpoint of Deepseek R1. Its overall performance is now approaching that of leading models, such as O3 and Gemini 2.5 Pro. Compared to the previous version, the upgraded model shows significant improvements in handling complex reasoning tasks, and this version also offers a reduced hallucination rate, enhanced support for function calling, and better experience for vibe coding. Note that fine-tuning for this model is only available through contacting fireworks at https://fireworks.ai/company/contact-us.",
   "details": {
+    "model_name": "accounts/fireworks/deployedModels/deepseek-r1-0528-oxf9jwo4",
     "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
