@@ -1,0 +1,1 @@
+{"id":"0abb8ac8-67d9-4b2e-9ff2-2dddc1860258","object":"chat.completion","created":1762138416,"model":"accounts/fireworks/models/kimi-k2-instruct-0905","choices":[{"index":0,"message":{"role":"assistant","content":"This is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":22,"total_tokens":28,"completion_tokens":6,"prompt_tokens_details":{"cached_tokens":0}}}

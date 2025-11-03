@@ -1,0 +1,1 @@
+{"id":"4365d0d9-0d0a-44f6-90d1-3c3be2fea938","object":"chat.completion","created":1762138352,"model":"accounts/fireworks/models/qwen2p5-vl-32b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"Got it! This is a test. How can I assist you today? 😊"},"finish_reason":"stop"}],"usage":{"prompt_tokens":24,"total_tokens":42,"completion_tokens":18}}

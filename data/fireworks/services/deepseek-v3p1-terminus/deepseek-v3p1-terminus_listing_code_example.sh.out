@@ -1,0 +1,1 @@
+{"id":"185f3359-7715-4889-a102-21fc13c8871a","object":"chat.completion","created":1762138231,"model":"accounts/fireworks/models/deepseek-v3p1-terminus","choices":[{"index":0,"message":{"role":"assistant","content":"This is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":15,"total_tokens":21,"completion_tokens":6}}

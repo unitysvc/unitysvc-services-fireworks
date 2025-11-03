@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmptknqcxhs.py", line 15, in <module>
+    model+ "",
+    ^^^^^
+NameError: name 'model' is not defined

@@ -10,7 +10,9 @@ api_key = os.environ.get("API_KEY")
 client = OpenAI(api_key=api_key, base_url=base_url)
 
 response = client.chat.completions.create(
-    model="accounts/fireworks/deployedModels/deepseek-r1-0528-oxf9jwo4",
+    model= "{{offering.details.model_name}}",
+
+
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Say this is a test"}
