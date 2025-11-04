@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmp3qi3l35v.py", line 15, in <module>
-    url = base_url + "/workflows/" + accounts/fireworks/models/flux-1-dev-fp8 + "/text_to_image"
-                                     ^^^^^^^^
-NameError: name 'accounts' is not defined

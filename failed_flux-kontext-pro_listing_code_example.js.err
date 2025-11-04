@@ -1,9 +1,0 @@
-/private/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmpd6e6oy3e.js:21
-  console.log(data.choices[0].message.content);
-                          ^
-
-TypeError: Cannot read properties of undefined (reading '0')
-    at main (/private/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmpd6e6oy3e.js:21:27)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-
-Node.js v22.21.0

@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmp0hpqxfeb.py", line 14, in <module>
-    response = requests.post(url, headers=headers, json=data)
-                                                        ^^^^
-NameError: name 'data' is not defined
