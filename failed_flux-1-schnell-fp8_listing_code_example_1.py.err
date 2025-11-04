@@ -1,5 +1,5 @@
 Traceback (most recent call last):
-  File "/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmpx03wugnk.py", line 16, in <module>
+  File "/var/folders/by/1lnh_4p159qfqgr_3ws9szgc0000gn/T/tmpftnekfq2.py", line 16, in <module>
     response = client.chat.completions.create(
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/opt/anaconda3/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper

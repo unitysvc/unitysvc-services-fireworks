@@ -11,7 +11,7 @@
         {
           "category": "code_example",
           "description": "Example code to use the model",
-          "file_path": "../../docs/code_example.py.j2",
+          "file_path": "../../docs/code_example_flux.py.j2",
           "is_active": true,
           "is_public": true,
           "mime_type": "python",
@@ -20,7 +20,7 @@
         {
           "category": "code_example",
           "description": "Example code to use the model",
-          "file_path": "../../docs/code_example_1.py.j2",
+          "file_path": "../../docs/code_example_flux_fc.py.j2",
           "is_active": true,
           "is_public": true,
           "mime_type": "python",
@@ -29,7 +29,7 @@
         {
           "category": "code_example",
           "description": "Example code to use the model",
-          "file_path": "../../docs/code_example.js.j2",
+          "file_path": "../../docs/code_example_flux.js.j2",
           "is_active": true,
           "is_public": true,
           "mime_type": "javascript",

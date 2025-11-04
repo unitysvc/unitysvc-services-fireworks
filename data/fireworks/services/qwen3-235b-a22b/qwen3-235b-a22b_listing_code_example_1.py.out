@@ -1,5 +1,5 @@
 <think>
-Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's the echo_message function which takes a message parameter. I need to call that function with the message "Hello world". So the arguments should be {"message": "Hello world"}. I'll make sure to format the tool_call correctly within the XML tags.
+Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's an echo_message function that takes a message parameter. I need to call that function with the message "Hello world". So the arguments should be {"message": "Hello world"}. I'll make sure to format the tool_call correctly within the XML tags.
 </think>
 
 
