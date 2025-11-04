@@ -1,0 +1,1 @@
+{"type": "function", "name": "echo_message", "parameters": {"message": "Hello world"}}

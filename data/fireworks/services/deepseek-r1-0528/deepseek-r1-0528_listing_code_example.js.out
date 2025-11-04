@@ -1,0 +1,7 @@
+<think>
+We are given the input: "Say this is a test"
+ The user wants the assistant to say that this is a test.
+ Since the instruction is to "Say this is a test", we can simply output the string "this is a test".
+ However, note that the user might be testing the functionality. We can respond exactly as instructed.
+</think>
+This is a test. 😊

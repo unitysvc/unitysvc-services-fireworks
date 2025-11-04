@@ -20,7 +20,7 @@
         {
           "category": "code_example",
           "description": "Example code to use the model",
-          "file_path": "../../docs/code_example_1.py.j2",
+          "file_path": "../../docs/code_example_fc.py.j2",
           "is_active": true,
           "is_public": true,
           "mime_type": "python",
