@@ -661,6 +661,7 @@ class FireworksModelExtractor:
 
     def create_operation_data_structure(
         self,
+        model_name: str,
         pricing_data: Optional[Dict],
         upstream_ready: bool,
     ) -> Dict:
@@ -686,60 +687,109 @@ class FireworksModelExtractor:
             # For operations, we set user_price instead of upstream_price for the first case
             operation_config["user_price"] = pricing_info
 
-        operation_config["user_access_interfaces"] = [
-            {
-                "name": "Provider API",
-                "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-                "access_method": "http",
-                "documents": [
-                    {
-                        "title": "Python code example",
-                        "description": "Example code to use the model",
-                        "mime_type": "python",
-                        "category": "code_example",
-                        "file_path": "../../docs/code_example.py.j2",
-                        "is_active": True,
-                        "is_public": True,
-                    },
-                    {
-                        "title": "Python function calling code example",
-                        "description": "Example code to use the model",
-                        "mime_type": "python",
-                        "category": "code_example",
-                        "file_path": "../../docs/code_example_1.py.j2",
-                        "is_active": True,
-                        "is_public": True,
-                    },
-                    {
-                        "title": "JavaScript code example",
-                        "description": "Example code to use the model",
-                        "mime_type": "javascript",
-                        "category": "code_example",
-                        "file_path": "../../docs/code_example.js.j2",
-                        "is_active": True,
-                        "is_public": True,
-                    },
-                    {
-                        "title": "cURL code example",
-                        "description": "Example code to use the model",
-                        "mime_type": "bash",
-                        "category": "code_example",
-                        "file_path": "../../docs/code_example.sh.j2",
-                        "is_active": True,
-                        "is_public": True,
-                    },
-                    {
-                        "title": "How to use this model",
-                        "description": "",
-                        "mime_type": "markdown",
-                        "category": "getting_started",
-                        "file_path": "../../docs/description.md",
-                        "is_active": True,
-                        "is_public": True,
-                    },
-                ],
-            }
-        ]
+        if "flux" in model_name:
+            operation_config["user_access_interfaces"] = [
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "python",
+                    "title": "Python code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux_fc.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "python",
+                    "title": "Python function calling code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux.js.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "javascript",
+                    "title": "JavaScript code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example.sh.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "bash",
+                    "title": "cURL code example",
+                },
+                {
+                    "category": "getting_started",
+                    "description": "",
+                    "file_path": "../../docs/description.md",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "markdown",
+                    "title": "How to use this model",
+                },
+            ]
+        else:
+            operation_config["user_access_interfaces"] = [
+                {
+                    "name": "Provider API",
+                    "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+                    "access_method": "http",
+                    "documents": [
+                        {
+                            "title": "Python code example",
+                            "description": "Example code to use the model",
+                            "mime_type": "python",
+                            "category": "code_example",
+                            "file_path": "../../docs/code_example.py.j2",
+                            "is_active": True,
+                            "is_public": True,
+                        },
+                        {
+                            "title": "Python function calling code example",
+                            "description": "Example code to use the model",
+                            "mime_type": "python",
+                            "category": "code_example",
+                            "file_path": "../../docs/code_example_1.py.j2",
+                            "is_active": True,
+                            "is_public": True,
+                        },
+                        {
+                            "title": "JavaScript code example",
+                            "description": "Example code to use the model",
+                            "mime_type": "javascript",
+                            "category": "code_example",
+                            "file_path": "../../docs/code_example.js.j2",
+                            "is_active": True,
+                            "is_public": True,
+                        },
+                        {
+                            "title": "cURL code example",
+                            "description": "Example code to use the model",
+                            "mime_type": "bash",
+                            "category": "code_example",
+                            "file_path": "../../docs/code_example.sh.j2",
+                            "is_active": True,
+                            "is_public": True,
+                        },
+                        {
+                            "title": "How to use this model",
+                            "description": "",
+                            "mime_type": "markdown",
+                            "category": "getting_started",
+                            "file_path": "../../docs/description.md",
+                            "is_active": True,
+                            "is_public": True,
+                        },
+                    ],
+                }
+            ]
         return operation_config
 
     def write_service_files(self, service_data, output_dir):
@@ -1014,6 +1064,7 @@ class FireworksModelExtractor:
 
                 # Create service configuration
                 operation_config = self.create_operation_data_structure(
+                    model_name,
                     pricing_data,
                     service_config["upstream_status"] == "ready",
                 )
