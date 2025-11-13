@@ -18,7 +18,7 @@
     "modelType": "gpt_oss",
     "model_name": "accounts/fireworks/models/gpt-oss-120b",
     "moe": true,
-    "parameterCount": "117000000000",
+    "parameterCount": "116829156672",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
@@ -71,8 +71,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.15,
-      "output": 0.6
+      "input": "0.15",
+      "output": "0.60"
     },
     "reference": null,
     "unit": "one_million_tokens"

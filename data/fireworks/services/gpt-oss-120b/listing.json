@@ -2,7 +2,7 @@
   "listing_status": "upstream_ready",
   "schema": "listing_v1",
   "seller_name": "svcreseller",
-  "time_created": "2025-10-31T05:33:12.938Z",
+  "time_created": "2025-11-13T04:39:42.836Z",
   "user_access_interfaces": [
     {
       "access_method": "http",
@@ -20,7 +20,7 @@
         {
           "category": "code_example",
           "description": "Example code to use the model",
-          "file_path": "../../docs/code_example_fc.py.j2",
+          "file_path": "../../docs/code_example_1.py.j2",
           "is_active": true,
           "is_public": true,
           "mime_type": "python",
@@ -61,8 +61,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.15,
-      "output": 0.6
+      "input": "0.15",
+      "output": "0.60"
     },
     "reference": null,
     "unit": "one_million_tokens"

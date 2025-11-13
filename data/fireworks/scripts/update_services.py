@@ -308,20 +308,18 @@ class FireworksModelExtractor:
             if " / " in price_string:
                 input_price, output_price = price_string.split(" / ")
                 # Remove $ and convert to float
-                pricing_data["price_input"] = float(
-                    input_price.strip().replace("$", "")
-                )
-                pricing_data["price_output"] = float(
+                pricing_data["price_input"] = str(input_price.strip().replace("$", ""))
+                pricing_data["price_output"] = str(
                     output_price.strip().replace("$", "")
                 )
             else:
                 # Single price, treat as both input and output
-                price = float(price_string.strip().replace("$", ""))
+                price = str(price_string.strip().replace("$", ""))
                 pricing_data["price_input"] = price
                 pricing_data["price_output"] = price
         else:
             # Single price for other pricing models
-            pricing_data["price"] = float(price_string.strip().replace("$", ""))
+            pricing_data["price"] = str(price_string.strip().replace("$", ""))
 
         return pricing_data
 
@@ -690,50 +688,57 @@ class FireworksModelExtractor:
         if "flux" in model_name:
             operation_config["user_access_interfaces"] = [
                 {
-                    "category": "code_example",
-                    "description": "Example code to use the model",
-                    "file_path": "../../docs/code_example_flux.py.j2",
-                    "is_active": True,
-                    "is_public": True,
-                    "mime_type": "python",
-                    "title": "Python code example",
-                },
-                {
-                    "category": "code_example",
-                    "description": "Example code to use the model",
-                    "file_path": "../../docs/code_example_flux_fc.py.j2",
-                    "is_active": True,
-                    "is_public": True,
-                    "mime_type": "python",
-                    "title": "Python function calling code example",
-                },
-                {
-                    "category": "code_example",
-                    "description": "Example code to use the model",
-                    "file_path": "../../docs/code_example_flux.js.j2",
-                    "is_active": True,
-                    "is_public": True,
-                    "mime_type": "javascript",
-                    "title": "JavaScript code example",
-                },
-                {
-                    "category": "code_example",
-                    "description": "Example code to use the model",
-                    "file_path": "../../docs/code_example.sh.j2",
-                    "is_active": True,
-                    "is_public": True,
-                    "mime_type": "bash",
-                    "title": "cURL code example",
-                },
-                {
-                    "category": "getting_started",
-                    "description": "",
-                    "file_path": "../../docs/description.md",
-                    "is_active": True,
-                    "is_public": True,
-                    "mime_type": "markdown",
-                    "title": "How to use this model",
-                },
+                    "name": "Provider API",
+                    "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+                    "access_method": "http",
+                    "documents": [
+                        {
+                            "category": "code_example",
+                            "description": "Example code to use the model",
+                            "file_path": "../../docs/code_example_flux.py.j2",
+                            "is_active": True,
+                            "is_public": True,
+                            "mime_type": "python",
+                            "title": "Python code example",
+                        },
+                        {
+                            "category": "code_example",
+                            "description": "Example code to use the model",
+                            "file_path": "../../docs/code_example_flux_fc.py.j2",
+                            "is_active": True,
+                            "is_public": True,
+                            "mime_type": "python",
+                            "title": "Python function calling code example",
+                        },
+                        {
+                            "category": "code_example",
+                            "description": "Example code to use the model",
+                            "file_path": "../../docs/code_example_flux.js.j2",
+                            "is_active": True,
+                            "is_public": True,
+                            "mime_type": "javascript",
+                            "title": "JavaScript code example",
+                        },
+                        {
+                            "category": "code_example",
+                            "description": "Example code to use the model",
+                            "file_path": "../../docs/code_example.sh.j2",
+                            "is_active": True,
+                            "is_public": True,
+                            "mime_type": "bash",
+                            "title": "cURL code example",
+                        },
+                        {
+                            "category": "getting_started",
+                            "description": "",
+                            "file_path": "../../docs/description.md",
+                            "is_active": True,
+                            "is_public": True,
+                            "mime_type": "markdown",
+                            "title": "How to use this model",
+                        },
+                    ],
+                }
             ]
         else:
             operation_config["user_access_interfaces"] = [

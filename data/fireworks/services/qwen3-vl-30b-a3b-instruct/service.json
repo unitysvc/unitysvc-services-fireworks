@@ -4,7 +4,7 @@
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 0,
+    "contextLength": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
@@ -15,7 +15,7 @@
     "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "",
+    "modelType": "qwen3_vl_moe",
     "model_name": "accounts/fireworks/models/qwen3-vl-30b-a3b-instruct",
     "moe": true,
     "parameterCount": "30500000000",
@@ -69,8 +69,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.5,
-      "output": 0.5
+      "input": "0.15",
+      "output": "0.60"
     },
     "reference": null,
     "unit": "one_million_tokens"

@@ -4,7 +4,7 @@
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 0,
+    "contextLength": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
@@ -69,8 +69,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 1.2,
-      "output": 1.2
+      "input": "0.22",
+      "output": "0.88"
     },
     "reference": null,
     "unit": "one_million_tokens"

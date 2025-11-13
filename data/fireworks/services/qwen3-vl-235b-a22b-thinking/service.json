@@ -4,7 +4,7 @@
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 0,
+    "contextLength": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
@@ -18,18 +18,33 @@
     "modelType": "qwen3_vl_moe",
     "model_name": "accounts/fireworks/models/qwen3-vl-235b-a22b-thinking",
     "moe": true,
-    "parameterCount": "235107904512",
+    "parameterCount": "235670022896",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": true,
     "supportsLora": false,
     "supportsMtp": false,
     "supportsTools": true,
     "teftDetails": null,
-    "trainingContextLength": 0,
+    "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
@@ -69,8 +84,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 1.2,
-      "output": 1.2
+      "input": "0.22",
+      "output": "0.88"
     },
     "reference": null,
     "unit": "one_million_tokens"

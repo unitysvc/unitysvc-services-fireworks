@@ -1,5 +1,5 @@
 <think>
-Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's an echo_message function that takes a message parameter. I need to call that function with the message "Hello world". Just make sure the JSON is correctly formatted with the message key. No other functions are needed here. Alright, set up the tool_call with the right arguments.
+Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's an echo_message function that takes a message parameter. I need to call that function with the message "Hello world". Just make sure the JSON is correctly formatted with the message key. No other functions are needed here. Alright, set up the tool_call with the function name and arguments.
 </think>
 
 

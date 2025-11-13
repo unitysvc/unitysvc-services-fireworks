@@ -18,19 +18,16 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/kimi-k2-instruct-0905",
     "moe": true,
-    "parameterCount": "1026408232448",
+    "parameterCount": "1026470727640",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
-      "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED"
+      "FP4_BLOCKSCALED_MM"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
+      "FP4"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -78,8 +75,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.6,
-      "output": 2.5
+      "input": "0.60",
+      "output": "2.50"
     },
     "reference": null,
     "unit": "one_million_tokens"

@@ -24,11 +24,11 @@
     "supportedPrecisions": [
       "BF16",
       "FP8_MM_V2",
+      "FP4_BLOCKSCALED_MM",
       "FP16"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP8_V2",
-      "FP4_BLOCKSCALED_MM"
+      "FP8_V2"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -76,8 +76,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.55,
-      "output": 2.19
+      "input": "0.55",
+      "output": "2.19"
     },
     "reference": null,
     "unit": "one_million_tokens"

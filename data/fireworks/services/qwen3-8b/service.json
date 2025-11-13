@@ -27,9 +27,7 @@
     ],
     "supportedPrecisionsWithCalibration": [
       "FP8",
-      "FP8_V2",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
+      "FP8_V2"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -77,8 +75,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.2,
-      "output": 0.2
+      "input": "0.20",
+      "output": "0.20"
     },
     "reference": null,
     "unit": "one_million_tokens"

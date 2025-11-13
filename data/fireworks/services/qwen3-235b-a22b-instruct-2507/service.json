@@ -7,7 +7,7 @@
     "contextLength": 262144,
     "defaultDraftModel": "accounts/fireworks/models/qwen3-1p7b-fp8-draft",
     "defaultDraftTokenCount": 4,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -21,7 +21,10 @@
     "parameterCount": "235107904512",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2"
+    ],
     "supportedPrecisionsWithCalibration": [
       "FP8",
       "FP8_V2"
@@ -32,7 +35,7 @@
     "supportsMtp": false,
     "supportsTools": true,
     "teftDetails": null,
-    "trainingContextLength": 0,
+    "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
@@ -72,8 +75,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 0.22,
-      "output": 0.88
+      "input": "0.22",
+      "output": "0.88"
     },
     "reference": null,
     "unit": "one_million_tokens"

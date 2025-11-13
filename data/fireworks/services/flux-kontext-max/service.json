@@ -69,7 +69,7 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens",
     "price_data": {
-      "price": 0.08
+      "price": "0.08"
     },
     "reference": null,
     "unit": "one_million_tokens"

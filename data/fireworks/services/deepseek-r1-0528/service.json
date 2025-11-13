@@ -78,8 +78,8 @@
     "currency": "USD",
     "description": "Pricing Per 1M Tokens Input/Output",
     "price_data": {
-      "input": 1.35,
-      "output": 5.4
+      "input": "1.35",
+      "output": "5.40"
     },
     "reference": null,
     "unit": "one_million_tokens"
