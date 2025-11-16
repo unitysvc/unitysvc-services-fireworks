@@ -1,7 +1,6 @@
 import os
 import requests
 
-
 base_url = os.environ.get("API_ENDPOINT")
 api_key = os.environ.get("API_KEY")
 
@@ -9,7 +8,7 @@ url = base_url + "/workflows/" + "{{offering.details.model_name}}" + "/text_to_i
 headers = {
     "Content-Type": "application/json",
     "Accept": "image/jpeg",
-    "Authorization": "Bearer api_key",
+    "Authorization": f"Bearer {api_key}",
 }
 data = {
     "prompt": "A beautiful sunset over the ocean"
@@ -23,4 +22,3 @@ if response.status_code == 200:
     print("Image saved as a.jpg")
 else:
     print("Error:", response.status_code, response.text)
-
