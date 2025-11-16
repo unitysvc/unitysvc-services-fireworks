@@ -18,16 +18,20 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/deepseek-v3p1",
     "moe": true,
-    "parameterCount": "671067257432",
+    "parameterCount": "671026419200",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
-      "FP4_BLOCKSCALED_MM"
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4"
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED",
+      "FP4_MX_MOE"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,

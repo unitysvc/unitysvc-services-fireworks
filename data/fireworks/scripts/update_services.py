@@ -661,7 +661,7 @@ class FireworksModelExtractor:
         self,
         model_name: str,
         pricing_data: Optional[Dict],
-        upstream_ready: bool,
+        ready: bool,
     ) -> Dict:
         """Create a structured operation configuration for the model"""
 
@@ -672,7 +672,7 @@ class FireworksModelExtractor:
             "schema": "listing_v1",
             "seller_name": "svcreseller",
             "time_created": timestamp,
-            "listing_status": "upstream_ready" if upstream_ready else "unknown",
+            "listing_status": "ready" if ready else "unknown",
             # type of service to group services
             "user_access_interfaces": [],
             # common display name for the service, allowing across provider linking
@@ -728,15 +728,6 @@ class FireworksModelExtractor:
                             "mime_type": "bash",
                             "title": "cURL code example",
                         },
-                        {
-                            "category": "getting_started",
-                            "description": "",
-                            "file_path": "../../docs/description.md",
-                            "is_active": True,
-                            "is_public": True,
-                            "mime_type": "markdown",
-                            "title": "How to use this model",
-                        },
                     ],
                 }
             ]
@@ -780,15 +771,6 @@ class FireworksModelExtractor:
                             "mime_type": "bash",
                             "category": "code_example",
                             "file_path": "../../docs/code_example.sh.j2",
-                            "is_active": True,
-                            "is_public": True,
-                        },
-                        {
-                            "title": "How to use this model",
-                            "description": "",
-                            "mime_type": "markdown",
-                            "category": "getting_started",
-                            "file_path": "../../docs/description.md",
                             "is_active": True,
                             "is_public": True,
                         },

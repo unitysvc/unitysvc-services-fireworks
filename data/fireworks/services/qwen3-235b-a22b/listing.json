@@ -1,8 +1,8 @@
 {
-  "listing_status": "upstream_ready",
+  "listing_status": "ready",
   "schema": "listing_v1",
   "seller_name": "svcreseller",
-  "time_created": "2025-11-13T04:40:23.704Z",
+  "time_created": "2025-11-16T03:08:01.254Z",
   "user_access_interfaces": [
     {
       "access_method": "http",
@@ -43,15 +43,6 @@
           "is_public": true,
           "mime_type": "bash",
           "title": "cURL code example"
-        },
-        {
-          "category": "getting_started",
-          "description": "",
-          "file_path": "../../docs/description.md",
-          "is_active": true,
-          "is_public": true,
-          "mime_type": "markdown",
-          "title": "How to use this model"
         }
       ],
       "name": "Provider API"

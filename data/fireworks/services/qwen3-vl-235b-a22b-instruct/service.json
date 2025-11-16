@@ -7,7 +7,7 @@
     "contextLength": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "BF16",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -21,7 +21,9 @@
     "parameterCount": "235107904512",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
+    "supportedPrecisions": [
+      "BF16"
+    ],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": true,
