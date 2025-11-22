@@ -43,8 +43,8 @@
   "time_created": "2025-08-04T22:11:06.445132Z",
   "upstream_access_interface": {
     "access_method": "http",
-    "api_endpoint": "https://api.fireworks.ai/inference/v1",
     "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+    "base_url": "https://api.fireworks.ai/inference/v1",
     "name": "Fireworks API",
     "rate_limits": [
       {

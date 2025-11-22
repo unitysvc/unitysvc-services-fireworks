@@ -11,7 +11,7 @@ logo = "https://cdn.sanity.io/images/pv37i0yn/production/df64b2d19687cef1b12f8c0
 
 [provider_access_info]
 api_key = 'fw_3Zi68xUugi1ZrFnAn31LW4BY'
-api_endpoint = "https://api.fireworks.ai/v1"
+base_url = "https://api.fireworks.ai/v1"
 
 # These will be provided to services_populator as environment variables
 FIREWORKS_API_KEY = 'fw_3Zi68xUugi1ZrFnAn31LW4BY'

@@ -632,7 +632,7 @@ class FireworksModelExtractor:
         service_config["upstream_access_interface"] = {
             "name": "Fireworks API",
             "api_key": api_key,
-            "api_endpoint": "https://api.fireworks.ai/inference/v1",
+            "base_url": "https://api.fireworks.ai/inference/v1",
             "access_method": "http",
             "rate_limits": [
                 {
@@ -689,7 +689,7 @@ class FireworksModelExtractor:
             operation_config["user_access_interfaces"] = [
                 {
                     "name": "Provider API",
-                    "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+                    "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
                     "access_method": "http",
                     "documents": [
                         {
@@ -735,7 +735,7 @@ class FireworksModelExtractor:
             operation_config["user_access_interfaces"] = [
                 {
                     "name": "Provider API",
-                    "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+                    "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
                     "access_method": "http",
                     "documents": [
                         {

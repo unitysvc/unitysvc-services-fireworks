@@ -127,7 +127,7 @@ command = "populate_services.py"
 
 [provider_access_info]
 API_KEY = "your-provider-api-key"
-API_ENDPOINT = "https://api.provider.com/v1"
+BASE_URL = "https://api.provider.com/v1"
 ```
 
 The `populate` command will:
@@ -148,10 +148,10 @@ from pathlib import Path
 
 # Get credentials from environment (injected from provider_access_info)
 api_key = os.environ.get("API_KEY")
-api_endpoint = os.environ.get("API_ENDPOINT")
+base_url = os.environ.get("BASE_URL")
 
 # Fetch services from provider API
-services = fetch_services(api_endpoint, api_key)
+services = fetch_services(base_url, api_key)
 
 # Generate service files
 for service in services:

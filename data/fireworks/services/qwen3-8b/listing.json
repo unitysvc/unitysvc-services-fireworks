@@ -6,7 +6,7 @@
   "user_access_interfaces": [
     {
       "access_method": "http",
-      "api_endpoint": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
       "documents": [
         {
           "category": "code_example",
