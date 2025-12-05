@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "FLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation.",
   "details": {
     "calibrated": false,
@@ -37,6 +38,11 @@
   "display_name": "Flux Kontext Pro",
   "name": "flux-kontext-pro",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_interface": {
@@ -64,15 +70,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": "0.04"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

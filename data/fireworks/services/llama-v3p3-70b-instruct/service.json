@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Llama 3.3 70B Instruct is the December update of Llama 3.1 70B. The model improves upon Llama 3.1 70B (released July 2024) with advances in tool calling, multilingual text support, math and coding. The model achieves industry leading results in reasoning, math and instruction following and provides similar performance as 3.1 405B but with significant speed and cost improvements.",
   "details": {
     "calibrated": true,
@@ -53,6 +54,11 @@
   "display_name": "Llama 3.3 70B Instruct",
   "name": "llama-v3p3-70b-instruct",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2024-12-05T23:41:43.295895Z",
   "upstream_access_interface": {
@@ -80,16 +86,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.90",
-      "output": "0.90"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

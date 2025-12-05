@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Latest Qwen3 state of the art model, 235B with 22B active parameter model",
   "details": {
     "calibrated": false,
@@ -41,6 +42,11 @@
   "display_name": "Qwen3 235B A22B",
   "name": "qwen3-235b-a22b",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-04-29T00:07:29.649090Z",
   "upstream_access_interface": {
@@ -68,16 +74,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.22",
-      "output": "0.88"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

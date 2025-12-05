@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token from Deepseek. Updated checkpoint. Note that fine-tuning for this model is only available upon request through contacting fireworks at https://fireworks.ai/company/contact-us.",
   "details": {
     "calibrated": true,
@@ -46,6 +47,11 @@
   "display_name": "Deepseek V3 03-24",
   "name": "deepseek-v3-0324",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-03-24T14:40:20.594012Z",
   "upstream_access_interface": {
@@ -73,16 +79,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.90",
-      "output": "0.90"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

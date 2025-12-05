@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.",
   "details": {
     "calibrated": false,
@@ -41,6 +42,11 @@
   "display_name": "FLUX.1 [schnell] FP8",
   "name": "flux-1-schnell-fp8",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2024-10-21T18:29:36.399374Z",
   "upstream_access_interface": {
@@ -68,15 +74,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens",
-    "price_data": {
-      "price": "0.00"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

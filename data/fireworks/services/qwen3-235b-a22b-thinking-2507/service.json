@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Latest Qwen3 thinking model, competitive against the best close source models in Jul 2025.",
   "details": {
     "calibrated": true,
@@ -39,6 +40,11 @@
   "display_name": "Qwen3 235B A22B Thinking 2507",
   "name": "qwen3-235b-a22b-thinking-2507",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-07-25T14:57:14.624557Z",
   "upstream_access_interface": {
@@ -66,16 +72,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.22",
-      "output": "0.88"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

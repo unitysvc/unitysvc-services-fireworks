@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-120b is used for production, general purpose, high reasoning use-cases that fits into a single H100 GPU.",
   "details": {
     "calibrated": false,
@@ -39,6 +40,11 @@
   "display_name": "OpenAI gpt-oss-120b",
   "name": "gpt-oss-120b",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-08-04T22:13:20.599550Z",
   "upstream_access_interface": {
@@ -66,16 +72,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.15",
-      "output": "0.60"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

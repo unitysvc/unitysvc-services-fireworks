@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Kimi K2 Thinking is the latest, most capable version of open-source thinking model. Starting with Kimi K2, it was built as a thinking agent that reasons step-by-step while dynamically invoking tools. It sets a new state-of-the-art on Humanity's Last Exam (HLE), BrowseComp, and other benchmarks by dramatically scaling multi-step reasoning depth and maintaining stable tool-use across 200\u2013300 sequential calls. At the same time, K2 Thinking is a native INT4 quantization model with 256k context window, achieving lossless reductions in inference latency and GPU memory usage.",
   "details": {
     "calibrated": true,
@@ -37,6 +38,11 @@
   "display_name": "Kimi K2 Thinking",
   "name": "kimi-k2-thinking",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-11-06T19:41:40.974632Z",
   "upstream_access_interface": {
@@ -64,16 +70,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.60",
-      "output": "2.50"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

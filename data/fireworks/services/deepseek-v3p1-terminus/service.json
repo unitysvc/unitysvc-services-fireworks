@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "DeepSeek-V3.1-Terminus is an updated version of DeepSeek-V3.1 with enhanced language consistency, reduced mixed Chinese-English text, and optimized Code Agent and Search Agent performance.",
   "details": {
     "calibrated": true,
@@ -18,17 +19,19 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/deepseek-v3p1-terminus",
     "moe": true,
-    "parameterCount": "671067257432",
+    "parameterCount": "671026419200",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
-      "FP4_BLOCKSCALED_MM",
-      "FP4_MX_MOE"
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4"
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -44,6 +47,11 @@
   "display_name": "DeepSeek V3.1 Terminus",
   "name": "deepseek-v3p1-terminus",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-09-23T00:10:41.498599Z",
   "upstream_access_interface": {
@@ -71,16 +79,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.56",
-      "output": "1.68"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

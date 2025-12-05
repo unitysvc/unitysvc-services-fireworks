@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Kimi K2 0905 is an updated version of Kimi K2, a state-of-the-art mixture-of-experts (MoE) language model with 32 billion activated parameters and 1 trillion total parameters. Kimi K2 0905 has improved coding abilities, a longer context window, and agentic tool use, and a longer (262K) context window.",
   "details": {
     "calibrated": true,
@@ -18,16 +19,19 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/kimi-k2-instruct-0905",
     "moe": true,
-    "parameterCount": "1026470727640",
+    "parameterCount": "1026408232448",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
-      "FP4_BLOCKSCALED_MM"
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4"
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -43,6 +47,11 @@
   "display_name": "Kimi K2 Instruct 0905",
   "name": "kimi-k2-instruct-0905",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-09-04T20:49:54.278632Z",
   "upstream_access_interface": {
@@ -70,16 +79,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.60",
-      "output": "2.50"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""

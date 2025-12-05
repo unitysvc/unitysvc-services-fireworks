@@ -337,36 +337,30 @@ class FireworksModelExtractor:
             case "Pricing Per 1M Tokens Input/Output":
                 return {
                     "description": pricing_data["unit"],
-                    "currency": "USD",
-                    "price_data": {
-                        "input": parsed_pricing["price_input"],
-                        "output": parsed_pricing["price_output"],
-                    },
-                    "unit": "one_million_tokens",
+                    "input": parsed_pricing["price_input"],
+                    "output": parsed_pricing["price_output"],
+                    "type": "one_million_tokens",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per 1M Tokens":
                 return {
                     "description": pricing_data["unit"],
-                    "currency": "USD",
-                    "price_data": {"price": parsed_pricing["price"]},
-                    "unit": "one_million_tokens",
+                    "price": parsed_pricing["price"],
+                    "type": "one_million_tokens",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Image":
                 return {
                     "description": pricing_data["unit"],
-                    "currency": "USD",
-                    "price_data": {"price": parsed_pricing["price"]},
+                    "price": parsed_pricing["price"],
                     "unit": "image",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Step":
                 return {
                     "description": pricing_data["unit"],
-                    "currency": "USD",
-                    "price_data": {"price": parsed_pricing["price"]},
-                    "unit": "step",
+                    "price": parsed_pricing["price"],
+                    "type": "step",
                     "reference": pricing_data.get("reference", None),
                 }
             case _:
@@ -580,6 +574,7 @@ class FireworksModelExtractor:
             "schema": "service_v1",
             "time_created": model_data.get("createTime", timestamp),
             "name": model_name.split("/")[-1],
+            "currency": "USD",
             # type of service to group services
             "service_type": service_type,
             # common display name for the service, allowing across provider linking
@@ -589,7 +584,11 @@ class FireworksModelExtractor:
             "upstream_status": model_data.get("state").lower(),
             "details": {"model_name": model_name},
             "upstream_access_interface": {},
-            "upstream_price": {},
+            "seller_price": {
+                "type": "revenue_share",
+                "percentage": "100.00",
+                "description": "Pricing Per 1M Tokens",
+            },
         }
         # top level details
         for field in top_level_model_fields:
@@ -621,11 +620,7 @@ class FireworksModelExtractor:
                     print(f" {field} for model {model_name} is not processed.")
 
         # Add pricing information if available
-        if pricing_data is not None:
-            service_config["upstream_price"] = self.create_pricing_info_structure(
-                pricing_data
-            )
-        elif service_config["upstream_status"] == "ready":
+        if service_config["upstream_status"] == "ready":
             # if no pricing information, the service cannot be ready
             service_config["upstream_status"] == "uploading"
 
@@ -671,19 +666,20 @@ class FireworksModelExtractor:
         operation_config = {
             "schema": "listing_v1",
             "seller_name": "svcreseller",
+            "currency": "USD",
             "time_created": timestamp,
             "listing_status": "ready" if ready else "unknown",
             # type of service to group services
             "user_access_interfaces": [],
             # common display name for the service, allowing across provider linking
-            "user_price": {},
+            "customer_price": {},
         }
 
         # Add pricing information if available
         if pricing_data is not None:
             pricing_info = self.create_pricing_info_structure(pricing_data)
-            # For operations, we set user_price instead of upstream_price for the first case
-            operation_config["user_price"] = pricing_info
+            # For operations, we set user_price instead of seller_price for the first case
+            operation_config["customer_price"] = pricing_info
 
         if "flux" in model_name:
             operation_config["user_access_interfaces"] = [
@@ -797,7 +793,7 @@ class FireworksModelExtractor:
         except Exception as e:
             print(f"  ❌ Error writing {output_file}: {e}")
 
-    def write_operation_files(self, operation_data, output_dir):
+    def write_listing_files(self, operation_data, output_dir):
         """Write listing.json file"""
         base_path = Path(output_dir)
         base_path.mkdir(parents=True, exist_ok=True)
@@ -1085,7 +1081,7 @@ class FireworksModelExtractor:
                     else:
                         action = "Overwriting" if listing_file.exists() else "Writing"
                         print(f"  📝 {action} listing files to {data_dir}...")
-                        self.write_operation_files(operation_config, data_dir)
+                        self.write_listing_files(operation_config, data_dir)
 
                 print(f"  ✅ Successfully processed {model_name}")
 

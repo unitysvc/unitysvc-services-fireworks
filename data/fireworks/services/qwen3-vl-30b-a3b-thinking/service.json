@@ -1,4 +1,5 @@
 {
+  "currency": "USD",
   "description": "Qwen3-VL series delivers superior text understanding & generation, deeper visual perception & reasoning, extended context length, enhanced spatial and video dynamics comprehension, and stronger agent interaction capabilities. Available in Dense and MoE architectures that scale from edge to cloud, with Instruct and reasoning\u2011enhanced Thinking editions.",
   "details": {
     "calibrated": false,
@@ -37,6 +38,11 @@
   "display_name": "Qwen3 VL 30B A3B Thinking",
   "name": "qwen3-vl-30b-a3b-thinking",
   "schema": "service_v1",
+  "seller_price": {
+    "description": "Pricing Per 1M Tokens",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
   "service_type": "llm",
   "time_created": "2025-10-08T21:47:43.506441Z",
   "upstream_access_interface": {
@@ -64,16 +70,6 @@
         "window": "minute"
       }
     ]
-  },
-  "upstream_price": {
-    "currency": "USD",
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "price_data": {
-      "input": "0.15",
-      "output": "0.60"
-    },
-    "reference": null,
-    "unit": "one_million_tokens"
   },
   "upstream_status": "ready",
   "version": ""
