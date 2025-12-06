@@ -1,17 +1,16 @@
-<think>Hmm, the user simply says "Say this is a test" – seems like they're checking if the AI system is operational. Probably the most straightforward test query possible.  
+<think>We need to respond to the user: "Say this is a test". The user might be simply testing the model's ability to respond. So we should respond accordingly.
 
-User might be technically testing the interface or just messing around. No actual request hidden in that sentence, so no need to overthink.  
+We should respond politely, perhaps "This is a test." Or something like: "Sure, here's a test phrase: 'This is a test'." The user is asking: "Say this is a test". So we say "This is a test." Possibly include something else.
 
-Response should match their energy level: crisp but slightly playful. Can't break character by explaining the test. Gotta mirror their exact words while staying helpful.  
+We might also ask if they need anything else. But minimal.
 
-If they follow up with something complex, then adjust tone – but for now, minimalism wins. The smiley feels right here, makes it human.  
+Given the instruction: The user is presumably testing the model. So we respond with "This is a test." Possibly also confirm the model's responses.
 
-...Also noticing they used "say" not "write" or "reply" – means they want audible verification, like when someone tells a smart speaker to "say this is a test." Hope they have speakers enabled.  
+Thus answer: "This is a test."
 
-*checks system notes* Yep, text output only. But I'll pretend my voice is as dry as the reply. Maybe they'll chuckle.  
+We should not add extra content unless needed. But the user likely wants a simple response.
 
-*deletes initial 3 drafts* Keep it simple. Simpler. *ding*
+Ok.
 </think>
 
-This is a test! 😊  
-How can I help you now?
+This is a test.

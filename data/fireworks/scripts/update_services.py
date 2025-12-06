@@ -718,7 +718,7 @@ class FireworksModelExtractor:
                         {
                             "category": "code_example",
                             "description": "Example code to use the model",
-                            "file_path": "../../docs/code_example.sh.j2",
+                            "file_path": "../../docs/code_example_flux.sh.j2",
                             "is_active": True,
                             "is_public": True,
                             "mime_type": "bash",
