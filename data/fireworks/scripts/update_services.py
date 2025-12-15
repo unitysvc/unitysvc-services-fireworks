@@ -665,7 +665,6 @@ class FireworksModelExtractor:
 
         operation_config = {
             "schema": "listing_v1",
-            "seller_name": "svcreseller",
             "currency": "USD",
             "time_created": timestamp,
             "listing_status": "ready" if ready else "unknown",

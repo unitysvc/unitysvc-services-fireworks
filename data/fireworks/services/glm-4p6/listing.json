@@ -1,16 +1,14 @@
 {
   "currency": "USD",
   "customer_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.55",
-    "output": "2.19",
+    "description": "Pricing Per 1M Tokens",
+    "price": "2.19",
     "reference": null,
     "type": "one_million_tokens"
   },
   "listing_status": "ready",
   "schema": "listing_v1",
-  "seller_name": "svcreseller",
-  "time_created": "2025-12-06T02:36:24.176Z",
+  "time_created": "2025-12-15T22:09:21.792Z",
   "user_access_interfaces": [
     {
       "access_method": "http",
