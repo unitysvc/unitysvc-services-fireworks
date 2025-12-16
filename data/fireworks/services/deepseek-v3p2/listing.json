@@ -1,0 +1,58 @@
+{
+  "currency": "USD",
+  "customer_price": {
+    "description": "Pricing Per 1M Tokens",
+    "price": "1.68",
+    "reference": null,
+    "type": "one_million_tokens"
+  },
+  "display_name": "deepseek-v3p2",
+  "listing_status": "ready",
+  "schema": "listing_v1",
+  "time_created": "2025-12-16T03:17:32.937Z",
+  "user_access_interfaces": [
+    {
+      "access_method": "http",
+      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+      "documents": [
+        {
+          "category": "code_example",
+          "description": "Example code to use the model",
+          "file_path": "../../docs/code_example.py.j2",
+          "is_active": true,
+          "is_public": true,
+          "mime_type": "python",
+          "title": "Python code example"
+        },
+        {
+          "category": "code_example",
+          "description": "Example code to use the model",
+          "file_path": "../../docs/code_example_1.py.j2",
+          "is_active": true,
+          "is_public": true,
+          "mime_type": "python",
+          "title": "Python function calling code example"
+        },
+        {
+          "category": "code_example",
+          "description": "Example code to use the model",
+          "file_path": "../../docs/code_example.js.j2",
+          "is_active": true,
+          "is_public": true,
+          "mime_type": "javascript",
+          "title": "JavaScript code example"
+        },
+        {
+          "category": "code_example",
+          "description": "Example code to use the model",
+          "file_path": "../../docs/code_example.sh.j2",
+          "is_active": true,
+          "is_public": true,
+          "mime_type": "bash",
+          "title": "cURL code example"
+        }
+      ],
+      "name": "Provider API"
+    }
+  ]
+}
