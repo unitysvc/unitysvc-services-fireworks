@@ -6,9 +6,10 @@
     "reference": null,
     "type": "one_million_tokens"
   },
+  "display_name": "qwen3-235b-a22b-thinking-2507",
   "listing_status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-15T22:10:04.598Z",
+  "time_created": "2025-12-16T03:18:27.550Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

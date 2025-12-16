@@ -35,9 +35,8 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "Qwen3 VL 30B A3B Instruct",
   "name": "qwen3-vl-30b-a3b-instruct",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

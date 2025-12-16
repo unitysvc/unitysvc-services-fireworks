@@ -39,9 +39,8 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "FLUX.1 [schnell] FP8",
   "name": "flux-1-schnell-fp8",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

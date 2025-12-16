@@ -51,9 +51,8 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "Llama 3.3 70B Instruct",
   "name": "llama-v3p3-70b-instruct",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

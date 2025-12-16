@@ -6,9 +6,10 @@
     "reference": null,
     "type": "one_million_tokens"
   },
+  "display_name": "minimax-m2",
   "listing_status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-15T22:09:39.960Z",
+  "time_created": "2025-12-16T03:18:02.622Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

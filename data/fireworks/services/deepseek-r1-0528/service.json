@@ -44,9 +44,8 @@
     "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
-  "display_name": "Deepseek R1 05/28",
   "name": "deepseek-r1-0528",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

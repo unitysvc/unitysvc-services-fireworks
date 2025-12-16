@@ -570,15 +570,14 @@ class FireworksModelExtractor:
             "tunable",
             "useHfApplyChatTemplate",
         ]
-        service_config = {
-            "schema": "service_v1",
+        offering_config = {
+            "schema": "offering_v1",
             "time_created": model_data.get("createTime", timestamp),
             "name": model_name.split("/")[-1],
             "currency": "USD",
             # type of service to group services
             "service_type": service_type,
             # common display name for the service, allowing across provider linking
-            "display_name": model_data.get("displayName", model_name.split("/")[-1]),
             "version": "",
             "description": model_data.get("description", ""),
             "upstream_status": model_data.get("state").lower(),
@@ -599,7 +598,7 @@ class FireworksModelExtractor:
                     "peftDetails",
                     "status",
                 ):
-                    service_config["details"][field] = model_data[field]
+                    offering_config["details"][field] = model_data[field]
 
         for field in model_data.keys():
             if (
@@ -612,7 +611,7 @@ class FireworksModelExtractor:
         if "baseModelDetails" in model_data:
             for field in base_mode_details_fields:
                 if field in model_data["baseModelDetails"]:
-                    service_config["details"][field] = model_data["baseModelDetails"][
+                    offering_config["details"][field] = model_data["baseModelDetails"][
                         field
                     ]
             for field in model_data["baseModelDetails"].keys():
@@ -620,11 +619,11 @@ class FireworksModelExtractor:
                     print(f" {field} for model {model_name} is not processed.")
 
         # Add pricing information if available
-        if service_config["upstream_status"] == "ready":
+        if offering_config["upstream_status"] == "ready":
             # if no pricing information, the service cannot be ready
-            service_config["upstream_status"] == "uploading"
+            offering_config["upstream_status"] == "uploading"
 
-        service_config["upstream_access_interface"] = {
+        offering_config["upstream_access_interface"] = {
             "name": "Fireworks API",
             "api_key": api_key,
             "base_url": "https://api.fireworks.ai/inference/v1",
@@ -650,7 +649,7 @@ class FireworksModelExtractor:
                 },
             ],
         }
-        return service_config
+        return offering_config
 
     def create_operation_data_structure(
         self,
@@ -665,6 +664,7 @@ class FireworksModelExtractor:
 
         operation_config = {
             "schema": "listing_v1",
+            "display_name": model_name.split("/")[-1],
             "currency": "USD",
             "time_created": timestamp,
             "listing_status": "ready" if ready else "unknown",
@@ -1037,7 +1037,7 @@ class FireworksModelExtractor:
                     sys.exit(f"  ❌ Error parsing pricing page: {e}")
 
                 # Create service configuration
-                service_config = self.create_service_data_structure(
+                offering_config = self.create_service_data_structure(
                     model_name,
                     model_data,
                     pricing_data,
@@ -1048,11 +1048,11 @@ class FireworksModelExtractor:
                 operation_config = self.create_operation_data_structure(
                     model_name,
                     pricing_data,
-                    service_config["upstream_status"] == "ready",
+                    offering_config["upstream_status"] == "ready",
                 )
 
                 print(f"  📝 Generated service data")
-                self.extracted_data[model_name] = service_config
+                self.extracted_data[model_name] = offering_config
                 self.summary["successful_extractions"] += 1
 
                 # Write service file
@@ -1060,7 +1060,7 @@ class FireworksModelExtractor:
                     print(f"  📝 [DRY-RUN] Would write service files to {data_dir}")
                 else:
                     print(f"  📝 Writing service files to {data_dir}...")
-                    self.write_service_files(service_config, data_dir)
+                    self.write_service_files(offering_config, data_dir)
 
                 # Write listing file
                 listing_file = data_dir / "listing.json"

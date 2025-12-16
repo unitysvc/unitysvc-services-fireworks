@@ -32,7 +32,13 @@
     ],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
-      "FP8"
+      "FP8",
+      "FP8_AR",
+      "FP8_MM_KV_ATTN",
+      "FP8_KV",
+      "FP8_MM_V2",
+      "FP8_V2",
+      "FP8_MM_KV_ATTN_V2"
     ],
     "supportsFireattention": true,
     "supportsImageInput": true,
@@ -45,9 +51,8 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "Qwen2.5-VL 32B Instruct",
   "name": "qwen2p5-vl-32b-instruct",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

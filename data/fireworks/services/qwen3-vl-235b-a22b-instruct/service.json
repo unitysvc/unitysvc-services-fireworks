@@ -37,9 +37,8 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "Qwen3 VL 235B A22B Instruct",
   "name": "qwen3-vl-235b-a22b-instruct",
-  "schema": "service_v1",
+  "schema": "offering_v1",
   "seller_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",

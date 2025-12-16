@@ -6,9 +6,10 @@
     "reference": null,
     "type": "one_million_tokens"
   },
+  "display_name": "deepseek-v3-0324",
   "listing_status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-15T22:09:06.941Z",
+  "time_created": "2025-12-16T03:17:30.194Z",
   "user_access_interfaces": [
     {
       "access_method": "http",
