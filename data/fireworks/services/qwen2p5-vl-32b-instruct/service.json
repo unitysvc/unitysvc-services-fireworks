@@ -10,7 +10,7 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
     "defaultSamplingParams": {
-      "temperature": 1e-06,
+      "temperature": 1e-6,
       "top_k": 50,
       "top_p": 1
     },
@@ -26,10 +26,7 @@
     "parameterCount": "33452718336",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "BF16",
-      "FP16"
-    ],
+    "supportedPrecisions": ["BF16", "FP16"],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
       "FP8",
@@ -53,7 +50,7 @@
   },
   "name": "qwen2p5-vl-32b-instruct",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

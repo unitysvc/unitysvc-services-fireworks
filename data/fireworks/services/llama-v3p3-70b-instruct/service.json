@@ -26,10 +26,7 @@
     "parameterCount": "70553706496",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "BF16",
-      "FP16"
-    ],
+    "supportedPrecisions": ["BF16", "FP16"],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
       "FP8",
@@ -53,7 +50,7 @@
   },
   "name": "llama-v3p3-70b-instruct",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

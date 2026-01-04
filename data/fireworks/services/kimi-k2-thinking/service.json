@@ -37,7 +37,7 @@
   },
   "name": "kimi-k2-thinking",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "customer_price": {
+  "list_price": {
     "description": "Pricing Per 1M Tokens Input/Output",
     "input": "0.22",
     "output": "0.88",

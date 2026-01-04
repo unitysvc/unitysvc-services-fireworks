@@ -22,15 +22,8 @@
     "parameterCount": "352797829024",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "BF16",
-      "FP8_MM_V2",
-      "FP16"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP8_V2",
-      "FP4_BLOCKSCALED_MM"
-    ],
+    "supportedPrecisions": ["BF16", "FP8_MM_V2", "FP16"],
+    "supportedPrecisionsWithCalibration": ["FP8_V2", "FP4_BLOCKSCALED_MM"],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -44,7 +37,7 @@
   },
   "name": "glm-4p6",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

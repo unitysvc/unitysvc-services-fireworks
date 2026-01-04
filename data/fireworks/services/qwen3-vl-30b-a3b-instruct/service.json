@@ -37,7 +37,7 @@
   },
   "name": "qwen3-vl-30b-a3b-instruct",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

@@ -22,9 +22,7 @@
     "parameterCount": "235107904512",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP8_MM"
-    ],
+    "supportedPrecisions": ["FP8_MM"],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -39,7 +37,7 @@
   },
   "name": "qwen3-235b-a22b-thinking-2507",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

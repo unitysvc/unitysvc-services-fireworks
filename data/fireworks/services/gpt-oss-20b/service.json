@@ -22,9 +22,7 @@
     "parameterCount": "20914757184",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP4_MX_MOE"
-    ],
+    "supportedPrecisions": ["FP4_MX_MOE"],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -39,7 +37,7 @@
   },
   "name": "gpt-oss-20b",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

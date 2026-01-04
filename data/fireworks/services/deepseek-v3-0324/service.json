@@ -26,13 +26,8 @@
     "parameterCount": "671067257432",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP8_MM",
-      "FP8_MM_V2"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP4"
-    ],
+    "supportedPrecisions": ["FP8_MM", "FP8_MM_V2"],
+    "supportedPrecisionsWithCalibration": ["FP4"],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -46,7 +41,7 @@
   },
   "name": "deepseek-v3-0324",
   "schema": "offering_v1",
-  "seller_price": {
+  "payout_price": {
     "description": "Pricing Per 1M Tokens",
     "percentage": "100.00",
     "type": "revenue_share"

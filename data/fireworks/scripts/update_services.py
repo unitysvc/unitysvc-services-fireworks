@@ -583,7 +583,7 @@ class FireworksModelExtractor:
             "upstream_status": model_data.get("state").lower(),
             "details": {"model_name": model_name},
             "upstream_access_interface": {},
-            "seller_price": {
+            "payout_price": {
                 "type": "revenue_share",
                 "percentage": "100.00",
                 "description": "Pricing Per 1M Tokens",
@@ -671,14 +671,14 @@ class FireworksModelExtractor:
             # type of service to group services
             "user_access_interfaces": [],
             # common display name for the service, allowing across provider linking
-            "customer_price": {},
+            "list_price": {},
         }
 
         # Add pricing information if available
         if pricing_data is not None:
             pricing_info = self.create_pricing_info_structure(pricing_data)
-            # For operations, we set user_price instead of seller_price for the first case
-            operation_config["customer_price"] = pricing_info
+            # For operations, we set user_price instead of payout_price for the first case
+            operation_config["list_price"] = pricing_info
 
         if "flux" in model_name:
             operation_config["user_access_interfaces"] = [

@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "customer_price": {
+  "list_price": {
     "description": "Pricing Per 1M Tokens",
     "price": "1.68",
     "reference": null,
