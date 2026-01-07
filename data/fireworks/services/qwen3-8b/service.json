@@ -84,6 +84,6 @@
       }
     ]
   },
-  "upstream_status": "ready",
+  "status": "ready",
   "version": ""
 }

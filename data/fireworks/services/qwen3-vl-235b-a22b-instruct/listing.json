@@ -8,7 +8,7 @@
     "type": "one_million_tokens"
   },
   "display_name": "qwen3-vl-235b-a22b-instruct",
-  "listing_status": "ready",
+  "status": "ready",
   "schema": "listing_v1",
   "time_created": "2025-12-16T03:18:36.578Z",
   "user_access_interfaces": [

@@ -8,7 +8,7 @@
     "type": "one_million_tokens"
   },
   "display_name": "qwen3-vl-30b-a3b-thinking",
-  "listing_status": "ready",
+  "status": "ready",
   "schema": "listing_v1",
   "time_created": "2025-12-16T03:18:39.463Z",
   "user_access_interfaces": [

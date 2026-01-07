@@ -580,7 +580,7 @@ class FireworksModelExtractor:
             # common display name for the service, allowing across provider linking
             "version": "",
             "description": model_data.get("description", ""),
-            "upstream_status": model_data.get("state").lower(),
+            "status": model_data.get("state").lower(),
             "details": {"model_name": model_name},
             "upstream_access_interface": {},
             "payout_price": {
@@ -619,9 +619,9 @@ class FireworksModelExtractor:
                     print(f" {field} for model {model_name} is not processed.")
 
         # Add pricing information if available
-        if offering_config["upstream_status"] == "ready":
+        if offering_config["status"] == "ready":
             # if no pricing information, the service cannot be ready
-            offering_config["upstream_status"] == "uploading"
+            offering_config["status"] == "uploading"
 
         offering_config["upstream_access_interface"] = {
             "name": "Fireworks API",
@@ -667,7 +667,7 @@ class FireworksModelExtractor:
             "display_name": model_name.split("/")[-1],
             "currency": "USD",
             "time_created": timestamp,
-            "listing_status": "ready" if ready else "unknown",
+            "status": "ready" if ready else "unknown",
             # type of service to group services
             "user_access_interfaces": [],
             # common display name for the service, allowing across provider linking
@@ -877,42 +877,38 @@ class FireworksModelExtractor:
                     updated = False
 
                     if schema == "service_v1":
-                        # Update upstream_status to deprecated
-                        current_status = data.get("upstream_status", "unknown")
+                        # Update status to deprecated
+                        current_status = data.get("status", "unknown")
                         if current_status != "deprecated":
-                            data["upstream_status"] = "deprecated"
+                            data["status"] = "deprecated"
                             updated = True
-                            status_msg = f"service upstream_status to deprecated"
+                            status_msg = f"service status to deprecated"
                         else:
                             print(
                                 f"    ⏭️  {json_file.name} service already marked as deprecated"
                             )
 
                     elif schema == "listing_v1":
-                        # Update listing_status to upstream_deprecated
-                        current_op_status = data.get("listing_status", "unknown")
-                        if current_op_status != "upstream_deprecated":
-                            data["listing_status"] = "upstream_deprecated"
+                        # Update status to deprecated
+                        current_op_status = data.get("status", "unknown")
+                        if current_op_status != "deprecated":
+                            data["status"] = "deprecated"
                             updated = True
-                            status_msg = (
-                                f"operation operation_status to upstream_deprecated"
-                            )
+                            status_msg = f"operation operation_status to deprecated"
                         else:
                             print(
-                                f"    ⏭️  {json_file.name} operation already marked as upstream_deprecated"
+                                f"    ⏭️  {json_file.name} operation already marked as deprecated"
                             )
                     elif schema == "listing_v1":
-                        # Update listing_status to upstream_deprecated
-                        current_listing_status = data.get("listing_status", "unknown")
-                        if current_listing_status != "upstream_deprecated":
-                            data["listing_status"] = "upstream_deprecated"
+                        # Update status to deprecated
+                        current_status = data.get("status", "unknown")
+                        if current_status != "deprecated":
+                            data["status"] = "deprecated"
                             updated = True
-                            status_msg = (
-                                f"listing listing_status to upstream_deprecated"
-                            )
+                            status_msg = f"listing status to deprecated"
                         else:
                             print(
-                                f"    ⏭️  {json_file.name} listing already marked as upstream_deprecated"
+                                f"    ⏭️  {json_file.name} listing already marked as deprecated"
                             )
 
                     # Write updated file if changes were made
@@ -1048,7 +1044,7 @@ class FireworksModelExtractor:
                 operation_config = self.create_operation_data_structure(
                     model_name,
                     pricing_data,
-                    offering_config["upstream_status"] == "ready",
+                    offering_config["status"] == "ready",
                 )
 
                 print(f"  📝 Generated service data")

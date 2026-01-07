@@ -7,7 +7,7 @@
     "type": "one_million_tokens"
   },
   "display_name": "flux-1-dev-fp8",
-  "listing_status": "ready",
+  "status": "ready",
   "schema": "listing_v1",
   "time_created": "2025-12-16T03:17:37.790Z",
   "user_access_interfaces": [

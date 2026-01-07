@@ -7,7 +7,7 @@
     "type": "one_million_tokens"
   },
   "display_name": "llama-v3p3-70b-instruct",
-  "listing_status": "ready",
+  "status": "ready",
   "schema": "listing_v1",
   "time_created": "2025-12-16T03:17:58.998Z",
   "user_access_interfaces": [
