@@ -8,7 +8,7 @@
     "contextLength": 262144,
     "defaultDraftModel": "accounts/fireworks/models/qwen3-1p7b-fp8-draft",
     "defaultDraftTokenCount": 4,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -19,30 +19,45 @@
     "modelType": "qwen3_moe",
     "model_name": "accounts/fireworks/models/qwen3-coder-480b-a35b-instruct",
     "moe": true,
-    "parameterCount": "240000000000",
+    "parameterCount": "480154875392",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
     "supportsMtp": false,
     "supportsTools": true,
     "teftDetails": null,
-    "trainingContextLength": 0,
+    "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
   "name": "qwen3-coder-480b-a35b-instruct",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-07-22T19:04:50.990529Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +84,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

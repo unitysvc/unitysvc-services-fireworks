@@ -22,7 +22,9 @@
     "parameterCount": "235107904512",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": ["BF16"],
+    "supportedPrecisions": [
+      "BF16"
+    ],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": true,
@@ -36,13 +38,14 @@
     "worldSize": 1
   },
   "name": "qwen3-vl-235b-a22b-instruct",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-09-24T20:28:09.336982Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +72,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

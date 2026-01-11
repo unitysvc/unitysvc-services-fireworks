@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "glm-4p5",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $2.19",
     "price": "2.19",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "glm-4p5",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:17:43.369Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:36:56.906Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

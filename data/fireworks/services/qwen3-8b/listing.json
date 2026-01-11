@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "qwen3-8b",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $0.20",
     "price": "0.20",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "qwen3-8b",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:18:30.945Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:45.647Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

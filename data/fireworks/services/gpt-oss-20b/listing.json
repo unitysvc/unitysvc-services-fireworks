@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "gpt-oss-20b",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $0.30",
     "price": "0.30",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "gpt-oss-20b",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:17:46.550Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:00.937Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

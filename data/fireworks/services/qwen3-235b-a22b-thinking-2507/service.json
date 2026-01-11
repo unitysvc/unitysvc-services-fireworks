@@ -19,30 +19,45 @@
     "modelType": "qwen3_moe",
     "model_name": "accounts/fireworks/models/qwen3-235b-a22b-thinking-2507",
     "moe": true,
-    "parameterCount": "235107904512",
+    "parameterCount": "235093634560",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": ["FP8_MM"],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP8",
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
     "supportsMtp": false,
     "supportsTools": false,
     "teftDetails": null,
-    "trainingContextLength": 0,
+    "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
   "name": "qwen3-235b-a22b-thinking-2507",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-07-25T14:57:14.624557Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +84,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

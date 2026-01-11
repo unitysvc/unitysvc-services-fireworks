@@ -23,10 +23,13 @@
     "modelType": "llama",
     "model_name": "accounts/fireworks/models/llama-v3p3-70b-instruct",
     "moe": false,
-    "parameterCount": "70553706496",
+    "parameterCount": "77264592896",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": ["BF16", "FP16"],
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
       "FP8",
@@ -43,19 +46,20 @@
     "supportsMtp": false,
     "supportsTools": false,
     "teftDetails": null,
-    "trainingContextLength": 65536,
+    "trainingContextLength": 131072,
     "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
   "name": "llama-v3p3-70b-instruct",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2024-12-05T23:41:43.295895Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -82,7 +86,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

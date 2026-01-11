@@ -40,13 +40,14 @@
     "worldSize": 1
   },
   "name": "flux-1-schnell-fp8",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2024-10-21T18:29:36.399374Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -73,7 +74,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

@@ -22,7 +22,10 @@
     "parameterCount": "30500000000",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
+    "supportedPrecisions": [
+      "BF16",
+      "FP8_MM"
+    ],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": true,
@@ -36,13 +39,14 @@
     "worldSize": 1
   },
   "name": "qwen3-vl-30b-a3b-thinking",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-10-08T21:47:43.506441Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +73,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

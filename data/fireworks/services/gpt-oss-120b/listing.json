@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "gpt-oss-120b",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $0.60",
     "price": "0.60",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "gpt-oss-120b",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:17:45.687Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:00.034Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

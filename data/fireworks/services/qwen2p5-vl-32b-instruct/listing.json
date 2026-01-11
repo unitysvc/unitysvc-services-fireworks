@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "qwen2p5-vl-32b-instruct",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $0.90",
     "price": "0.90",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "qwen2p5-vl-32b-instruct",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:18:22.588Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:37.652Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

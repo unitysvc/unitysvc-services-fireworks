@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "deepseek-v3p2",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $1.68",
     "price": "1.68",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "deepseek-v3p2",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:17:32.937Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:36:46.246Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

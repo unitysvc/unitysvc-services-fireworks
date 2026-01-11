@@ -1,16 +1,16 @@
 {
   "currency": "USD",
+  "display_name": "qwen3-vl-235b-a22b-thinking",
   "list_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
+    "description": "Pricing Per 1M Tokens Input/Output: $0.22 / $0.88",
     "input": "0.22",
     "output": "0.88",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "qwen3-vl-235b-a22b-thinking",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:18:37.552Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:52.951Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

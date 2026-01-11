@@ -23,11 +23,20 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/deepseek-v3-0324",
     "moe": true,
-    "parameterCount": "671067257432",
+    "parameterCount": "671026419200",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": ["FP8_MM", "FP8_MM_V2"],
-    "supportedPrecisionsWithCalibration": ["FP4"],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -40,13 +49,14 @@
     "worldSize": 1
   },
   "name": "deepseek-v3-0324",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-03-24T14:40:20.594012Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -73,7 +83,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

@@ -51,13 +51,14 @@
     "worldSize": 1
   },
   "name": "qwen3-vl-235b-a22b-thinking",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-09-24T23:12:12.121869Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -84,7 +85,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

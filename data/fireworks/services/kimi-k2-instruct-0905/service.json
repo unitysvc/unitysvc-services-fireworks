@@ -6,8 +6,8 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 262144,
-    "defaultDraftModel": "",
-    "defaultDraftTokenCount": 0,
+    "defaultDraftModel": "accounts/fireworks/models/eagle3-kimi-k2-instruct-0905-v0",
+    "defaultDraftTokenCount": 2,
     "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
     "deprecationDate": null,
@@ -19,14 +19,15 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/kimi-k2-instruct-0905",
     "moe": true,
-    "parameterCount": "1026408232448",
+    "parameterCount": "1028071273984",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
       "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED"
+      "PRECISION_UNSPECIFIED",
+      "FP4_MX_MOE"
     ],
     "supportedPrecisionsWithCalibration": [
       "FP4",
@@ -45,13 +46,14 @@
     "worldSize": 1
   },
   "name": "kimi-k2-instruct-0905",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-09-04T20:49:54.278632Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -78,7 +80,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

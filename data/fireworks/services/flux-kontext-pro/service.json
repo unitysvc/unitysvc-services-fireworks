@@ -36,13 +36,14 @@
     "worldSize": 1
   },
   "name": "flux-kontext-pro",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +70,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

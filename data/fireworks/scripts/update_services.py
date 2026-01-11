@@ -336,7 +336,7 @@ class FireworksModelExtractor:
         match pricing_data["unit"]:
             case "Pricing Per 1M Tokens Input/Output":
                 return {
-                    "description": pricing_data["unit"],
+                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
                     "input": parsed_pricing["price_input"],
                     "output": parsed_pricing["price_output"],
                     "type": "one_million_tokens",
@@ -344,21 +344,21 @@ class FireworksModelExtractor:
                 }
             case "Pricing Per 1M Tokens":
                 return {
-                    "description": pricing_data["unit"],
+                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
                     "price": parsed_pricing["price"],
                     "type": "one_million_tokens",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Image":
                 return {
-                    "description": pricing_data["unit"],
+                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
                     "price": parsed_pricing["price"],
                     "unit": "image",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Step":
                 return {
-                    "description": pricing_data["unit"],
+                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
                     "price": parsed_pricing["price"],
                     "type": "step",
                     "reference": pricing_data.get("reference", None),
@@ -578,7 +578,6 @@ class FireworksModelExtractor:
             # type of service to group services
             "service_type": service_type,
             # common display name for the service, allowing across provider linking
-            "version": "",
             "description": model_data.get("description", ""),
             "status": model_data.get("state").lower(),
             "details": {"model_name": model_name},
@@ -586,7 +585,7 @@ class FireworksModelExtractor:
             "payout_price": {
                 "type": "revenue_share",
                 "percentage": "100.00",
-                "description": "Pricing Per 1M Tokens",
+                "description": "No platform commission",
             },
         }
         # top level details

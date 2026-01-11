@@ -10,7 +10,7 @@
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "BF16",
     "defaultSamplingParams": {
-      "temperature": 1e-6,
+      "temperature": 1e-06,
       "top_k": 50,
       "top_p": 1
     },
@@ -23,10 +23,13 @@
     "modelType": "qwen2_5_vl",
     "model_name": "accounts/fireworks/models/qwen2p5-vl-32b-instruct",
     "moe": false,
-    "parameterCount": "33452718336",
+    "parameterCount": "35801987328",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": ["BF16", "FP16"],
+    "supportedPrecisions": [
+      "BF16",
+      "FP16"
+    ],
     "supportedPrecisionsWithCalibration": [
       "FP8_MM",
       "FP8",
@@ -49,13 +52,14 @@
     "worldSize": 1
   },
   "name": "qwen2p5-vl-32b-instruct",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-03-31T03:45:39.123033Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -82,7 +86,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

@@ -1,15 +1,15 @@
 {
   "currency": "USD",
+  "display_name": "qwen3-coder-480b-a35b-instruct",
   "list_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "Pricing Per 1M Tokens: $1.80",
     "price": "1.80",
     "reference": null,
     "type": "one_million_tokens"
   },
-  "display_name": "qwen3-coder-480b-a35b-instruct",
-  "status": "ready",
   "schema": "listing_v1",
-  "time_created": "2025-12-16T03:18:32.087Z",
+  "status": "ready",
+  "time_created": "2026-01-11T23:37:47.440Z",
   "user_access_interfaces": [
     {
       "access_method": "http",

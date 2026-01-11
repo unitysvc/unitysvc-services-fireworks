@@ -6,8 +6,8 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 0,
-    "defaultDraftModel": "",
-    "defaultDraftTokenCount": 0,
+    "defaultDraftModel": "accounts/fireworks/models/kimi-k2-thinking-eagle3-drafter-sw-v4",
+    "defaultDraftTokenCount": 3,
     "defaultPrecision": "PRECISION_UNSPECIFIED",
     "defaultSamplingParams": {},
     "deprecationDate": null,
@@ -36,13 +36,14 @@
     "worldSize": 1
   },
   "name": "kimi-k2-thinking",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-11-06T19:41:40.974632Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -69,7 +70,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }

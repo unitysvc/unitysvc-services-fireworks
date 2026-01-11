@@ -19,14 +19,15 @@
     "modelType": "deepseek_v3",
     "model_name": "accounts/fireworks/models/deepseek-v3p1-terminus",
     "moe": true,
-    "parameterCount": "671026419200",
+    "parameterCount": "674352502272",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
       "FP8_MM",
       "FP8_MM_V2",
       "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED"
+      "PRECISION_UNSPECIFIED",
+      "FP4_MX_MOE"
     ],
     "supportedPrecisionsWithCalibration": [
       "FP4",
@@ -45,13 +46,14 @@
     "worldSize": 1
   },
   "name": "deepseek-v3p1-terminus",
-  "schema": "offering_v1",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens",
+    "description": "No platform commission",
     "percentage": "100.00",
     "type": "revenue_share"
   },
+  "schema": "offering_v1",
   "service_type": "llm",
+  "status": "ready",
   "time_created": "2025-09-23T00:10:41.498599Z",
   "upstream_access_interface": {
     "access_method": "http",
@@ -78,7 +80,5 @@
         "window": "minute"
       }
     ]
-  },
-  "status": "ready",
-  "version": ""
+  }
 }
