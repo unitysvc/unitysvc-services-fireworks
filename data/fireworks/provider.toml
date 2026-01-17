@@ -9,7 +9,10 @@ homepage = "https://fireworks.ai/"
 secondary_contact_email = "inquiries@fireworks.ai"
 logo = "https://cdn.sanity.io/images/pv37i0yn/production/df64b2d19687cef1b12f8c0bca7d979faf9fe7c0-215x24.svg"
 
-[provider_access_info]
+[services_populator]
+command = ['scripts/update_services.py', '--force']
+
+[services_populator.envs]
 api_key = 'fw_3Zi68xUugi1ZrFnAn31LW4BY'
 base_url = "https://api.fireworks.ai/v1"
 
@@ -17,6 +20,3 @@ base_url = "https://api.fireworks.ai/v1"
 FIREWORKS_API_KEY = 'fw_3Zi68xUugi1ZrFnAn31LW4BY'
 FIREWORKS_API_BASE_URL = "https://api.fireworks.ai/v1"
 FIREWORKS_MODEL_BASE_URL = "https://fireworks.ai/models/fireworks"
-
-[services_populator]
-command = ['scripts/update_services.py', '--force']

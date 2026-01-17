@@ -8,7 +8,7 @@
     "contextLength": 0,
     "defaultDraftModel": "accounts/fireworks/models/kimi-k2-thinking-eagle3-drafter-sw-v4",
     "defaultDraftTokenCount": 3,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8_MM",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -22,8 +22,17 @@
     "parameterCount": "1000000000000",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
+    "supportedPrecisions": [
+      "FP8_MM",
+      "FP8_MM_V2",
+      "PRECISION_UNSPECIFIED",
+      "PRECISION_UNSPECIFIED"
+    ],
+    "supportedPrecisionsWithCalibration": [
+      "FP4",
+      "FP4_BLOCKSCALED_MM",
+      "PRECISION_UNSPECIFIED"
+    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,

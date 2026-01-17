@@ -684,93 +684,113 @@ class FireworksModelExtractor:
                 {
                     "name": "Provider API",
                     "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-                    "access_method": "http",
-                    "documents": [
-                        {
-                            "category": "code_example",
-                            "description": "Example code to use the model",
-                            "file_path": "../../docs/code_example_flux.py.j2",
-                            "is_active": True,
-                            "is_public": True,
-                            "mime_type": "python",
-                            "title": "Python code example",
-                        },
-                        {
-                            "category": "code_example",
-                            "description": "Example code to use the model",
-                            "file_path": "../../docs/code_example_flux_fc.py.j2",
-                            "is_active": True,
-                            "is_public": True,
-                            "mime_type": "python",
-                            "title": "Python function calling code example",
-                        },
-                        {
-                            "category": "code_example",
-                            "description": "Example code to use the model",
-                            "file_path": "../../docs/code_example_flux.js.j2",
-                            "is_active": True,
-                            "is_public": True,
-                            "mime_type": "javascript",
-                            "title": "JavaScript code example",
-                        },
-                        {
-                            "category": "code_example",
-                            "description": "Example code to use the model",
-                            "file_path": "../../docs/code_example_flux.sh.j2",
-                            "is_active": True,
-                            "is_public": True,
-                            "mime_type": "bash",
-                            "title": "cURL code example",
-                        },
-                    ],
+                    "access_method": "http"
                 }
+            ]
+            operation_config["documents"] = [
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "python",
+                    "title": "Python code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux_fc.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "python",
+                    "title": "Python function calling code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux.js.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "javascript",
+                    "title": "JavaScript code example",
+                },
+                {
+                    "category": "code_example",
+                    "description": "Example code to use the model",
+                    "file_path": "../../docs/code_example_flux.sh.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "bash",
+                    "title": "cURL code example",
+                },
+                {
+                    "category": "connectivity_test",
+                    "description": "Connectivity test",
+                    "file_path": "../../docs/connectivity_flux.sh.j2",
+                    "is_active": True,
+                    "is_public": True,
+                    "mime_type": "bash",
+                    "title": "cURL code example",
+                },
             ]
         else:
             operation_config["user_access_interfaces"] = [
                 {
                     "name": "Provider API",
                     "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-                    "access_method": "http",
-                    "documents": [
-                        {
-                            "title": "Python code example",
-                            "description": "Example code to use the model",
-                            "mime_type": "python",
-                            "category": "code_example",
-                            "file_path": "../../docs/code_example.py.j2",
-                            "is_active": True,
-                            "is_public": True,
-                        },
-                        {
-                            "title": "Python function calling code example",
-                            "description": "Example code to use the model",
-                            "mime_type": "python",
-                            "category": "code_example",
-                            "file_path": "../../docs/code_example_1.py.j2",
-                            "is_active": True,
-                            "is_public": True,
-                        },
-                        {
-                            "title": "JavaScript code example",
-                            "description": "Example code to use the model",
-                            "mime_type": "javascript",
-                            "category": "code_example",
-                            "file_path": "../../docs/code_example.js.j2",
-                            "is_active": True,
-                            "is_public": True,
-                        },
-                        {
-                            "title": "cURL code example",
-                            "description": "Example code to use the model",
-                            "mime_type": "bash",
-                            "category": "code_example",
-                            "file_path": "../../docs/code_example.sh.j2",
-                            "is_active": True,
-                            "is_public": True,
-                        },
-                    ],
+                    "access_method": "http"
                 }
             ]
+            operation_config["documents"] = [
+                {
+                    "title": "Python code example",
+                    "description": "Example code to use the model",
+                    "mime_type": "python",
+                    "category": "code_example",
+                    "file_path": "../../docs/code_example.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                },
+                {
+                    "title": "Python function calling code example",
+                    "description": "Example code to use the model",
+                    "mime_type": "python",
+                    "category": "code_example",
+                    "file_path": "../../docs/code_example_1.py.j2",
+                    "is_active": True,
+                    "is_public": True,
+                },
+                {
+                    "title": "JavaScript code example",
+                    "description": "Example code to use the model",
+                    "mime_type": "javascript",
+                    "category": "code_example",
+                    "file_path": "../../docs/code_example.js.j2",
+                    "is_active": True,
+                    "is_public": True,
+                },
+                {
+                    "title": "cURL code example",
+                    "description": "Example code to use the model",
+                    "mime_type": "bash",
+                    "category": "code_example",
+                    "file_path": "../../docs/code_example.sh.j2",
+                    "is_active": True,
+                    "is_public": True,
+                },
+                {
+                    "title": "cURL code example",
+                    "description": "Test connectivity",
+                    "mime_type": "bash",
+                    "category": "connectivity_test",
+                    "file_path": "../../docs/connectivity.sh.j2",
+                    "is_active": True,
+                    "is_public": True,
+                },
+            ]
+
+
         return operation_config
 
     def write_service_files(self, service_data, output_dir):
