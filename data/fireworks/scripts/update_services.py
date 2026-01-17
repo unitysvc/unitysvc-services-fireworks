@@ -729,9 +729,9 @@ class FireworksModelExtractor:
                     "description": "Connectivity test",
                     "file_path": "../../docs/connectivity_flux.sh.j2",
                     "is_active": True,
-                    "is_public": True,
+                    "is_public": False,
                     "mime_type": "bash",
-                    "title": "cURL code example",
+                    "title": "connectivity test",
                 },
             ]
         else:
@@ -780,13 +780,13 @@ class FireworksModelExtractor:
                     "is_public": True,
                 },
                 {
-                    "title": "cURL code example",
+                    "title": "connectivity test",
                     "description": "Test connectivity",
                     "mime_type": "bash",
                     "category": "connectivity_test",
                     "file_path": "../../docs/connectivity.sh.j2",
                     "is_active": True,
-                    "is_public": True,
+                    "is_public": False,
                 },
             ]
 
