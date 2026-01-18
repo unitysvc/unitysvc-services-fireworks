@@ -31,18 +31,19 @@ from bs4 import BeautifulSoup
 
 
 class FireworksModelExtractor:
+
     def __init__(self, api_key: str, api_base_url: str, model_base_url: str):
         self.api_key = api_key
         self.api_base_url = api_base_url
         # e.g. https://fireworks.ai/models/fireworks/qwen2p5-32b
         self.model_base_url = model_base_url
         self.session = requests.Session()
-        self.session.headers.update(
-            {
-                "Authorization": f"Bearer {api_key}",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-            }
-        )
+        self.session.headers.update({
+            "Authorization":
+            f"Bearer {api_key}",
+            "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        })
         self.extracted_data = {}
         self.summary = {
             "total_models": 0,
@@ -94,7 +95,8 @@ class FireworksModelExtractor:
                     break
 
                 all_models.extend(page_models)
-                print(f"   Found {len(page_models)} models on page {page_count}")
+                print(
+                    f"   Found {len(page_models)} models on page {page_count}")
 
                 # Check for next page token
                 next_page_token = data.get("nextPageToken")
@@ -110,7 +112,9 @@ class FireworksModelExtractor:
                 )
 
             self.summary["total_models"] = len(all_models)
-            print(f"✅ Found {len(all_models)} models total across {page_count} pages")
+            print(
+                f"✅ Found {len(all_models)} models total across {page_count} pages"
+            )
 
             # Sort models by name for easier debugging
             all_models.sort(key=lambda x: x["name"])
@@ -122,18 +126,22 @@ class FireworksModelExtractor:
             print(f"❌ Error fetching models: {e}")
             return []
 
-    def extract_pricing_from_page(self, model_name: str, seller="") -> Optional[Dict]:
+    def extract_pricing_from_page(self,
+                                  model_name: str,
+                                  seller="") -> Optional[Dict]:
         """Extract pricing information from model's details page using BeautifulSoup"""
         # Remove accounts/fireworks/ prefix if present and convert to URL-friendly format
         clean_model_name = model_name.split("/")[-1]
 
-        model_slug = clean_model_name.replace("/", "-").replace(":", "-").lower()
+        model_slug = clean_model_name.replace("/", "-").replace(":",
+                                                                "-").lower()
         pricing_url = f"{self.model_base_url}/{model_slug}"
         if seller:
-            pricing_url = pricing_url.replace("models/fireworks", f"models/{seller}")
+            pricing_url = pricing_url.replace("models/fireworks",
+                                              f"models/{seller}")
 
         print(
-            f"  📄 Fetching pricing from: {pricing_url} (for {seller or "fireworks"} )"
+            f"  📄 Fetching pricing from: {pricing_url} (for {seller or 'fireworks'} )"
         )
         response = self.session.get(pricing_url, timeout=10)
 
@@ -143,9 +151,8 @@ class FireworksModelExtractor:
                     f"  ⚠️  Pricing page not found for {model_name} from {pricing_url}"
                 )
             else:
-                return self.extract_pricing_from_page(
-                    model_name=model_name, seller="deepseek-ai/"
-                )
+                return self.extract_pricing_from_page(model_name=model_name,
+                                                      seller="deepseek-ai/")
 
         response.raise_for_status()
         soup = BeautifulSoup(response.content, "html.parser")
@@ -164,9 +171,10 @@ class FireworksModelExtractor:
         # Per <!-- -->1M<!-- --> Tokens (input/output)</div></div></div></div>
 
         # First, try to find "Available Serverless" header
-        serverless_header = soup.find(
-            "h3", string=re.compile(r"Available Serverless", re.IGNORECASE)
-        )
+        serverless_header = soup.find("h3",
+                                      string=re.compile(
+                                          r"Available Serverless",
+                                          re.IGNORECASE))
 
         if serverless_header:
             # Found the new structure, now extract pricing from the parent container
@@ -191,7 +199,9 @@ class FireworksModelExtractor:
                     pricing_info["price"] = (
                         f"${input_output_match.group(1)} / ${input_output_match.group(2)}"
                     )
-                    print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
+                    print(
+                        f"  ✅ Found serverless pricing: {pricing_info['price']}"
+                    )
 
                 # Pattern 2: Simple token pricing like "$0.2 Per 1M Tokens"
                 if not pricing_info:
@@ -203,27 +213,31 @@ class FireworksModelExtractor:
                     if token_match:
                         pricing_info["unit"] = "Pricing Per 1M Tokens"
                         pricing_info["price"] = f"${token_match.group(1)}"
-                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
+                        print(
+                            f"  ✅ Found serverless pricing: {pricing_info['price']}"
+                        )
 
                 # Pattern 3: Image pricing like "$0.04 Per Image"
                 if not pricing_info:
-                    image_match = re.search(
-                        r"\$\s*(\d+\.?\d*)\s*Per\s*Image", container_text, re.IGNORECASE
-                    )
+                    image_match = re.search(r"\$\s*(\d+\.?\d*)\s*Per\s*Image",
+                                            container_text, re.IGNORECASE)
                     if image_match:
                         pricing_info["unit"] = "Pricing Per Image"
                         pricing_info["price"] = f"${image_match.group(1)}"
-                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
+                        print(
+                            f"  ✅ Found serverless pricing: {pricing_info['price']}"
+                        )
 
                 # Pattern 4: Step pricing like "$0.04 Per Step"
                 if not pricing_info:
-                    step_match = re.search(
-                        r"\$\s*(\d+\.?\d*)\s*Per\s*Step", container_text, re.IGNORECASE
-                    )
+                    step_match = re.search(r"\$\s*(\d+\.?\d*)\s*Per\s*Step",
+                                           container_text, re.IGNORECASE)
                     if step_match:
                         pricing_info["unit"] = "Pricing Per Step"
                         pricing_info["price"] = f"${step_match.group(1)}"
-                        print(f"  ✅ Found serverless pricing: {pricing_info['price']}")
+                        print(
+                            f"  ✅ Found serverless pricing: {pricing_info['price']}"
+                        )
 
         # FALLBACK: Try old structure with div elements (for backwards compatibility)
         if not pricing_info:
@@ -236,9 +250,9 @@ class FireworksModelExtractor:
 
             pricing_headers = []
             for pattern in pricing_patterns:
-                headers = soup.find_all(
-                    "div", string=re.compile(pattern, re.IGNORECASE)
-                )
+                headers = soup.find_all("div",
+                                        string=re.compile(
+                                            pattern, re.IGNORECASE))
                 pricing_headers.extend(headers)
 
             for header in pricing_headers:
@@ -252,7 +266,8 @@ class FireworksModelExtractor:
                     if next_element.name == "p":
                         price_text = next_element.get_text().strip()
                         # Check if this p element contains a price (starts with $ and contains numbers)
-                        if price_text.startswith("$") and re.search(r"\d", price_text):
+                        if price_text.startswith("$") and re.search(
+                                r"\d", price_text):
                             pricing_info["price"] = price_text
                             break
                     next_element = next_element.find_next_sibling()
@@ -297,9 +312,8 @@ class FireworksModelExtractor:
         print(f"  ⚠️  No API details available")
         return None
 
-    def parse_pricing_string(
-        self, price_string: str, pricing_unit: str
-    ) -> Dict[str, Any]:
+    def parse_pricing_string(self, price_string: str,
+                             pricing_unit: str) -> Dict[str, Any]:
         """Parse pricing string and return structured pricing data"""
         pricing_data = {}
 
@@ -308,10 +322,10 @@ class FireworksModelExtractor:
             if " / " in price_string:
                 input_price, output_price = price_string.split(" / ")
                 # Remove $ and convert to float
-                pricing_data["price_input"] = str(input_price.strip().replace("$", ""))
+                pricing_data["price_input"] = str(input_price.strip().replace(
+                    "$", ""))
                 pricing_data["price_output"] = str(
-                    output_price.strip().replace("$", "")
-                )
+                    output_price.strip().replace("$", ""))
             else:
                 # Single price, treat as both input and output
                 price = str(price_string.strip().replace("$", ""))
@@ -323,20 +337,21 @@ class FireworksModelExtractor:
 
         return pricing_data
 
-    def create_pricing_info_structure(self, pricing_data: Dict) -> Dict[str, Any]:
+    def create_pricing_info_structure(self,
+                                      pricing_data: Dict) -> Dict[str, Any]:
         """Create pricing info structure based on pricing data"""
         if not pricing_data:
             return {}
 
         # Parse the price string into structured data
-        parsed_pricing = self.parse_pricing_string(
-            pricing_data["price"], pricing_data["unit"]
-        )
+        parsed_pricing = self.parse_pricing_string(pricing_data["price"],
+                                                   pricing_data["unit"])
 
         match pricing_data["unit"]:
             case "Pricing Per 1M Tokens Input/Output":
                 return {
-                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
+                    "description":
+                    f"{pricing_data['unit']}: {pricing_data['price']}",
                     "input": parsed_pricing["price_input"],
                     "output": parsed_pricing["price_output"],
                     "type": "one_million_tokens",
@@ -344,31 +359,35 @@ class FireworksModelExtractor:
                 }
             case "Pricing Per 1M Tokens":
                 return {
-                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
+                    "description":
+                    f"{pricing_data['unit']}: {pricing_data['price']}",
                     "price": parsed_pricing["price"],
                     "type": "one_million_tokens",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Image":
                 return {
-                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
+                    "description":
+                    f"{pricing_data['unit']}: {pricing_data['price']}",
                     "price": parsed_pricing["price"],
                     "unit": "image",
                     "reference": pricing_data.get("reference", None),
                 }
             case "Pricing Per Step":
                 return {
-                    "description": f'{pricing_data["unit"]}: {pricing_data["price"]}',
+                    "description":
+                    f"{pricing_data['unit']}: {pricing_data['price']}",
                     "price": parsed_pricing["price"],
                     "type": "step",
                     "reference": pricing_data.get("reference", None),
                 }
             case _:
-                raise RuntimeError(f"Unknown pricing unit {pricing_data['unit']}")
+                raise RuntimeError(
+                    f"Unknown pricing unit {pricing_data['unit']}")
 
-    def determine_service_type(
-        self, model_name: str, pricing_data: Optional[Dict] = None
-    ) -> str:
+    def determine_service_type(self,
+                               model_name: str,
+                               pricing_data: Optional[Dict] = None) -> str:
         """Determine service type based on model name and pricing unit"""
         model_lower = model_name.lower()
 
@@ -381,12 +400,11 @@ class FireworksModelExtractor:
                 return "image_generation"  # Step-based pricing is typically for image generation
             elif "token" in pricing_unit.lower():
                 # Could be LLM, vision language model, or embedding model
-                if any(keyword in model_lower for keyword in ["embedding", "embed"]):
+                if any(keyword in model_lower
+                       for keyword in ["embedding", "embed"]):
                     return "embedding"
-                elif any(
-                    keyword in model_lower
-                    for keyword in ["vision", "llava", "minicpm", "gpt-4-vision"]
-                ):
+                elif any(keyword in model_lower for keyword in
+                         ["vision", "llava", "minicpm", "gpt-4-vision"]):
                     return "vision_language_model"
                 else:
                     return "llm"
@@ -397,30 +415,23 @@ class FireworksModelExtractor:
             return "embedding"
 
         # Image generation models
-        if any(
-            keyword in model_lower
-            for keyword in [
+        if any(keyword in model_lower for keyword in [
                 "flux",
                 "dalle",
                 "midjourney",
                 "stable-diffusion",
                 "controlnet",
-            ]
-        ):
+        ]):
             return "image_generation"
 
         # Vision language models
-        if any(
-            keyword in model_lower
-            for keyword in ["vision", "llava", "minicpm", "gpt-4-vision"]
-        ):
+        if any(keyword in model_lower
+               for keyword in ["vision", "llava", "minicpm", "gpt-4-vision"]):
             return "vision_language_model"
 
         # Audio models
-        if any(
-            keyword in model_lower
-            for keyword in ["whisper", "audio", "speech", "transcri"]
-        ):
+        if any(keyword in model_lower
+               for keyword in ["whisper", "audio", "speech", "transcri"]):
             return "prerecorded_transcription"  # Most common audio use case
 
         # Default to LLM for text models
@@ -580,8 +591,10 @@ class FireworksModelExtractor:
             # common display name for the service, allowing across provider linking
             "description": model_data.get("description", ""),
             "status": model_data.get("state").lower(),
-            "details": {"model_name": model_name},
-            "upstream_access_interface": {},
+            "details": {
+                "model_name": model_name
+            },
+            "upstream_access_interfaces": {},
             "payout_price": {
                 "type": "revenue_share",
                 "percentage": "100.00",
@@ -592,27 +605,24 @@ class FireworksModelExtractor:
         for field in top_level_model_fields:
             if field in model_data:
                 if field not in (
-                    "conversationConfig",
-                    "deployedModelRefs",
-                    "peftDetails",
-                    "status",
+                        "conversationConfig",
+                        "deployedModelRefs",
+                        "peftDetails",
+                        "status",
                 ):
                     offering_config["details"][field] = model_data[field]
 
         for field in model_data.keys():
-            if (
-                field
-                not in top_level_model_fields + handled_model_fields + header_fields
-            ):
+            if (field not in top_level_model_fields + handled_model_fields +
+                    header_fields):
                 print(f" {field} for model {model_name} is not processed.")
 
         # baseModelDetails
         if "baseModelDetails" in model_data:
             for field in base_mode_details_fields:
                 if field in model_data["baseModelDetails"]:
-                    offering_config["details"][field] = model_data["baseModelDetails"][
-                        field
-                    ]
+                    offering_config["details"][field] = model_data[
+                        "baseModelDetails"][field]
             for field in model_data["baseModelDetails"].keys():
                 if field not in base_mode_details_fields:
                     print(f" {field} for model {model_name} is not processed.")
@@ -622,31 +632,35 @@ class FireworksModelExtractor:
             # if no pricing information, the service cannot be ready
             offering_config["status"] == "uploading"
 
-        offering_config["upstream_access_interface"] = {
-            "name": "Fireworks API",
-            "api_key": api_key,
-            "base_url": "https://api.fireworks.ai/inference/v1",
-            "access_method": "http",
-            "rate_limits": [
-                {
-                    "description": "Requests per minute",
-                    "limit": 60,
-                    "unit": "requests",
-                    "window": "minute",
-                },
-                {
-                    "description": "Input tokens per minute",
-                    "limit": 60000,
-                    "unit": "input_tokens",
-                    "window": "minute",
-                },
-                {
-                    "description": "Output tokens per minute",
-                    "limit": 6000,
-                    "unit": "output_tokens",
-                    "window": "minute",
-                },
-            ],
+        offering_config["upstream_access_interfaces"] = {
+            "Fireworks API": {
+                "api_key":
+                api_key,
+                "base_url":
+                "https://api.fireworks.ai/inference/v1",
+                "access_method":
+                "http",
+                "rate_limits": [
+                    {
+                        "description": "Requests per minute",
+                        "limit": 60,
+                        "unit": "requests",
+                        "window": "minute",
+                    },
+                    {
+                        "description": "Input tokens per minute",
+                        "limit": 60000,
+                        "unit": "input_tokens",
+                        "window": "minute",
+                    },
+                    {
+                        "description": "Output tokens per minute",
+                        "limit": 6000,
+                        "unit": "output_tokens",
+                        "window": "minute",
+                    },
+                ],
+            }
         }
         return offering_config
 
@@ -680,71 +694,63 @@ class FireworksModelExtractor:
             operation_config["list_price"] = pricing_info
 
         if "flux" in model_name:
-            operation_config["user_access_interfaces"] = [
-                {
-                    "name": "Provider API",
+            operation_config["user_access_interfaces"] = {
+                "Provider API": {
                     "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-                    "access_method": "http"
+                    "access_method": "http",
                 }
-            ]
-            operation_config["documents"] = [
-                {
+            }
+            operation_config["documents"] = {
+                "Python code example": {
                     "category": "code_example",
                     "description": "Example code to use the model",
                     "file_path": "../../docs/code_example_flux.py.j2",
                     "is_active": True,
                     "is_public": True,
                     "mime_type": "python",
-                    "title": "Python code example",
                 },
-                {
+                "Python function calling code example": {
                     "category": "code_example",
                     "description": "Example code to use the model",
                     "file_path": "../../docs/code_example_flux_fc.py.j2",
                     "is_active": True,
                     "is_public": True,
                     "mime_type": "python",
-                    "title": "Python function calling code example",
                 },
-                {
+                "JavaScript code example": {
                     "category": "code_example",
                     "description": "Example code to use the model",
                     "file_path": "../../docs/code_example_flux.js.j2",
                     "is_active": True,
                     "is_public": True,
                     "mime_type": "javascript",
-                    "title": "JavaScript code example",
                 },
-                {
+                "cURL code example": {
                     "category": "code_example",
                     "description": "Example code to use the model",
                     "file_path": "../../docs/code_example_flux.sh.j2",
                     "is_active": True,
                     "is_public": True,
                     "mime_type": "bash",
-                    "title": "cURL code example",
                 },
-                {
+                "connectivity test": {
                     "category": "connectivity_test",
                     "description": "Connectivity test",
                     "file_path": "../../docs/connectivity_flux.sh.j2",
                     "is_active": True,
                     "is_public": False,
                     "mime_type": "bash",
-                    "title": "connectivity test",
                 },
-            ]
+            }
         else:
-            operation_config["user_access_interfaces"] = [
-                {
-                    "name": "Provider API",
+            operation_config["user_access_interfaces"] = {
+                "Provider API": {
                     "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-                    "access_method": "http"
+                    "access_method": "http",
                 }
-            ]
-            operation_config["documents"] = [
-                {
-                    "title": "Python code example",
+            }
+            operation_config["documents"] = {
+                "Python code example": {
                     "description": "Example code to use the model",
                     "mime_type": "python",
                     "category": "code_example",
@@ -752,8 +758,7 @@ class FireworksModelExtractor:
                     "is_active": True,
                     "is_public": True,
                 },
-                {
-                    "title": "Python function calling code example",
+                "Python function calling code example": {
                     "description": "Example code to use the model",
                     "mime_type": "python",
                     "category": "code_example",
@@ -761,8 +766,7 @@ class FireworksModelExtractor:
                     "is_active": True,
                     "is_public": True,
                 },
-                {
-                    "title": "JavaScript code example",
+                "JavaScript code example": {
                     "description": "Example code to use the model",
                     "mime_type": "javascript",
                     "category": "code_example",
@@ -770,8 +774,7 @@ class FireworksModelExtractor:
                     "is_active": True,
                     "is_public": True,
                 },
-                {
-                    "title": "cURL code example",
+                "cURL code example": {
                     "description": "Example code to use the model",
                     "mime_type": "bash",
                     "category": "code_example",
@@ -779,8 +782,7 @@ class FireworksModelExtractor:
                     "is_active": True,
                     "is_public": True,
                 },
-                {
-                    "title": "connectivity test",
+                "connectivity test": {
                     "description": "Test connectivity",
                     "mime_type": "bash",
                     "category": "connectivity_test",
@@ -788,8 +790,7 @@ class FireworksModelExtractor:
                     "is_active": True,
                     "is_public": False,
                 },
-            ]
-
+            }
 
         return operation_config
 
@@ -801,9 +802,11 @@ class FireworksModelExtractor:
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
-                json.dump(
-                    service_data, f, sort_keys=True, indent=2, separators=(",", ": ")
-                )
+                json.dump(service_data,
+                          f,
+                          sort_keys=True,
+                          indent=2,
+                          separators=(",", ": "))
                 f.write("\n")
 
             print(f"  ✅ Written: {output_file}")
@@ -824,9 +827,11 @@ class FireworksModelExtractor:
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
-                json.dump(
-                    operation_data, f, sort_keys=True, indent=2, separators=(",", ": ")
-                )
+                json.dump(operation_data,
+                          f,
+                          sort_keys=True,
+                          indent=2,
+                          separators=(",", ": "))
                 f.write("\n")
 
             print(f"  ✅ Written: {output_file}")
@@ -843,18 +848,22 @@ class FireworksModelExtractor:
             )
             print(f"   Skipped models: {self.summary['skipped_models']}")
             print(f"   With pricing data: {self.summary['pricing_found']}")
-            print(f"   Deprecated models: {len(self.summary['deprecated_models'])}")
+            print(
+                f"   Deprecated models: {len(self.summary['deprecated_models'])}"
+            )
             if self.summary["force_mode"]:
                 print(f"   Force mode: Enabled")
             if self.summary["processing_limit"]:
-                print(f"   Processing limit: {self.summary['processing_limit']}")
+                print(
+                    f"   Processing limit: {self.summary['processing_limit']}")
 
         except Exception as e:
             print(f"❌ Error writing summary: {e}")
 
-    def mark_deprecated_services(
-        self, output_dir: str, active_models: List[str], dry_run: bool = False
-    ):
+    def mark_deprecated_services(self,
+                                 output_dir: str,
+                                 active_models: List[str],
+                                 dry_run: bool = False):
         """Mark services as deprecated if they no longer exist in active_models"""
         print("🔍 Checking for deprecated services...")
 
@@ -865,7 +874,8 @@ class FireworksModelExtractor:
 
         # Convert active models to directory names for efficient lookup
         active_service_dirs = {
-            model_name.split("/")[-1].replace(":", "_") for model_name in active_models
+            model_name.split("/")[-1].replace(":", "_")
+            for model_name in active_models
         }
 
         print(f"  Found {len(active_service_dirs)} active models")
@@ -946,7 +956,8 @@ class FireworksModelExtractor:
                                     separators=(",", ": "),
                                 )
                                 f.write("\n")
-                            print(f"    ✅ Updated {json_file.name} {status_msg}")
+                            print(
+                                f"    ✅ Updated {json_file.name} {status_msg}")
 
                 except Exception as e:
                     print(f"    ❌ Error updating {json_file}: {e}")
@@ -980,7 +991,8 @@ class FireworksModelExtractor:
             )
 
         if specific_models:
-            print(f"🎯 Processing specific models: {', '.join(specific_models)}")
+            print(
+                f"🎯 Processing specific models: {', '.join(specific_models)}")
             # Create mock model objects for specific models
             models = [{"name": model_name} for model_name in specific_models]
             self.summary["total_models"] = len(models)
@@ -994,9 +1006,11 @@ class FireworksModelExtractor:
             # Check for deprecated services when processing all models with force and no limit
             if force and limit is None:
                 active_model_names = [
-                    model.get("name", "") for model in models if model.get("name")
+                    model.get("name", "") for model in models
+                    if model.get("name")
                 ]
-                self.mark_deprecated_services(output_dir, active_model_names, dry_run)
+                self.mark_deprecated_services(output_dir, active_model_names,
+                                              dry_run)
 
         # Process each model
         skipped_count = 0
@@ -1010,7 +1024,9 @@ class FireworksModelExtractor:
 
             # Check if we've reached the processing limit (not counting skipped models)
             if limit and processed_count >= limit:
-                print(f"🔢 Reached processing limit of {limit} models, stopping...")
+                print(
+                    f"🔢 Reached processing limit of {limit} models, stopping..."
+                )
                 break
 
             # Create expected directory path for this model
@@ -1037,7 +1053,9 @@ class FireworksModelExtractor:
                 time.sleep(0.1)  # Rate limiting
 
                 if model_data.get("deployedModelRefs", []) == []:
-                    print(f"  ⚠️  Model {model_name} has no serverless deployment.")
+                    print(
+                        f"  ⚠️  Model {model_name} has no serverless deployment."
+                    )
                     continue
                 print(model_data.get("deployedModelRefs", []))
 
@@ -1072,7 +1090,9 @@ class FireworksModelExtractor:
 
                 # Write service file
                 if dry_run:
-                    print(f"  📝 [DRY-RUN] Would write service files to {data_dir}")
+                    print(
+                        f"  📝 [DRY-RUN] Would write service files to {data_dir}"
+                    )
                 else:
                     print(f"  📝 Writing service files to {data_dir}...")
                     self.write_service_files(offering_config, data_dir)
@@ -1088,12 +1108,14 @@ class FireworksModelExtractor:
                     )
                 else:
                     if dry_run:
-                        action = "overwrite" if listing_file.exists() else "write"
+                        action = "overwrite" if listing_file.exists(
+                        ) else "write"
                         print(
                             f"  📝 [DRY-RUN] Would {action} listing files to {data_dir}"
                         )
                     else:
-                        action = "Overwriting" if listing_file.exists() else "Writing"
+                        action = "Overwriting" if listing_file.exists(
+                        ) else "Writing"
                         print(f"  📝 {action} listing files to {data_dir}...")
                         self.write_listing_files(operation_config, data_dir)
 
@@ -1126,17 +1148,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "--models",
         nargs="+",
-        help="Specific model names to process (e.g., --models accounts/fireworks/llama-v3p1-8b-instruct)",
+        help=
+        "Specific model names to process (e.g., --models accounts/fireworks/llama-v3p1-8b-instruct)",
     )
     parser.add_argument(
         "--force",
         action="store_true",
-        help="Force overwrite all existing data files (service.json and listing.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
+        help=
+        "Force overwrite all existing data files (service.json and listing.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
     )
     parser.add_argument(
         "--limit",
         type=int,
-        help="Limit the number of models to process. Skipped models (when directories already exist) are not counted towards this limit.",
+        help=
+        "Limit the number of models to process. Skipped models (when directories already exist) are not counted towards this limit.",
     )
     parser.add_argument(
         "--dry-run",

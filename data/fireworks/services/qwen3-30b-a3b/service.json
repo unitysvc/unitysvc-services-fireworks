@@ -59,30 +59,31 @@
   "service_type": "llm",
   "status": "ready",
   "time_created": "2025-04-28T22:08:53.637383Z",
-  "upstream_access_interface": {
-    "access_method": "http",
-    "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
-    "base_url": "https://api.fireworks.ai/inference/v1",
-    "name": "Fireworks API",
-    "rate_limits": [
-      {
-        "description": "Requests per minute",
-        "limit": 60,
-        "unit": "requests",
-        "window": "minute"
-      },
-      {
-        "description": "Input tokens per minute",
-        "limit": 60000,
-        "unit": "input_tokens",
-        "window": "minute"
-      },
-      {
-        "description": "Output tokens per minute",
-        "limit": 6000,
-        "unit": "output_tokens",
-        "window": "minute"
-      }
-    ]
+  "upstream_access_interfaces": {
+    "Fireworks API": {
+      "access_method": "http",
+      "api_key": "fw_3Zi68xUugi1ZrFnAn31LW4BY",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ]
+    }
   }
 }

@@ -1,53 +1,48 @@
 {
   "currency": "USD",
   "display_name": "qwen3-30b-a3b",
-  "documents": [
-    {
-      "category": "code_example",
-      "description": "Example code to use the model",
-      "file_path": "../../docs/code_example.py.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "python",
-      "title": "Python code example"
-    },
-    {
-      "category": "code_example",
-      "description": "Example code to use the model",
-      "file_path": "../../docs/code_example_1.py.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "python",
-      "title": "Python function calling code example"
-    },
-    {
+  "documents": {
+    "JavaScript code example": {
       "category": "code_example",
       "description": "Example code to use the model",
       "file_path": "../../docs/code_example.js.j2",
       "is_active": true,
       "is_public": true,
-      "mime_type": "javascript",
-      "title": "JavaScript code example"
+      "mime_type": "javascript"
     },
-    {
+    "Python code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "Python function calling code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_1.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "cURL code example": {
       "category": "code_example",
       "description": "Example code to use the model",
       "file_path": "../../docs/code_example.sh.j2",
       "is_active": true,
       "is_public": true,
-      "mime_type": "bash",
-      "title": "cURL code example"
+      "mime_type": "bash"
     },
-    {
+    "connectivity test": {
       "category": "connectivity_test",
       "description": "Test connectivity",
       "file_path": "../../docs/connectivity.sh.j2",
       "is_active": true,
       "is_public": false,
-      "mime_type": "bash",
-      "title": "connectivity test"
+      "mime_type": "bash"
     }
-  ],
+  },
   "list_price": {
     "description": "Pricing Per 1M Tokens: $0.60",
     "price": "0.60",
@@ -56,12 +51,11 @@
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-17T19:19:15.354Z",
-  "user_access_interfaces": [
-    {
+  "time_created": "2026-01-18T03:05:11.916Z",
+  "user_access_interfaces": {
+    "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
-      "name": "Provider API"
+      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai"
     }
-  ]
+  }
 }
