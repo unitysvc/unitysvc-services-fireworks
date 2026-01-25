@@ -32,6 +32,8 @@ jobs:
           pip install unitysvc-services
 
       - name: Execute populate services command
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
         run: |
           echo "Running populate services command..."
           usvc data populate

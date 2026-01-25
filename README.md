@@ -80,22 +80,28 @@ The workflow uses the `services_populator` configuration in `provider.toml`:
 # data/fireworks/provider.toml
 [services_populator]
 command = ['scripts/update_services.py', '--force']
+requirements = ['requests', 'beautifulsoup4']
 
 [services_populator.envs]
-FIREWORKS_API_KEY = 'your-api-key'
+# API key comes from FIREWORKS_API_KEY environment variable
 FIREWORKS_API_BASE_URL = "https://api.fireworks.ai/v1"
+FIREWORKS_MODEL_BASE_URL = "https://fireworks.ai/models/fireworks"
 ```
 
 The `usvc data populate` command will:
 
 - Find all providers with `services_populator` configured
+- Install any packages listed in `requirements`
 - Execute the specified command (e.g., `scripts/update_services.py`)
-- Pass environment variables from `services_populator.envs`
+- Pass environment variables from `services_populator.envs` plus any existing env vars
 - Generate/update service files automatically
 
 **Running Populate Locally**:
 
 ```bash
+# Set your API key
+export FIREWORKS_API_KEY="your-api-key"
+
 # Populate all providers
 usvc data populate
 
@@ -138,8 +144,8 @@ Run `usvc data format` locally to auto-fix formatting issues.
 
 ### 4. Upload Data Workflow
 
-**File**: `.github/workflows/publish-data.yml`
-**Triggers**: Push to main branch (after PR merge)
+**File**: `.github/workflows/upload-data.yml`
+**Triggers**: PR merged to main
 
 Automatically uploads data to the UnitySVC backend. Services are uploaded atomically (provider + offering + listing together).
 
@@ -147,7 +153,7 @@ Automatically uploads data to the UnitySVC backend. Services are uploaded atomic
 
 ## GitHub Secrets Configuration
 
-To enable automatic uploading when changes are merged to `main`, configure the following GitHub secrets:
+To enable the automated workflows, configure the following GitHub secrets:
 
 ### Step 1: Navigate to Repository Settings
 
@@ -159,11 +165,21 @@ To enable automatic uploading when changes are merged to `main`, configure the f
 
 Click **New repository secret** and add the following:
 
+#### `FIREWORKS_API_KEY`
+
+- **Description**: API key for accessing the Fireworks API (used by populate workflow)
+- **How to obtain**:
+  1. Log in to your Fireworks account at https://fireworks.ai
+  2. Navigate to **API Keys**
+  3. Create or copy your API key
+- **Used by**: Populate Services workflow
+
 #### `UNITYSVC_BASE_URL`
 
 - **Description**: The UnitySVC backend API URL
 - **Example values**:
   - Production: `https://api.unitysvc.com/v1`
+- **Used by**: Upload Data workflow
 
 #### `UNITYSVC_API_KEY`
 
@@ -173,6 +189,7 @@ Click **New repository secret** and add the following:
   2. Navigate to **Settings** -> **API Keys**
   3. Generate a new API key for your organization
   4. Copy the key (you won't be able to see it again)
+- **Used by**: Upload Data workflow
 
 ### Step 3: Verify Configuration
 

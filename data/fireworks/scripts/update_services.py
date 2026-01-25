@@ -794,11 +794,11 @@ class FireworksModelExtractor:
 
         return operation_config
 
-    def write_service_files(self, service_data, output_dir):
-        """Write service.json file"""
+    def write_offering_files(self, service_data, output_dir):
+        """Write offering.json file"""
         base_path = Path(output_dir)
         base_path.mkdir(parents=True, exist_ok=True)
-        output_file = base_path / "service.json"
+        output_file = base_path / "offering.json"
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
@@ -987,7 +987,7 @@ class FireworksModelExtractor:
             )
         if force:
             print(
-                "💪 Force mode enabled - will overwrite all existing data files (service.json and listing.json)"
+                "💪 Force mode enabled - will overwrite all existing data files (offering.json and listing.json)"
             )
 
         if specific_models:
@@ -1033,7 +1033,7 @@ class FireworksModelExtractor:
             base_path = Path(output_dir)
             dir_name = model_name.split("/")[-1].replace(":", "_")
             data_dir = base_path / dir_name
-            data_file = data_dir / "service.json"
+            data_file = data_dir / "offering.json"
 
             # Check if model directory already exists
             if not force and data_dir.exists() and data_file.exists():
@@ -1095,7 +1095,7 @@ class FireworksModelExtractor:
                     )
                 else:
                     print(f"  📝 Writing service files to {data_dir}...")
-                    self.write_service_files(offering_config, data_dir)
+                    self.write_offering_files(offering_config, data_dir)
 
                 # Write listing file
                 listing_file = data_dir / "listing.json"
@@ -1155,7 +1155,7 @@ if __name__ == "__main__":
         "--force",
         action="store_true",
         help=
-        "Force overwrite all existing data files (service.json and listing.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
+        "Force overwrite all existing data files (offering.json and listing.json). Without this flag, existing files will be skipped. Manual customizations can be preserved in .override.json files.",
     )
     parser.add_argument(
         "--limit",
