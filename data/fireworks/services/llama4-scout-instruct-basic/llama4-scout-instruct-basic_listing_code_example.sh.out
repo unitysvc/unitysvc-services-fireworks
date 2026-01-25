@@ -1,1 +1,0 @@
-{"id":"fa06a11b-cb7e-409a-9372-1213509e12ef","object":"chat.completion","created":1763006426,"model":"accounts/fireworks/models/llama4-scout-instruct-basic","choices":[{"index":0,"message":{"role":"assistant","content":"This is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":26,"total_tokens":32,"completion_tokens":6}}

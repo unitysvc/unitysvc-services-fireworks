@@ -1,1 +1,0 @@
-{"id":"27769b6c-23fc-4d8d-85b3-4173a3bc3126","object":"chat.completion","created":1763006340,"model":"accounts/fireworks/models/llama4-maverick-instruct-basic","choices":[{"index":0,"message":{"role":"assistant","content":"It is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":26,"total_tokens":32,"completion_tokens":6,"prompt_tokens_details":{"cached_tokens":25}}}

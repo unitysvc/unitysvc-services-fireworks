@@ -1,4 +1,0 @@
-Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's the echo_message function which takes a message parameter. The required parameter is "message", so I need to pass "Hello world" as the message. I'll call echo_message with that string.
-</think>
-
-

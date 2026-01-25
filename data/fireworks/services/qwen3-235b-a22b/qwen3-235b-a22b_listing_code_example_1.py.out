@@ -1,5 +1,0 @@
-<think>
-Okay, the user wants me to repeat "Hello world". Let me check the tools available. There's an echo_message function that takes a message parameter. I need to call that function with the message "Hello world". So I'll generate the tool call with the name echo_message and the arguments as {"message": "Hello world"}. That should do it.
-</think>
-
-

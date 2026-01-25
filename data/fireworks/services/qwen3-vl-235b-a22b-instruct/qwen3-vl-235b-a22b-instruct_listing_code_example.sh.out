@@ -1,1 +1,0 @@
-{"id":"d58d7ad5-8c6b-4e8f-89f5-3dd07f94f111","object":"chat.completion","created":1764978092,"model":"accounts/fireworks/models/qwen3-vl-235b-a22b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"This is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":24,"total_tokens":30,"completion_tokens":6,"prompt_tokens_details":{"cached_tokens":23}}}

@@ -1,1 +1,0 @@
-{"id":"e022036c-d4d9-4f4c-8cab-682ea5b34034","object":"chat.completion","created":1763006517,"model":"accounts/fireworks/models/llama-v3p1-70b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"This is a test."},"finish_reason":"stop"}],"usage":{"prompt_tokens":46,"total_tokens":52,"completion_tokens":6}}
