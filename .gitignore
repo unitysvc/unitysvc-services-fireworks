@@ -2,5 +2,6 @@ package-lock.json
 package.json
 failed*
 node_modules
-.err
-
+*.err
+*.out
+*.status
