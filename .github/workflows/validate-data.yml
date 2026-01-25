@@ -39,7 +39,7 @@ jobs:
       - name: Validate data directory
         run: |
           echo "Validating data directory..."
-          unitysvc_services validate
+          usvc data validate
 
       - name: Data validation summary
         if: always()
@@ -47,7 +47,7 @@ jobs:
           echo "## Data Validation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Validation Results" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Data directory validation completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Data directory validation completed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Files Validated" >> $GITHUB_STEP_SUMMARY
           echo "All JSON and TOML files in the data directory have been validated against their schemas." >> $GITHUB_STEP_SUMMARY
@@ -56,5 +56,3 @@ jobs:
           echo "- File references checked for existence" >> $GITHUB_STEP_SUMMARY
           echo "- JSON schema compliance verified" >> $GITHUB_STEP_SUMMARY
           echo "- Directory name consistency checked" >> $GITHUB_STEP_SUMMARY
-          echo "- Service name uniqueness verified" >> $GITHUB_STEP_SUMMARY
-          echo "- Valid seller references confirmed" >> $GITHUB_STEP_SUMMARY

@@ -34,18 +34,7 @@ jobs:
       - name: Execute populate services command
         run: |
           echo "Running populate services command..."
-          # Use the unitysvc_services populate command
-          unitysvc_services populate
-
-      - name: Format generated files
-        run: |
-          echo "Formatting generated files using pre-commit hooks..."
-          # Install pre-commit if not already installed
-          pip install pre-commit
-          # Run pre-commit hooks to format JSON files with proper indentation
-          pre-commit run pretty-format-json --all-files || true
-          # Run all formatting hooks to ensure consistency
-          pre-commit run --all-files || true
+          usvc data populate
 
       - name: Check for changes in data directory
         id: check_changes
@@ -66,16 +55,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: |
-            🤖 Auto-populate services data
+            Auto-populate services data
 
-            Automated update of services data via populate_services.py
+            Automated update of services data via usvc data populate
 
-            🤖 Generated with GitHub Actions
-          title: "🤖 Auto-populate services data"
+            Generated with GitHub Actions
+          title: "Auto-populate services data"
           body: |
             ## Summary
 
-            This PR contains automatically generated changes from running `scripts/populate_services.py`.
+            This PR contains automatically generated changes from running `usvc data populate`.
 
             ## Changes Made
 
@@ -91,7 +80,7 @@ jobs:
 
             ---
 
-            🤖 This PR was automatically created by the populate-services workflow.
+            This PR was automatically created by the populate-services workflow.
 
             **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           branch: auto-populate-services-${{ github.run_number }}
@@ -109,12 +98,12 @@ jobs:
           echo "## Populate Services Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
-            echo "### ✅ Changes Detected" >> $GITHUB_STEP_SUMMARY
+            echo "### Changes Detected" >> $GITHUB_STEP_SUMMARY
             echo "- Services population script executed successfully" >> $GITHUB_STEP_SUMMARY
             echo "- Changes found in data directory" >> $GITHUB_STEP_SUMMARY
             echo "- Pull request created automatically" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### ℹ️ No Changes" >> $GITHUB_STEP_SUMMARY
+            echo "### No Changes" >> $GITHUB_STEP_SUMMARY
             echo "- Services population script executed successfully" >> $GITHUB_STEP_SUMMARY
             echo "- No changes detected in data directory" >> $GITHUB_STEP_SUMMARY
             echo "- No pull request needed" >> $GITHUB_STEP_SUMMARY
@@ -123,4 +112,4 @@ jobs:
           echo "### Script Execution" >> $GITHUB_STEP_SUMMARY
           echo "- Scanned all directories under \`data/\` folder" >> $GITHUB_STEP_SUMMARY
           echo "- Processed provider configuration files (JSON, TOML)" >> $GITHUB_STEP_SUMMARY
-          echo "- Executed commands from \`services_populator\` fields using \`unitysvc_services populate\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Executed commands from \`services_populator\` fields using \`usvc data populate\`" >> $GITHUB_STEP_SUMMARY
