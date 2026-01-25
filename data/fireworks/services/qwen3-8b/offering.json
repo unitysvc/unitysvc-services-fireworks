@@ -8,7 +8,7 @@
     "contextLength": 40960,
     "defaultDraftModel": "accounts/fireworks/models/qwen3-1p7b-fp8-draft-40960",
     "defaultDraftTokenCount": 4,
-    "defaultPrecision": "FP8_MM",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -28,7 +28,8 @@
       "PRECISION_UNSPECIFIED",
       "PRECISION_UNSPECIFIED",
       "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED"
+      "PRECISION_UNSPECIFIED",
+      "FP8"
     ],
     "supportedPrecisionsWithCalibration": [
       "FP8",
