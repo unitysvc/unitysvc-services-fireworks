@@ -794,11 +794,28 @@ class FireworksModelExtractor:
 
         return operation_config
 
+    def _data_equal_ignoring_time_created(self, data1, data2):
+        """Compare two dicts, ignoring time_created field"""
+        d1 = {k: v for k, v in data1.items() if k != "time_created"}
+        d2 = {k: v for k, v in data2.items() if k != "time_created"}
+        return d1 == d2
+
     def write_offering_files(self, service_data, output_dir):
         """Write offering.json file"""
         base_path = Path(output_dir)
         base_path.mkdir(parents=True, exist_ok=True)
         output_file = base_path / "offering.json"
+
+        # Skip if file exists and only time_created would change
+        if output_file.exists():
+            try:
+                with open(output_file, "r", encoding="utf-8") as f:
+                    existing_data = json.load(f)
+                    if self._data_equal_ignoring_time_created(service_data, existing_data):
+                        print(f"  ⏭️  Skipped (unchanged): {output_file}")
+                        return
+            except (json.JSONDecodeError, IOError):
+                pass  # Write new file if existing can't be read
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
@@ -824,6 +841,17 @@ class FireworksModelExtractor:
         shared_path.mkdir(parents=True, exist_ok=True)
 
         output_file = base_path / "listing.json"
+
+        # Skip if file exists and only time_created would change
+        if output_file.exists():
+            try:
+                with open(output_file, "r", encoding="utf-8") as f:
+                    existing_data = json.load(f)
+                    if self._data_equal_ignoring_time_created(operation_data, existing_data):
+                        print(f"  ⏭️  Skipped (unchanged): {output_file}")
+                        return
+            except (json.JSONDecodeError, IOError):
+                pass  # Write new file if existing can't be read
 
         try:
             with open(output_file, "w", encoding="utf-8") as f:
