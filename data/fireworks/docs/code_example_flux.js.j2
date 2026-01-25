@@ -1,0 +1,35 @@
+import fs from "fs";
+
+async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = "{{offering.details.model_name}}", outputFile = "a.jpg") {
+  const baseUrl = process.env.BASE_URL;
+  const apiKey = process.env.API_KEY;
+
+  if (!baseUrl || !apiKey) {
+    throw new Error("Missing BASE_URL or API_KEY environment variable");
+  }
+
+  const url = `${baseUrl}/workflows/${modelName}/text_to_image`;
+
+  // Inline fetch with everything in one call
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "image/jpeg",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({ prompt })
+  });
+
+  if (response.ok) {
+    const buffer = await response.arrayBuffer();
+    fs.writeFileSync(outputFile, Buffer.from(buffer));
+    console.log(`✅ Image saved as ${outputFile}`);
+  } else {
+    const errorText = await response.text();
+    console.error(`❌ Error: ${response.status} - ${errorText}`);
+  }
+}
+
+// Example usage:
+textToImage();

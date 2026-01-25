@@ -1,0 +1,7 @@
+package-lock.json
+package.json
+failed*
+node_modules
+*.err
+*.out
+*.status

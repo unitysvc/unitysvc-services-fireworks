@@ -1,0 +1,74 @@
+{
+  "currency": "USD",
+  "description": "MiniMax M2.1 is built for strong real-world performance across complex, multi-language, and agent-driven workflows, with robust support spanning systems, backend, web, mobile, and office-style tasks. It delivers faster, more concise responses, lower token usage, and reliable tool and agent scaffolding, making it well-suited for production and workflow-heavy environments.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 204800,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {},
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "mixtral",
+    "model_name": "accounts/fireworks/models/minimax-m2p1",
+    "moe": false,
+    "parameterCount": "228689764864",
+    "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 131072,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "name": "minimax-m2p1",
+  "payout_price": {
+    "description": "No platform commission",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "schema": "offering_v1",
+  "service_type": "llm",
+  "status": "ready",
+  "time_created": "2025-12-23T21:21:21.223875Z",
+  "upstream_access_interfaces": {
+    "Fireworks API": {
+      "access_method": "http",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ]
+    }
+  }
+}
