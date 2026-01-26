@@ -49,6 +49,7 @@
     "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
+  "display_name": "Qwen3 235B A22B",
   "name": "qwen3-235b-a22b",
   "payout_price": {
     "description": "No platform commission",

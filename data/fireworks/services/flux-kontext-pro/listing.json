@@ -46,12 +46,12 @@
   "list_price": {
     "description": "Pricing Per 1M Tokens: $0.04",
     "price": "0.04",
-    "reference": null,
+    "reference": "https://fireworks.ai/models/fireworks/flux-kontext-pro",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-18T03:04:24.448Z",
+  "time_created": "2026-01-26T00:56:25.858Z",
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",

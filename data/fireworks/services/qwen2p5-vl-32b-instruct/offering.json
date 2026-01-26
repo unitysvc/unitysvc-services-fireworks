@@ -51,6 +51,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Qwen2.5-VL 32B Instruct",
   "name": "qwen2p5-vl-32b-instruct",
   "payout_price": {
     "description": "No platform commission",

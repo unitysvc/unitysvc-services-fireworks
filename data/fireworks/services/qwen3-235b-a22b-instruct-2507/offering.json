@@ -49,6 +49,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Qwen3 235B A22B Instruct 2507",
   "name": "qwen3-235b-a22b-instruct-2507",
   "payout_price": {
     "description": "No platform commission",

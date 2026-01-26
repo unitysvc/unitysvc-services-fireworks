@@ -44,6 +44,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Kimi K2 Thinking",
   "name": "kimi-k2-thinking",
   "payout_price": {
     "description": "No platform commission",

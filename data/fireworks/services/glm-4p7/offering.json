@@ -42,6 +42,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "GLM-4.7",
   "name": "glm-4p7",
   "payout_price": {
     "description": "No platform commission",

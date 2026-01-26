@@ -37,6 +37,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "OpenAI gpt-oss-20b",
   "name": "gpt-oss-20b",
   "payout_price": {
     "description": "No platform commission",

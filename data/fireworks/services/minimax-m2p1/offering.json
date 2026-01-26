@@ -35,6 +35,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "MiniMax-M2.1",
   "name": "minimax-m2p1",
   "payout_price": {
     "description": "No platform commission",

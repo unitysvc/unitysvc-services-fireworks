@@ -45,6 +45,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Kimi K2 Instruct 0905",
   "name": "kimi-k2-instruct-0905",
   "payout_price": {
     "description": "No platform commission",

@@ -43,6 +43,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "MiniMax-M2",
   "name": "minimax-m2",
   "payout_price": {
     "description": "No platform commission",

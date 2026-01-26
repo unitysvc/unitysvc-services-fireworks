@@ -45,6 +45,7 @@
     "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
+  "display_name": "Deepseek R1 05/28",
   "name": "deepseek-r1-0528",
   "payout_price": {
     "description": "No platform commission",

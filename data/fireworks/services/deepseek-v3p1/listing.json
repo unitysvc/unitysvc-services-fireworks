@@ -36,7 +36,7 @@
     },
     "connectivity test": {
       "category": "connectivity_test",
-      "description": "Test connectivity",
+      "description": "Connectivity test",
       "file_path": "../../docs/connectivity.sh.j2",
       "is_active": true,
       "is_public": false,
@@ -44,14 +44,16 @@
     }
   },
   "list_price": {
-    "description": "Pricing Per 1M Tokens: $1.68",
-    "price": "1.68",
-    "reference": null,
+    "cached_input": "0.28",
+    "description": "Pricing Per 1M Tokens (input/cached input/output): $0.56 / $0.28 / $1.68",
+    "input": "0.56",
+    "output": "1.68",
+    "reference": "https://fireworks.ai/models/fireworks/deepseek-v3p1",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-18T03:04:14.454Z",
+  "time_created": "2026-01-26T00:56:10.210Z",
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",

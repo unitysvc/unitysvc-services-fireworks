@@ -45,6 +45,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "DeepSeek V3.1",
   "name": "deepseek-v3p1",
   "payout_price": {
     "description": "No platform commission",

@@ -35,6 +35,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Flux Kontext Pro",
   "name": "flux-kontext-pro",
   "payout_price": {
     "description": "No platform commission",
@@ -42,7 +43,7 @@
     "type": "revenue_share"
   },
   "schema": "offering_v1",
-  "service_type": "llm",
+  "service_type": "image_generation",
   "status": "ready",
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_interfaces": {

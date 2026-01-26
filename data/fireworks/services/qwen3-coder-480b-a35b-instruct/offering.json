@@ -49,6 +49,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "Qwen3 Coder 480B A35B Instruct",
   "name": "qwen3-coder-480b-a35b-instruct",
   "payout_price": {
     "description": "No platform commission",

@@ -39,6 +39,7 @@
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
+  "display_name": "FLUX.1 [dev] FP8",
   "name": "flux-1-dev-fp8",
   "payout_price": {
     "description": "No platform commission",
@@ -46,7 +47,7 @@
     "type": "revenue_share"
   },
   "schema": "offering_v1",
-  "service_type": "llm",
+  "service_type": "image_generation",
   "status": "ready",
   "time_created": "2024-10-21T17:48:09.099702Z",
   "upstream_access_interfaces": {
