@@ -281,6 +281,7 @@ class FireworksModelExtractor:
         builder.add_upstream_interface(
             "Fireworks API",
             base_url="https://api.fireworks.ai/inference/v1",
+            api_key="${ secrets.FIREWORKS_API_KEY }",
             rate_limits=[
                 {
                     "description": "Requests per minute",
