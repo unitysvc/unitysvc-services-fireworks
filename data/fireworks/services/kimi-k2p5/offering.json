@@ -1,0 +1,76 @@
+{
+  "currency": "USD",
+  "description": "Kimi K2.5 is Moonshot AI's flagship agentic model and a new SOTA open model. It unifies vision and text, thinking and non-thinking modes, and single-agent and multi-agent execution into one model.",
+  "details": {
+    "calibrated": true,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "contextLength": 262144,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {},
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/moonshotai/Kimi-K2.5",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "kimi_k25",
+    "model_name": "accounts/fireworks/models/kimi-k2p5",
+    "moe": true,
+    "parameterCount": "1000000000000",
+    "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": true,
+    "supportsLora": false,
+    "supportsMtp": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Kimi K2.5",
+  "name": "kimi-k2p5",
+  "payout_price": {
+    "description": "No platform commission",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "schema": "offering_v1",
+  "service_type": "llm",
+  "status": "ready",
+  "time_created": "2026-01-27T01:19:30.456263Z",
+  "upstream_access_interfaces": {
+    "Fireworks API": {
+      "access_method": "http",
+      "api_key": "${ secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ]
+    }
+  }
+}

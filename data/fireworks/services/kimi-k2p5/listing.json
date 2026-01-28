@@ -1,11 +1,11 @@
 {
   "currency": "USD",
-  "display_name": "flux-kontext-pro",
+  "display_name": "kimi-k2p5",
   "documents": {
     "JavaScript code example": {
       "category": "code_example",
       "description": "Example code to use the model",
-      "file_path": "../../docs/code_example_flux.js.j2",
+      "file_path": "../../docs/code_example.js.j2",
       "is_active": true,
       "is_public": true,
       "mime_type": "javascript"
@@ -13,7 +13,7 @@
     "Python code example": {
       "category": "code_example",
       "description": "Example code to use the model",
-      "file_path": "../../docs/code_example_flux.py.j2",
+      "file_path": "../../docs/code_example.py.j2",
       "is_active": true,
       "is_public": true,
       "mime_type": "python"
@@ -21,7 +21,7 @@
     "Python function calling code example": {
       "category": "code_example",
       "description": "Example code to use the model",
-      "file_path": "../../docs/code_example_flux_fc.py.j2",
+      "file_path": "../../docs/code_example_1.py.j2",
       "is_active": true,
       "is_public": true,
       "mime_type": "python"
@@ -29,7 +29,7 @@
     "cURL code example": {
       "category": "code_example",
       "description": "Example code to use the model",
-      "file_path": "../../docs/code_example_flux.sh.j2",
+      "file_path": "../../docs/code_example.sh.j2",
       "is_active": true,
       "is_public": true,
       "mime_type": "bash"
@@ -37,21 +37,23 @@
     "connectivity test": {
       "category": "connectivity_test",
       "description": "Connectivity test",
-      "file_path": "../../docs/connectivity_flux.sh.j2",
+      "file_path": "../../docs/connectivity.sh.j2",
       "is_active": true,
       "is_public": false,
       "mime_type": "bash"
     }
   },
   "list_price": {
-    "description": "Pricing Per 1M Tokens: $0.04",
-    "price": "0.04",
-    "reference": "https://fireworks.ai/models/fireworks/flux-kontext-pro",
+    "cached_input": "0.10",
+    "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.10 / $0.30",
+    "input": "0.60",
+    "output": "0.30",
+    "reference": "https://fireworks.ai/models/fireworks/kimi-k2p5",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-28T02:39:17.291Z",
+  "time_created": "2026-01-28T02:39:38.404Z",
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
