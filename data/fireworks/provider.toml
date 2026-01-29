@@ -10,7 +10,7 @@ secondary_contact_email = "inquiries@fireworks.ai"
 logo = "https://cdn.sanity.io/images/pv37i0yn/production/df64b2d19687cef1b12f8c0bca7d979faf9fe7c0-215x24.svg"
 
 [services_populator]
-command = ['scripts/update_services.py', '--force']
+command = 'scripts/update_services.py'
 requirements = ['requests', 'beautifulsoup4', 'unitysvc-services']
 
 [services_populator.envs]

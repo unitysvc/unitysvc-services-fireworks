@@ -36,11 +36,10 @@
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
-    "supportsMtp": false,
     "supportsTools": true,
     "teftDetails": null,
     "trainingContextLength": 0,
-    "tunable": false,
+    "tunable": true,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },

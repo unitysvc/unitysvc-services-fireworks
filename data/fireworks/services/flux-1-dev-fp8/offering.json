@@ -31,7 +31,6 @@
     "supportsFireattention": false,
     "supportsImageInput": false,
     "supportsLora": false,
-    "supportsMtp": false,
     "supportsTools": false,
     "teftDetails": null,
     "trainingContextLength": 0,
