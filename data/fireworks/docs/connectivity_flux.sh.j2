@@ -1,5 +1,5 @@
-curl -s -X POST "$BASE_URL/workflows/{{offering.details.model_name}}/text_to_image" \
-  -H "Authorization: Bearer $API_KEY" \
+curl -s -X POST "$UNITYSVC_BASE_URL/workflows/{{offering.details.model_name}}/text_to_image" \
+  -H "Authorization: Bearer $UNITYSVC_API_KEY" \
   -H "Content-Type: application/json" \
   -H "Accept: image/jpeg" \
   -d '{"prompt":"A beautiful sunset over the ocean"}' \
