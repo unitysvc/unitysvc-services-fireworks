@@ -5,3 +5,4 @@ node_modules
 *.err
 *.out
 *.status
+*override.json
