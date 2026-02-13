@@ -51,7 +51,7 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "ready",
+  "status": "deprecated",
   "time_created": "2025-10-27T06:54:32.360786Z",
   "upstream_access_interfaces": {
     "Fireworks API": {
