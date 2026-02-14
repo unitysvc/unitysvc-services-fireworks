@@ -1,41 +1,36 @@
 {
   "currency": "USD",
-  "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token from Deepseek. Updated checkpoint. Note that fine-tuning for this model is only available upon request through contacting fireworks at https://fireworks.ai/company/contact-us.",
+  "description": "MiniMax M2.5 is built for state-of-the-art coding, agentic tool use, search, and office work, extensively trained with reinforcement learning across hundreds of thousands of real-world environments to plan like an architect and generalize across unfamiliar scaffolding and tools. It delivers significantly faster task completion, improved token efficiency, and exceptional cost-effectiveness, making it well-suited for production-scale agentic applications and complex, multi-step workflows.",
   "details": {
     "calibrated": true,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 163840,
+    "contextLength": 196608,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "FP8_MM",
-    "defaultSamplingParams": {
-      "temperature": 1,
-      "top_k": 50,
-      "top_p": 1
-    },
+    "defaultPrecision": "FP8",
+    "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
-    "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
+    "huggingFaceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "deepseek_v3",
-    "model_name": "accounts/fireworks/models/deepseek-v3-0324",
+    "modelType": "mixtral",
+    "model_name": "accounts/fireworks/models/minimax-m2p5",
     "moe": true,
-    "parameterCount": "671026419200",
+    "parameterCount": "228689764864",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
-      "FP8_MM",
-      "FP8_MM_V2",
-      "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED"
+      "BF16",
+      "FP8_V2",
+      "FP8",
+      "FP16"
     ],
     "supportedPrecisionsWithCalibration": [
-      "FP4",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
+      "FP8_V2",
+      "FP4_BLOCKSCALED_MM"
     ],
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -43,12 +38,12 @@
     "supportsTools": true,
     "teftDetails": null,
     "trainingContextLength": 65536,
-    "tunable": true,
+    "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "Deepseek V3 03-24",
-  "name": "deepseek-v3-0324",
+  "display_name": "MiniMax-M2.5",
+  "name": "minimax-m2p5",
   "payout_price": {
     "description": "No platform commission",
     "percentage": "100.00",
@@ -56,8 +51,8 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "deprecated",
-  "time_created": "2025-03-24T14:40:20.594012Z",
+  "status": "ready",
+  "time_created": "2026-02-14T06:26:15.817232Z",
   "upstream_access_interfaces": {
     "Fireworks API": {
       "access_method": "http",

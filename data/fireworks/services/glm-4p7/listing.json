@@ -44,7 +44,8 @@
     }
   },
   "list_price": {
-    "description": "Pricing Per 1M Tokens (input/output): $0.60 / $2.20",
+    "cached_input": "0.30",
+    "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.30 / $2.20",
     "input": "0.60",
     "output": "2.20",
     "reference": "https://fireworks.ai/models/fireworks/glm-4p7",
@@ -58,7 +59,7 @@
       "access_method": "http",
       "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
       "routing_key": {
-        "model": ""
+        "model": "accounts/fireworks/models/glm-4p7"
       }
     }
   }
