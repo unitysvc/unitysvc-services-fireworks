@@ -44,6 +44,11 @@
   "schema": "offering_v1",
   "service_type": "llm",
   "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "managed"
+  ],
   "time_created": "2025-12-23T21:21:21.223875Z",
   "upstream_access_interfaces": {
     "Fireworks API": {

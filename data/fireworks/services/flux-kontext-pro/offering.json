@@ -44,6 +44,11 @@
   "schema": "offering_v1",
   "service_type": "image_generation",
   "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "managed"
+  ],
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_interfaces": {
     "Fireworks API": {
