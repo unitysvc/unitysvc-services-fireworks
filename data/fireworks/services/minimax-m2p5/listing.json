@@ -44,9 +44,9 @@
     }
   },
   "list_price": {
-    "cached_input": "0.60",
-    "description": "Pricing Per 1M Tokens (input/cached input/output): $1.20 / $0.60 / $1.20",
-    "input": "1.20",
+    "cached_input": "0.03",
+    "description": "Pricing Per 1M Tokens (input/cached input/output): $0.30 / $0.03 / $1.20",
+    "input": "0.30",
     "output": "1.20",
     "reference": "https://fireworks.ai/models/fireworks/minimax-m2p5",
     "type": "one_million_tokens"
