@@ -46,8 +46,7 @@
   "status": "ready",
   "tags": [
     "ai",
-    "gateway",
-    "managed"
+    "gateway"
   ],
   "time_created": "2025-06-23T21:36:51.809742Z",
   "upstream_access_interfaces": {

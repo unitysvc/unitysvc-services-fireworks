@@ -51,11 +51,10 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "ready",
+  "status": "deprecated",
   "tags": [
     "ai",
-    "gateway",
-    "managed"
+    "gateway"
   ],
   "time_created": "2026-02-14T06:26:15.817232Z",
   "upstream_access_interfaces": {
