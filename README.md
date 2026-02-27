@@ -174,7 +174,7 @@ Click **New repository secret** and add the following:
   3. Create or copy your API key
 - **Used by**: Populate Services workflow
 
-#### `UNITYSVC_BASE_URL`
+#### `SERVICE_BASE_URL`
 
 - **Description**: The UnitySVC backend API URL
 - **Example values**:
@@ -219,7 +219,7 @@ usvc data populate
 usvc data list
 
 # Upload manually (optional - usually done via CI/CD)
-export UNITYSVC_BASE_URL="https://api.unitysvc.com/v1"
+export SERVICE_BASE_URL="https://api.unitysvc.com/v1"
 export UNITYSVC_API_KEY="your-api-key"
 usvc services upload
 ```

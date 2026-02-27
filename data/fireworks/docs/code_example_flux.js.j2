@@ -1,11 +1,11 @@
 import fs from "fs";
 
 async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = "{{offering.details.model_name}}", outputFile = "a.jpg") {
-  const baseUrl = process.env.UNITYSVC_BASE_URL;
+  const baseUrl = process.env.SERVICE_BASE_URL;
   const apiKey = process.env.UNITYSVC_API_KEY;
 
   if (!baseUrl || !apiKey) {
-    throw new Error("Missing UNITYSVC_BASE_URL or UNITYSVC_API_KEY environment variable");
+    throw new Error("Missing SERVICE_BASE_URL or UNITYSVC_API_KEY environment variable");
   }
 
   const url = `${baseUrl}/workflows/${modelName}/text_to_image`;
