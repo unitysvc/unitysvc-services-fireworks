@@ -219,7 +219,7 @@ usvc data populate
 usvc data list
 
 # Upload manually (optional - usually done via CI/CD)
-export SERVICE_BASE_URL="https://api.unitysvc.com/v1"
+export UNITYSVC_API_URL="https://api.unitysvc.com/v1"
 export UNITYSVC_API_KEY="your-api-key"
 usvc services upload
 ```
