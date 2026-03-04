@@ -1,0 +1,118 @@
+{
+  "schema": "listing_v1",
+  "display_name": "{{ name }}",
+  "status": "{{ listing_status | default('ready') }}",
+  "currency": "USD",
+{%- if pricing %}
+  "list_price": {
+    "type": "{{ pricing.type }}"
+{%- if pricing.input is defined %},
+    "input": "{{ pricing.input }}",
+    "output": "{{ pricing.output }}"
+{%- if pricing.cached_input is defined %},
+    "cached_input": "{{ pricing.cached_input }}"
+{%- endif %}
+{%- elif pricing.price is defined %},
+    "price": "{{ pricing.price }}"
+{%- endif %}
+{%- if pricing.description is defined %},
+    "description": "{{ pricing.description }}"
+{%- endif %}
+{%- if pricing.reference is defined %},
+    "reference": "{{ pricing.reference }}"
+{%- endif %}
+  },
+{%- endif %}
+  "user_access_interfaces": {
+    "Provider API": {
+      "access_method": "http",
+      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+      "routing_key": {"model": "{{ model_name }}"}
+    }
+  },
+  "documents": {
+{%- if is_flux %}
+    "Python code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_flux.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "Python function calling code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_flux_fc.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "JavaScript code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_flux.js.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "javascript"
+    },
+    "cURL code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_flux.sh.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "bash"
+    },
+    "connectivity test": {
+      "category": "connectivity_test",
+      "description": "Connectivity test",
+      "file_path": "../../docs/connectivity_flux.sh.j2",
+      "is_active": true,
+      "is_public": false,
+      "mime_type": "bash"
+    }
+{%- else %}
+    "Python code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "Python function calling code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example_1.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "JavaScript code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example.js.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "javascript"
+    },
+    "cURL code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "../../docs/code_example.sh.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "bash"
+    },
+    "connectivity test": {
+      "category": "connectivity_test",
+      "description": "Connectivity test",
+      "file_path": "../../docs/connectivity.sh.j2",
+      "is_active": true,
+      "is_public": false,
+      "mime_type": "bash"
+    }
+{%- endif %}
+  }
+}

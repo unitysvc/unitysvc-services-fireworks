@@ -1,0 +1,79 @@
+{
+  "currency": "USD",
+  "description": "FLUX Kontext Max is Black Forest Labs' new premium model that brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
+    "cluster": "",
+    "contextLength": 0,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultSamplingParams": {},
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "",
+    "importedFrom": "",
+    "kind": "FLUMINA_BASE_MODEL",
+    "modelType": "",
+    "model_name": "accounts/fireworks/models/flux-kontext-max",
+    "moe": false,
+    "parameterCount": "0",
+    "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
+    "supportedPrecisions": [],
+    "supportedPrecisionsWithCalibration": [],
+    "supportsFireattention": true,
+    "supportsImageInput": true,
+    "supportsLora": false,
+    "supportsTools": false,
+    "teftDetails": null,
+    "trainingContextLength": 0,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "Flux Kontext Max",
+  "name": "flux-kontext-max",
+  "payout_price": {
+    "description": "No platform commission",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "schema": "offering_v1",
+  "service_type": "image_generation",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway"
+  ],
+  "time_created": "2025-06-23T21:36:51.809742Z",
+  "upstream_access_interfaces": {
+    "Fireworks API": {
+      "access_method": "http",
+      "api_key": "${ secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ]
+    }
+  }
+}
