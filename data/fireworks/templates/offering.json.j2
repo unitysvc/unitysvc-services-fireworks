@@ -1,0 +1,52 @@
+{
+  "schema": "offering_v1",
+  "name": "{{ name }}",
+{%- if display_name %}
+  "display_name": "{{ display_name }}",
+{%- endif %}
+  "description": {{ (description | default('', true)) | tojson }},
+  "service_type": "{{ service_type }}",
+  "status": "{{ status | default('ready') }}",
+  "currency": "USD",
+  "tags": ["ai", "gateway"],
+  "details": {
+    "model_name": "{{ model_name }}"
+{%- if details %}
+{%- for key, value in details.items() %},
+    "{{ key }}": {{ value | tojson }}
+{%- endfor %}
+{%- endif %}
+  },
+  "payout_price": {
+    "type": "revenue_share",
+    "percentage": "100.00",
+    "description": "No platform commission"
+  },
+  "upstream_access_interfaces": {
+    "Fireworks API": {
+      "access_method": "http",
+      "api_key": "${ secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ]
+    }
+  }
+}
