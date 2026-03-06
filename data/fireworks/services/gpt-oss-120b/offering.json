@@ -8,7 +8,7 @@
     "contextLength": 131072,
     "defaultDraftModel": "accounts/fireworks/models/gpt-oss-120b-eagle3-oss",
     "defaultDraftTokenCount": 3,
-    "defaultPrecision": "FP4_MX_MOE",
+    "defaultPrecision": "FP4",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -23,7 +23,8 @@
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportedPrecisions": [
-      "FP4_MX_MOE"
+      "FP4_MX_MOE",
+      "FP4"
     ],
     "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
