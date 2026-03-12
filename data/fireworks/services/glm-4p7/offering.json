@@ -22,15 +22,6 @@
     "parameterCount": "352797829024",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "BF16",
-      "FP8_MM_V2",
-      "FP16"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP8_V2",
-      "FP4_BLOCKSCALED_MM"
-    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,

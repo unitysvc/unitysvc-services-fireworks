@@ -26,8 +26,6 @@
     "parameterCount": "0",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": false,
     "supportsImageInput": false,
     "supportsLora": false,
