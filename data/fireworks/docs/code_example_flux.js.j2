@@ -1,6 +1,6 @@
 import fs from "fs";
 
-async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = "{{offering.details.model_name}}", outputFile = "a.jpg") {
+async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = process.env.MODEL || "{{offering.details.model_name}}", outputFile = "a.jpg") {
   const baseUrl = process.env.SERVICE_BASE_URL;
   const apiKey = process.env.UNITYSVC_API_KEY;
 
